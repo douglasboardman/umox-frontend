@@ -1,4 +1,4 @@
-<app-sidebar></app-sidebar>
-<app-content>
+<app-sidebar (toggle)="onSidebarToggle()"></app-sidebar>
+<app-content [ngClass]=" contentToggle ">
   <router-outlet></router-outlet>
 </app-content>

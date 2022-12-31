@@ -5,5 +5,12 @@ app-content {
     right: 0;
     top: 0;
     height: 100vh;
+}
+
+.normal-view {
     width: calc(100% - $sidebar-width);
+}
+
+app-content.maximized {
+    width: calc(100% - 80px);
 }

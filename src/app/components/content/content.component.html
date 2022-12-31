@@ -1,4 +1,5 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
+
+<nav [ngClass]="toggleContent" class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
@@ -12,6 +13,6 @@
       </div>
     </div>
   </nav>
-<div class="content-div">
+<div [ngClass]="toggleContent" class="content-div">
     <ng-content></ng-content>
 </div>
