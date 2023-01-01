@@ -1,4 +1,5 @@
-<app-sidebar (toggle)="onSidebarToggle()"></app-sidebar>
-<app-content [ngClass]=" contentToggle ">
+<app-sidebar [ngClass]="auth" (toggle)="onSidebarToggle()"></app-sidebar>
+<app-topbar [ngClass]="auth"></app-topbar>
+<app-content [ngClass]="[contentToggle, auth]">
   <router-outlet></router-outlet>
 </app-content>

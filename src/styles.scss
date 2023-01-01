@@ -3,13 +3,16 @@
 
 // brand colors
 $dark-blue: #1371d5;
-$violet: #6040ef;
+$light-blue: #499ef8;
 $body-color: #e4e9f7;
 $sidebar-color: #fff;
 $primary-light: #f6f5ff;
 $toggle-color: #ddd;
 $text-color: #707070;
+$login-cover-color: #3f3f3f;
 $divider-text-color: #a8a8a8;
+$toggle-sidebar-trans: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+$sidebar-hover-color: #b4d8ff;
 
 // App layout
 $sidebar-width: 280px;
@@ -23,7 +26,7 @@ $trans05: all 0.5s ease;
 // Update Bulma's global variables
 $family-sans-serif: "Poppins", sans-serif;
 $primary: $dark-blue;
-$link: $violet;
+$link: $light-blue;
 
 
 @import '../node_modules/bulma/bulma.sass';
@@ -37,4 +40,5 @@ $link: $violet;
 
 body {
     height: 100vh;
+    background: $body-color;
 }

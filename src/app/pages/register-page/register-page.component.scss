@@ -1,0 +1,123 @@
+@import '../../../styles.scss';
+
+
+
+.columns {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+}
+
+.img-div-column {
+    min-width: 64%;
+    height: 100vh;
+    background-color: $login-cover-color;
+    background-image: url(../../../assets/umox_app_register_img.jpg);
+    background-size: cover;
+    background-blend-mode: multiply;
+    color: $sidebar-hover-color;
+}
+
+.app-name {
+    position: absolute;
+    top: 16px;
+    left: 90px;
+}
+
+.login-column {
+    min-width: 36%;
+    background: $primary-light;
+}
+
+form {
+    position: absolute;
+    right: 0;
+    height: 400px;
+    top: calc(calc(100% - 400px)/2);
+    width: 36%;
+    padding: 80px;
+    border-radius: 3px;
+}
+
+form button {
+    width: 100%;
+}
+
+h1 {
+    color: $primary;
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+h3 {
+    margin-top: -7px;
+    margin-left: 3px;
+}
+
+#logo {
+ position: absolute;
+ left: 25px;
+ top: 25px;
+ max-width: 50px;
+}
+
+#not-registered-msg {
+    font-size: 12px;
+    color: $text-color;
+    text-align: center;
+}
+
+@media (max-width: 1350px) {
+    form {
+        padding: 80px 50px;
+    }
+}
+
+@media (max-width: 1250px) {
+    .login-column {
+        display: none; 
+    }
+
+    form {
+        background-color: $primary-light;
+        padding: 80px 30px;
+        right: calc(64% / 2)
+    }
+}
+
+
+@media (max-width: 930px) {
+    .img-div-column {
+        background: $primary-light;
+    }
+
+    .app-name {
+        color: $primary;
+    }
+
+    form {
+        background-color: $primary-light;
+        width: 60%;
+        right: 20%;
+        padding: 80px 10px;
+    }
+}
+
+@media (max-width: 700px) {
+
+    form {
+        background-color: $primary-light;
+        width: 80%;
+        right: 10%;
+        padding: 80px 10px;
+    }
+}
