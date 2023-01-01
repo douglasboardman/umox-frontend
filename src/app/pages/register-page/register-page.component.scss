@@ -24,19 +24,20 @@
 .app-name {
     position: absolute;
     top: 16px;
-    left: 90px;
+    right: 90px;
+    text-align: right;
 }
 
-.login-column {
+.register-column {
     min-width: 36%;
     background: $primary-light;
 }
 
 form {
     position: absolute;
-    right: 0;
-    height: 400px;
-    top: calc(calc(100% - 400px)/2);
+    left: 0;
+    height: 525px;
+    top: calc(calc(100% - 525px)/2);
     width: 36%;
     padding: 80px;
     border-radius: 3px;
@@ -65,7 +66,7 @@ h3 {
 
 #logo {
  position: absolute;
- left: 25px;
+ right: 25px;
  top: 25px;
  max-width: 50px;
 }
@@ -83,14 +84,14 @@ h3 {
 }
 
 @media (max-width: 1250px) {
-    .login-column {
+    .register-column {
         display: none; 
     }
 
     form {
         background-color: $primary-light;
         padding: 80px 30px;
-        right: calc(64% / 2)
+        left: calc(64% / 2)
     }
 }
 
@@ -107,7 +108,7 @@ h3 {
     form {
         background-color: $primary-light;
         width: 60%;
-        right: 20%;
+        left: 20%;
         padding: 80px 10px;
     }
 }
@@ -117,7 +118,6 @@ h3 {
     form {
         background-color: $primary-light;
         width: 80%;
-        right: 10%;
-        padding: 80px 10px;
+        left: 10%;
     }
 }

@@ -6,19 +6,32 @@
     <form>
         <h1>Registre-se</h1>
         <div class="field">
-            <p class="control has-icons-left has-icons-right">
-              <input class="input" type="email" placeholder="Email">
+            <p class="control has-icons-left">
+              <input class="input" name="nome" type="text" placeholder="Nome">
+              <span class="icon is-small is-left">
+                <i class="bx bx-user"></i>
+              </span>
+            </p>
+          </div>
+        <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" name="email" type="email" placeholder="Email">
               <span class="icon is-small is-left">
                 <i class="bx bx-envelope"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="bx bx-check"></i>
               </span>
             </p>
           </div>
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input" type="password" placeholder="Password">
+              <input class="input" name="senha" type="password" placeholder="Senha">
+              <span class="icon is-small is-left">
+                <i class="bx bx-lock"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control has-icons-left">
+              <input class="input" name="senha_rep" type="password" placeholder="Repita sua senha">
               <span class="icon is-small is-left">
                 <i class="bx bx-lock"></i>
               </span>
@@ -31,12 +44,13 @@
               </button>
             </p>
           </div>
-          <p id="not-registered-msg">Já possui cadastro? <a href="#">Clique aqui</a> para acessar.</p>
+          <p id="not-registered-msg">Já possui cadastro? <a routerLink="/login">Clique aqui</a> para acessar.</p>
     </form>
+    <div class="column register-column">
+    </div>
     <div class="column img-div-column">
         <!-- <img id="background-image" class="background" src="../../../assets/umox_app_login_page_img"/> -->
         <img id="logo" src="../../../assets/umox-logo.png" alt="logo"/>
     </div>
-    <div class="column login-column">
-    </div>
+    
 </div>
