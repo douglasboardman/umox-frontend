@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'umox-frontend';
   sidebarToggle: boolean = false;
   contentToggle: string = 'normal-view';
-  auth: string = 'logged-in'
+  auth: string = 'logged-out'
   
   onSidebarToggle() {
       if(!this.sidebarToggle) {
