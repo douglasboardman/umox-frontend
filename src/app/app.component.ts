@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,12 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
+  constructor(private authService: AuthService) {}
+
   title = 'umox-frontend';
   sidebarToggle: boolean = false;
   contentToggle: string = 'normal-view';
-  auth: string = 'logged-out'
+  auth: string = this.authService.auth == '' ? 'logged-out' : this.authService.auth;
   
   onSidebarToggle() {
       if(!this.sidebarToggle) {

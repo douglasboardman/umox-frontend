@@ -20,4 +20,11 @@ export class WebRequestService {
     return this.http.post(`${this.ROOT_URL}/${uri}`, payload);
    }
 
+   login(email: string, senha: string) {
+    return this.http.post(`${this.ROOT_URL}/login`, {
+      email,
+      senha
+    }, { observe: 'response' })
+  }
+
 }

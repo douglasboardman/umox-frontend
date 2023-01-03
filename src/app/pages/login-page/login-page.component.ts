@@ -11,9 +11,10 @@ export class LoginPageComponent {
   email!: string
   senha!: string
 
-  login() {
+  onLoginButtonClicked() {
     this.authService.login(this.email, this.senha).subscribe((response: any) => {
       console.log(response);
     })
   }
+
 }

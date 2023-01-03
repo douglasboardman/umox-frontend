@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { shareReplay, tap } from 'rxjs';
 import { WebRequestService } from './web-request.service';
 
 @Injectable({
@@ -8,13 +9,43 @@ import { WebRequestService } from './web-request.service';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient, private webRequestService: WebRequestService, private router: Router) { }
-  
+  constructor(private webRequestService: WebRequestService, private router: Router) { }
+  auth!: string;
+
   login(email: string, senha: string) {
-    let objReq: Object = {
-      email: email,
-      senha: senha
-    }
-    return this.webRequestService.post('login', objReq);
+    return this.webRequestService.login(email, senha).pipe(
+      shareReplay(),
+      tap((res: HttpResponse<any>) => {
+        let usuario = res.body;
+        this.setSession(usuario.id, String(res.headers.get('x-access-token')));
+        //console.log('Logado');
+        this.auth = 'logged-in';
+        this.router.navigateByUrl('/dashboard');
+      })
+    )
+  }
+
+  logout() {
+    this.auth = 'logged-out'
+    this.removeSession();
+    this.router.navigateByUrl('/login')
+  }
+
+  getAccessToken() {
+    return localStorage.getItem('x-access-token')
+  }
+
+  setAccessToken(accessToken: string) {
+    return localStorage.setItem('x-access-token', accessToken);
+  }
+
+  private setSession(idUsuario: string, accessToken: string) {
+    localStorage.setItem('id-usuario', idUsuario);
+    localStorage.setItem('x-access-token', accessToken);
+  }
+
+  private removeSession() {
+    localStorage.removeItem('id-usuario');
+    localStorage.removeItem('x-access-token');
   }
 }
