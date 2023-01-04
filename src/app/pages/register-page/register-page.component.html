@@ -48,8 +48,8 @@
               </span>
             </p>
             <div *ngIf="formDir.submitted">
-              <p *ngIf="senhaRep.errors?.['required']" class="help is-danger">Repita a senha acima informada</p>
-              <p *ngIf="senhaRep.errors?.['matchValidator']" class="help is-danger">Senhas não coincidem</p>
+              <!-- <p *ngIf="senhaRep.errors?.['required']" class="help is-danger">Repita a senha acima informada</p> -->
+              <p *ngIf="senhaRep.hasError('matching')" class="help is-danger">Senhas não coincidem</p>
             </div>
           </div>
           <div class="field">

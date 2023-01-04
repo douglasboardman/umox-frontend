@@ -41,7 +41,14 @@ export class RegisterPageComponent {
   }
 
   submit() {
-
+    let vals: Object = {
+      nome: this.nome.value,
+      email: this.email.value,
+      senha: this.senha.value
+    }
+    if(!this.registerForm.invalid) {
+      console.log('Formulário enviado', vals);
+    }
   }
 
   onRegisterButtonClicked() {
