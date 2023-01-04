@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { matchValidator } from 'src/app/utils/form-validators';
 
 
@@ -12,8 +13,10 @@ import { matchValidator } from 'src/app/utils/form-validators';
 export class RegisterPageComponent {
   
   registerForm!: FormGroup;
+  msgClasses!: Array<string>;
+  msg!: string;
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.registerForm = new FormGroup({
@@ -41,17 +44,19 @@ export class RegisterPageComponent {
   }
 
   submit() {
-    let vals: Object = {
-      nome: this.nome.value,
-      email: this.email.value,
-      senha: this.senha.value
-    }
+    let nome: string = this.nome.value;
+    let email: string =  this.email.value;
+    let senha: string = this.senha.value;
+    
+    
     if(!this.registerForm.invalid) {
-      console.log('Formulário enviado', vals);
+      this.authService.register(nome, email, senha).subscribe((response: any) => {
+        if(response == 200){
+          this.msg = 'Cadastro realizado com sucesso!'
+          this.msgClasses = ['', 'is-info']
+        }
+      })
     }
   }
 
-  onRegisterButtonClicked() {
-    
-  }
 }

@@ -1,30 +1,37 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WebRequestService {
-
   readonly ROOT_URL;
 
   constructor(private http: HttpClient) {
     this.ROOT_URL = 'http://localhost:3000';
-   }
-
-   get(uri: string) {
-    return this.http.get(`${this.ROOT_URL}/${uri}`);
-   }
-
-   post(uri: string, payload: Object) {
-    return this.http.post(`${this.ROOT_URL}/${uri}`, payload);
-   }
-
-   login(email: string, senha: string) {
-    return this.http.post(`${this.ROOT_URL}/login`, {
-      email,
-      senha
-    }, { observe: 'response' })
   }
 
+  get(uri: string) {
+    return this.http.get(`${this.ROOT_URL}/${uri}`);
+  }
+
+  post(uri: string, payload: Object) {
+    return this.http.post(`${this.ROOT_URL}/${uri}`, payload);
+  }
+
+  login(email: string, senha: string) {
+    return this.http.post(
+      `${this.ROOT_URL}/login`,
+      { email, senha },
+      { observe: 'response' }
+    );
+  }
+
+  register(nome: string, email: string, senha: string) {
+    return this.http.post(
+      `${this.ROOT_URL}/register`,
+      { nome, email, senha },
+      { observe: 'response' }
+    );
+  }
 }

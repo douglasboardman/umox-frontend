@@ -19,7 +19,7 @@ export class AuthService {
       tap((res: HttpResponse<any>) => {
         let usuario = res.body;
         this.setSession(usuario.id, String(res.headers.get('x-access-token')));
-        //console.log('Logado');
+        console.log('Logado');
         this.auth = 'logged-in';
         this.router.navigateByUrl('/dashboard');
       })
@@ -33,13 +33,13 @@ export class AuthService {
   }
 
   register(nome: string, email: string, senha: string) {
-    const objReq: Object = {
-      nome: nome,
-      email: email,
-      senha: senha
-    }
-    
-    this.webRequestService.post('register', objReq);
+    return this.webRequestService.register(nome, email, senha).pipe(
+      tap((res: HttpResponse<any>) => {
+        if(res.status == 200) {
+          this.router.navigateByUrl('/login');
+        }
+      })
+    )
   }
 
   getAccessToken() {
