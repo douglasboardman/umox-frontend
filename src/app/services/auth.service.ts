@@ -2,6 +2,7 @@ import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { shareReplay, tap } from 'rxjs';
+import { __param } from 'tslib';
 import { WebRequestService } from './web-request.service';
 
 @Injectable({
@@ -29,6 +30,16 @@ export class AuthService {
     this.auth = 'logged-out'
     this.removeSession();
     this.router.navigateByUrl('/login')
+  }
+
+  register(nome: string, email: string, senha: string) {
+    const objReq: Object = {
+      nome: nome,
+      email: email,
+      senha: senha
+    }
+    
+    this.webRequestService.post('register', objReq);
   }
 
   getAccessToken() {

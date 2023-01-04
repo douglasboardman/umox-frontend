@@ -15,7 +15,7 @@
     min-width: 64%;
     height: 100vh;
     background-color: $login-cover-color;
-    background-image: url(../../../assets/umox_app_register_img.jpg);
+    background-image: linear-gradient(180deg, rgba(71,71,71,1) 0%, rgba(130,130,130,1) 20%, rgba(255,255,255,1) 40%), url(../../../assets/umox_app_register_img.jpg);
     background-size: cover;
     background-blend-mode: multiply;
     color: $sidebar-hover-color;
@@ -43,7 +43,7 @@ form {
     border-radius: 3px;
 }
 
-form button {
+form .button {
     width: 100%;
 }
 
@@ -71,10 +71,9 @@ h3 {
  max-width: 50px;
 }
 
-#not-registered-msg {
+#already-registered-msg {
     font-size: 12px;
     color: $text-color;
-    text-align: center;
 }
 
 @media (max-width: 1350px) {

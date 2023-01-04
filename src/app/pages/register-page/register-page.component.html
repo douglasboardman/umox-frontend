@@ -3,48 +3,61 @@
         <h2>Umox</h2>
         <h3>Gestão de almoxarifado</h3>
     </div>
-    <form>
+    <form (ngSubmit)="submit()" [formGroup]="registerForm" #formDir="ngForm">
         <h1>Registre-se</h1>
         <div class="field">
             <p class="control has-icons-left">
-              <input class="input" name="nome" type="text" placeholder="Nome">
+              <input class="input" formControlName="nome" [class.is-danger]="nome.invalid && formDir.submitted" type="text" placeholder="Nome">
               <span class="icon is-small is-left">
                 <i class="bx bx-user"></i>
               </span>
             </p>
+            <div *ngIf="nome.invalid && formDir.submitted">
+              <p *ngIf="nome.errors?.['required']" class="help is-danger">O nome precisa ter, no mínimo, 5 (cinco) caracteres</p>
+            </div>
           </div>
         <div class="field">
             <p class="control has-icons-left">
-              <input class="input" name="email" type="email" placeholder="Email">
+              <input class="input" formControlName="email" [class.is-danger]="email.invalid && formDir.submitted" type="email" placeholder="Email">
               <span class="icon is-small is-left">
                 <i class="bx bx-envelope"></i>
               </span>
             </p>
+            <div *ngIf="email.invalid && formDir.submitted">
+              <p *ngIf="email.errors?.['required']" class="help is-danger">Email não informado</p>
+              <p *ngIf="email.errors?.['email']" class="help is-danger">Email inválido</p>
+            </div>
           </div>
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input" name="senha" type="password" placeholder="Senha">
+              <input class="input" formControlName="senha" [class.is-danger]="senha.invalid && formDir.submitted" type="password" placeholder="Senha">
               <span class="icon is-small is-left">
                 <i class="bx bx-lock"></i>
               </span>
             </p>
+            <div *ngIf="senha.invalid && formDir.submitted">
+              <p *ngIf="senha.errors?.['required']" class="help is-danger">Senha não informada</p>
+              <p *ngIf="senha.errors?.['matchValidator']" class="help is-danger">Senhas não coincidem</p>
+            </div>
           </div>
           <div class="field">
             <p class="control has-icons-left">
-              <input class="input" name="senha_rep" type="password" placeholder="Repita sua senha">
+              <input class="input" formControlName="senhaRep" [class.is-danger]="senhaRep.invalid && formDir.submitted" type="password" placeholder="Repita sua senha">
               <span class="icon is-small is-left">
                 <i class="bx bx-lock"></i>
               </span>
             </p>
+            <div *ngIf="formDir.submitted">
+              <p *ngIf="senhaRep.errors?.['required']" class="help is-danger">Repita a senha acima informada</p>
+              <p *ngIf="senhaRep.errors?.['matchValidator']" class="help is-danger">Senhas não coincidem</p>
+            </div>
           </div>
           <div class="field">
             <p class="control">
-              <button class="button is-primary">
-                Login
-              </button>
+              <input type="submit" class="button is-primary" value="Solicitar cadastro">
             </p>
           </div>
-          <p id="not-registered-msg">Já possui cadastro? <a routerLink="/login">Clique aqui</a> para acessar.</p>
+          <p id="already-registered-msg">Já possui cadastro? <a routerLink="/login">Clique aqui</a> para acessar.</p>
     </form>
     <div class="column register-column">
     </div>
