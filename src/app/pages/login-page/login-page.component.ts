@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
+import { MessangerService } from 'src/app/services/messanger.service';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
-export class LoginPageComponent {
-  constructor(private authService: AuthService) {}
+export class LoginPageComponent implements OnInit {
+  
+  constructor(private authService: AuthService, private messanger: MessangerService) {}
+  
   loginForm!: FormGroup;
-  msgClasses!: Array<string>;
-  msg!: string;
+  msgClass!: string;
+  message!: string;
   
   ngOnInit() {
+    this.messanger.receiveMessage().subscribe((msg) => {
+      this.message = msg;
+      this.msgClass = 'is-success';
+    })
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
       senha: new FormControl('', [Validators.required])
@@ -34,10 +41,6 @@ export class LoginPageComponent {
 
     if(!this.loginForm.invalid) {
       this.authService.login(email, senha).subscribe((response: any) => {
-        if(response.status == 200) {
-          this.msg = 'Cadastro realizado com sucesso!'
-          this.msgClasses = ['', 'is-info']
-        }
         console.log(response);
       })
     }

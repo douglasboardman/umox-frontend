@@ -1,0 +1,46 @@
+@import '../../../styles.scss';
+
+.notification {
+    position: fixed;
+    right: 25px;
+    top: 25px;
+    opacity: 0.8;
+    //display: none;
+    font-size: 12px;
+    max-width: 350px;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.visible {
+    animation: msgFadeIn .5s ease;
+    display: unset;
+}
+
+.hide {
+    animation: msgFadeOut .5s ease;
+    display: none;
+}
+
+@keyframes msgFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    to {
+        opacity: 0.8;
+        transform: translateY(0);
+    }
+}
+
+@keyframes msgFadeOut {
+    from {
+        opacity: 0.8;
+        transform: translateY(0);
+    }
+    
+    to {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}

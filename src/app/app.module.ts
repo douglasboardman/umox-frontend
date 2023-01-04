@@ -12,6 +12,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { AppFrameComponent } from './components/app-frame/app-frame.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AppFrameComponent } from './components/app-frame/app-frame.component';
     LoginPageComponent,
     TopbarComponent,
     RegisterPageComponent,
-    AppFrameComponent
+    AppFrameComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
