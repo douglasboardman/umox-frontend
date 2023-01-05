@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,8 @@ import { TopbarComponent } from './components/topbar/topbar.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { AppFrameComponent } from './components/app-frame/app-frame.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { WebReqInterceptorService } from './services/web-req-interceptor.service';
+import { ConsultarEstoqueComponent } from './pages/consultar-estoque/consultar-estoque.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { NotificationComponent } from './components/notification/notification.co
     TopbarComponent,
     RegisterPageComponent,
     AppFrameComponent,
-    NotificationComponent
+    NotificationComponent,
+    ConsultarEstoqueComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,9 @@ import { NotificationComponent } from './components/notification/notification.co
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

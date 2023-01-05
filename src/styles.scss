@@ -1,11 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
+$grey: #f1f0f6;
+$dark-grey: #8d8d8d;
+$deep-grey: #4c4c4c;
+$grey-red: rgb(213, 190, 190);
+$light: #fff;
+$dark: #000;
+$green: #6fae38;
+$dark-green: #3c8100;
+$light-green: #e3ffcb;
+$blue: #1775f1;
+$light-blue: #ebf4fe;
+//$dark-blue: #0c5fcd;
+$red: #d84458;
+$dark-red: #b7273a;
+$orange: #ef731a;
+$wrapper-shadow: 0px 1px 10px 1px rgb(199, 199, 199);
 // brand colors
 $dark-blue: #1371d5;
-$light-blue: #499ef8;
-$body-color: #e4e9f7;
-$sidebar-color: #fff;
+$link-color: #499ef8;
+//$lighter-blue: #f7fbff;
+$body-color: #f2f2f2;
+$sidebar-color: linear-gradient(180deg, rgba(11,55,102,1) 0%, rgba(19,113,213,1) 100%);
 $primary-light: #f6f5ff;
 $toggle-color: #ddd;
 $text-color: #707070;
@@ -13,6 +30,9 @@ $login-cover-color: #888888;
 $divider-text-color: #a8a8a8;
 $toggle-sidebar-trans: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
 $sidebar-hover-color: #b4d8ff;
+$table-head-background-color: $dark-blue;
+$table-head-cell-color: $primary-light;
+
 
 // App layout
 $sidebar-width: 280px;
@@ -26,7 +46,7 @@ $trans05: all 0.5s ease;
 // Update Bulma's global variables
 $family-sans-serif: "Poppins", sans-serif;
 $primary: $dark-blue;
-$link: $light-blue;
+$link: $link-color;
 
 
 @import '../node_modules/bulma/bulma.sass';
@@ -42,3 +62,4 @@ body {
     height: 100vh;
     background: $body-color;
 }
+

@@ -1,0 +1,103 @@
+@import '../../styles.scss';
+
+$border-radius: 3px;
+
+table.generic { 
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0px 1px 10px 1px rgb(199, 199, 199);
+    border-radius: $border-radius;
+    background-color: $light;
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 10px;
+    color: $text-color;
+}
+
+table.inner-table { 
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-radius: $border-radius;
+    background-color: $light;
+    width: 100%;
+}
+
+table.inner-table tr td {
+    background-color: $grey;
+}
+
+table.generic th, table.generic td { 
+    padding: 6.5px 6.5px 6.5px 20px;
+}
+
+table.rounded th, table.rounded td { 
+    padding: 7.5px 7.5px 7.5px 20px; 
+}
+
+table.rounded th { 
+    font-size: 12px;
+}
+
+table.grey > thead th { 
+    background-color: $deep-grey;
+    color: $light;
+}
+
+table.blue > thead th { 
+    background-color: $dark-blue;
+    color: $light;
+}
+
+table.green > thead th { 
+    background-color: $dark-green;
+    color: $light;
+}
+
+table.rounded tbody tr {
+    font-size: 10px;
+    transition: all .3s
+}
+
+table.rounded tbody tr:hover {
+    background-color: $light-blue;
+}
+
+table.rounded tbody tr.tr-detalhe:hover {
+    background-color: $light;
+}
+
+table.rounded tbody tr.tr-detalhe > td {
+    padding: 10px 10px 40px 10px;
+}
+
+table.rounded tbody tr td {
+    border-bottom: 1px solid $grey;
+}
+
+table.rounded .ultima-linha {
+    border-bottom: none;
+}
+
+table.rounded th:first-child {
+    border-radius: $border-radius 0 0 0; 
+}
+
+table.rounded th:last-child { 
+    border-radius: 0 $border-radius 0 0;
+}
+
+table.rounded tr:last-child td { 
+    border-bottom: none;
+}
+
+table.rounded tr:last-child > td:first-child { 
+    border-radius: 0 0 0 $border-radius; 
+}
+
+table.rounded tr:last-child > td:last-child {
+    border-radius: 0 0 $border-radius 0; 
+}
+
+table.rounded tbody tr:last-child { 
+    background: none; 
+}

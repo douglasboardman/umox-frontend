@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { OperacoesService } from 'src/app/services/operacoes.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private operacoes: OperacoesService) {}
   sidebarMode: string = '';
   @Output() toggle: EventEmitter<any> = new EventEmitter()
 
@@ -24,4 +25,5 @@ export class SidebarComponent {
   onLogoutButtonClicked() {
     this.authService.logout();
   }
+  
 }

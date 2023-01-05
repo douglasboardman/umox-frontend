@@ -4,7 +4,7 @@
 .sidebar .text {
     font-size: 16px;
     font-weight: 500;
-    color: $text-color;
+    color: $light-blue;
 }
 
 .sidebar .image {
@@ -44,6 +44,11 @@
 
 .sidebar span.mode-text {
     left: 70px;
+}
+
+.sidebar span .mode-text,
+.sidebar span .mode-text .text {
+    color: $text-color;
 }
 
 .sidebar span.switch {
@@ -151,7 +156,7 @@ header .image-text .header-text {
 
 .sidebar li .text,
 .sidebar li .icon {
-    color: $text-color;
+    color: $light-blue;
     transition: $trans03;
 }
 
@@ -166,7 +171,7 @@ header .image-text .header-text {
 }
 
 .sidebar li a:hover {
-    background: $sidebar-hover-color;
+    background: $light-blue;
     .icon, span {
         color: $primary;
     }
