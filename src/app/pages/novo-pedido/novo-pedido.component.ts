@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { OperacoesService } from 'src/app/services/operacoes.service';
 
 @Component({
-  selector: 'app-consultar-estoque',
-  templateUrl: './consultar-estoque.component.html',
-  styleUrls: ['./consultar-estoque.component.scss']
+  selector: 'app-novo-pedido',
+  templateUrl: './novo-pedido.component.html',
+  styleUrls: ['./novo-pedido.component.scss']
 })
-export class ConsultarEstoqueComponent {
+export class NovoPedidoComponent {
   constructor(private operacoes: OperacoesService){}
   dadosItens!: Array<any>;
   dadosOriginais!: Array<any>;

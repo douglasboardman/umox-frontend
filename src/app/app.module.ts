@@ -15,6 +15,7 @@ import { AppFrameComponent } from './components/app-frame/app-frame.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { WebReqInterceptorService } from './services/web-req-interceptor.service';
 import { ConsultarEstoqueComponent } from './pages/consultar-estoque/consultar-estoque.component';
+import { NovoPedidoComponent } from './pages/novo-pedido/novo-pedido.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ConsultarEstoqueComponent } from './pages/consultar-estoque/consultar-e
     RegisterPageComponent,
     AppFrameComponent,
     NotificationComponent,
-    ConsultarEstoqueComponent
+    ConsultarEstoqueComponent,
+    NovoPedidoComponent
   ],
   imports: [
     BrowserModule,
