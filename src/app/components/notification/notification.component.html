@@ -1,4 +1,4 @@
-<div [ngClass]="classes" class="notification">
+<div #notificationDiv [ngClass]="classes" class="notification">
     <p>{{message}}</p>
     <button (click)="onDeleteButtonClicked()" class="delete"></button>
 </div>

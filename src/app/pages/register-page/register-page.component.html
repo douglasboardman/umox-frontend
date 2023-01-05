@@ -48,7 +48,6 @@
               </span>
             </p>
             <div *ngIf="formDir.submitted">
-              <!-- <p *ngIf="senhaRep.errors?.['required']" class="help is-danger">Repita a senha acima informada</p> -->
               <p *ngIf="senhaRep.hasError('matching')" class="help is-danger">Senhas não coincidem</p>
             </div>
           </div>
@@ -62,7 +61,6 @@
     <div class="column register-column">
     </div>
     <div class="column img-div-column">
-        <!-- <img id="background-image" class="background" src="../../../assets/umox_app_login_page_img"/> -->
         <img id="logo" src="../../../assets/umox-logo.png" alt="logo"/>
     </div>
 </div>
