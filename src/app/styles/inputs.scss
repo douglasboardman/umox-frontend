@@ -1,0 +1,213 @@
+@import '../../styles.scss';
+
+.btn {
+    width: 100%;
+    font-size: 14px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+    color: $light;
+    transition: all .3s ease;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    margin: 10px 0 10px 0;
+    cursor: pointer;
+}
+
+.btn-disabled {
+    background-color: $dark-grey;
+    cursor: not-allowed;
+}
+
+.btn-blue {
+    background-color: $dark-blue;
+}
+
+.btn-blue:hover {
+    background-color: $blue;
+}
+
+.btn-green {
+    background-color: $dark-green;
+}
+
+.btn-green:hover {
+    background-color: $green;
+}
+
+.btn-red {
+    background-color: $dark-red;
+}
+
+.btn-red:hover {
+    background-color: $red;
+}
+
+.sm-btn-disabled {
+    background-color: $dark-grey;
+    height: 20px;
+    width: fit-content;
+    font-weight: 700;
+    padding: 0 10px;
+    margin: auto;
+}
+
+.sm-btn-disabled:hover {
+    background-color: $dark-grey;
+}
+
+.sm-btn-green {
+    background-color: $dark-green;
+    height: 20px;
+    width: fit-content;
+    font-weight: 700;
+    padding: 0 10px;
+    margin: auto;
+    transition: all .3s;
+}
+
+.sm-btn-green:hover {
+    background-color: $green;
+}
+
+.sm-btn-red {
+    background-color: $dark-red;
+    height: 20px;
+    width: fit-content;
+    font-weight: 700;
+    padding: 0 10px;
+    margin: auto;
+    transition: all .3s ease;
+}
+
+.sm-btn-red:hover {
+    background-color: $red;
+}
+
+.sm-btn-blue {
+    background-color: $dark-blue;
+    height: 20px;
+    width: fit-content;
+    font-weight: 700;
+    padding: 0 10px;
+    margin: auto;
+    transition: all .3s ease;
+}
+
+.sm-btn-blue:hover {
+    background-color: $blue;
+}
+
+.sm-btn-acao {
+    text-transform: capitalize;
+    font-size: 8px;
+}
+
+.input-qtd-item {
+    background: $grey;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    transition: all .3s ease;
+    width: 60px;
+    text-align: center;
+    padding: 0;
+}
+
+.input-qtd-item:focus {
+    box-shadow: 0 0 0 1px $blue, 0 0 0 4px $light-blue;
+}
+
+.invalid-entry-input {
+    border: 1px $red;
+    background-color: $grey-red;
+}
+
+input, select {
+	width: 100%;
+	background: $grey;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	padding: 10px 36px 10px 16px;
+	transition: all .3s ease;
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+	box-shadow: 0 0 0 1px $blue, 0 0 0 4px $light-blue;
+}
+
+select, select > option {
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+select > option:hover {
+    background-color: $dark-grey !important;
+}
+
+.slide-checkbox {
+    height: fit-content;
+    height: 38px;
+    background-color: $grey;
+    border-radius: 5px;
+    padding: 10px 16px;
+}
+
+.slide-checkbox label {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    height: 20px;
+}
+
+.slide-checkbox .slide-description {
+    position: absolute;
+    top: -2px;
+    font-size: 14px;
+    font-weight: lighter;
+    height: 20px;
+}
+
+.slide-checkbox input {
+    display: none;
+}
+
+.slide-checkbox label input + span::before{
+    position: absolute;
+    content: "";
+    right: 0;
+    width: 50px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: $dark-grey;
+    transition: all .3s ease;
+}
+
+.slide-checkbox label input + span::after{
+    position: absolute;
+    content: "";
+    right: 2px;
+    top: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: $light;
+    transform: translateX(-30px);
+    transition: all .3s ease;
+}
+
+.slide-checkbox input:checked + span::before{
+    background-color: $green;
+}
+
+.slide-checkbox input:checked + span::after{
+    transform: translateX(0);
+}

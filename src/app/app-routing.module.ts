@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ConsultarEstoqueComponent } from './pages/consultar-estoque/consultar-estoque.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { NovoPedidoComponent } from './pages/novo-pedido/novo-pedido.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 
 const routes: Routes = [
@@ -10,7 +11,8 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent},
   { path: 'register', component: RegisterPageComponent},
   { path: 'dashboard', component: DashboardComponent},
-  { path: 'operacoes/itens/consultarEstoque', component: ConsultarEstoqueComponent}
+  { path: 'operacoes/itens/consultarEstoque', component: ConsultarEstoqueComponent},
+  { path: 'operacoes/pedidos/novoPedido', component: NovoPedidoComponent}
 ];
 
 @NgModule({

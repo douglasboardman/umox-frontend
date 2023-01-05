@@ -1,42 +1,97 @@
 <app-frame>
-    <div class="columns">
-        <div class="column">
-            <article class="panel is-primary">
-                <p class="panel-heading">
-                  Consultar estoque
-                </p>
-                <div class="panel-block">
-                  <p class="control has-icons-left">
-                    <input [(ngModel)]="searchText" (keyup)="onKeyUpTxtConsulta()" class="input is-primary" type="text" placeholder="Buscar no estoque">
-                    <span class="icon is-left">
-                        <i class='bx bx-search' aria-hidden="true"></i>
-                    </span>
-                  </p>
-                </div>
-              </article>
-            <table class="generic rounded blue">
+  <div class="columns">
+    <div class="column">
+      <article class="panel is-info">
+        <p class="panel-heading">Finalidade do Pedido</p>
+        <div class="panel-block">
+          <input
+            class="input"
+            title="Descreva a finalidade do seu pedido com no mínimo 30 caracteres."
+            placeholder="A finalidade do pedido é..."
+          />
+        </div>
+        <div class="panel-block">
+          <button style="width: 100%" class="button is-success is-right">
+            Encaminhar pedido
+          </button>
+        </div>
+      </article>
+      <article class="panel is-info">
+          <p class="panel-heading is-info">Itens do Pedido</p>
+          <div class="panel-block">
+              <table style="box-shadow: none;" id="itens-pedido" class="generic rounded green">
                 <thead>
-                    <tr>
-                        <th style="width: 5%; text-align: center;">ID</th>
-                        <th style="width: 40%;">DESCRIÇÃO</th>
-                        <th style="width: 25%;">NATUREZA</th>
-                        <th style="width: 15%;">MARCA</th>
-                        <th style="width: 10%;">UN. MEDIDA</th>
-                        <th style="width: 5%; text-align: center;">ESTOQUE</th>
-                    </tr>
+                  <tr>
+                    <th width="8%" style="text-align: center">ID</th>
+                    <th width="32%" style="text-align: left">DESCRIÇÃO</th>
+                    <th width="25%" style="text-align: left">MARCA</th>
+                    <th width="16%" style="text-align: left">UNIDADE</th>
+                    <th width="7%" style="text-align: center">ESTOQUE</th>
+                    <th width="7%" style="text-align: center">QTD.</th>
+                    <th width="5%" style="text-align: center">AÇÕES</th>
+                  </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of dadosItens">
-                        <td style="width: 5%; text-align: center;">{{item.id_item}}</td>
-                        <td>{{item.descricao_item}}</td>
-                        <td>{{item.natureza_item}}</td>
-                        <td>{{item.marca_item}}</td>
-                        <td>{{item.un_medida_item}}</td>
-                        <td style="width: 5%; text-align: center;">{{item.estoque_item}}</td>
-                    </tr>
+                    
                 </tbody>
-            </table>
+              </table>
+          </div>
+      </article>
+      <article class="panel is-primary">
+        <p class="panel-heading">Consultar estoque</p>
+        <div class="panel-block">
+          <p class="control has-icons-left">
+            <input
+              [(ngModel)]="searchText"
+              (keyup)="onKeyUpTxtConsulta()"
+              class="input is-primary"
+              type="text"
+              placeholder="Buscar no estoque"
+            />
+            <span class="icon is-left">
+              <i class="bx bx-search" aria-hidden="true"></i>
+            </span>
+          </p>
         </div>
+      </article>
+      <table class="generic rounded blue">
+        <thead>
+          <tr>
+            <th style="width: 5%; text-align: center">ID</th>
+            <th style="width: 40%">DESCRIÇÃO</th>
+            <th style="width: 25%">NATUREZA</th>
+            <th style="width: 10%">MARCA</th>
+            <th style="width: 8%">UN. MEDIDA</th>
+            <th style="width: 5%; text-align: center">ESTOQUE</th>
+            <th style="width: 7%; text-align: center">ADICIONAR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dadosItens">
+            <td style="width: 5%; text-align: center">{{ item.id_item }}</td>
+            <td>{{ item.descricao_item }}</td>
+            <td>{{ item.natureza_item }}</td>
+            <td>{{ item.marca_item }}</td>
+            <td>{{ item.un_medida_item }}</td>
+            <td style="width: 5%; text-align: center">
+              {{ item.estoque_item }}
+            </td>
+            <td>
+              <div class="flex-div">
+                <input
+                  id="qtd-item-{{ item.id_item }}"
+                  class="input-qtd-item"
+                  min="0"
+                  max="{{ item.estoque_item }}"
+                  type="number"
+                /><button title="Adicionar ao Pedido" class="btn sm-btn-green">
+                  +
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 </app-frame>
-

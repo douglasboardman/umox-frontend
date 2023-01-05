@@ -8,7 +8,7 @@ $grey-red: rgb(213, 190, 190);
 $light: #fff;
 $dark: #000;
 $green: #6fae38;
-$dark-green: #3c8100;
+$dark-green: #509315;
 $light-green: #e3ffcb;
 $blue: #1775f1;
 $light-blue: #ebf4fe;
@@ -47,6 +47,7 @@ $trans05: all 0.5s ease;
 // Update Bulma's global variables
 $family-sans-serif: "Poppins", sans-serif;
 $primary: $dark-blue;
+$success: $dark-green;
 $link: $link-color;
 
 
@@ -62,9 +63,13 @@ $link: $link-color;
 body {
     height: 100vh;
     background: $body-color;
+    color: $text-color;
 }
 
 article {
     box-shadow: $wrapper-shadow;
 }
 
+.flex-div {
+    display: flex;
+}
