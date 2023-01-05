@@ -2,8 +2,8 @@
 // REUSABLE CSS //
 
 .sidebar .text {
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 300;
     color: $light-blue;
 }
 
@@ -46,8 +46,11 @@
     left: 70px;
 }
 
-.sidebar span .mode-text,
-.sidebar span .mode-text .text {
+.sidebar span.mode-text {
+    color: $text-color;
+}
+
+.sidebar span.switch .icon {
     color: $text-color;
 }
 
@@ -101,11 +104,11 @@ header .image-text .header-text {
     right: -64px;
     height: 56px;
     width: 50px;
-    background-color: $sidebar-hover-color;
+    background-color: $primary;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $primary;
+    color: $light-blue;
     font-size: 22px;
     cursor: pointer;
 }
@@ -150,6 +153,7 @@ header .image-text .header-text {
     align-items: center;
     justify-content: flex-start;
     font-size: 20px;
+    font-weight: 200;
     min-width: 40px;
     margin-left: 20px;
 }
@@ -167,13 +171,13 @@ header .image-text .header-text {
     align-items: center;
     text-decoration: none;
     transition: $trans04;
-    border-radius: 6px;
+    border-radius: 3px;
 }
 
 .sidebar li a:hover {
-    background: $light-blue;
+    background: $sidebar-hover-color;
     .icon, span {
-        color: $primary;
+        color: $sidebar-text-hover-color;
     }
 }
 
@@ -181,7 +185,7 @@ header .image-text .header-text {
     height: fit-content;
     align-items: center;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 500;
     text-transform: uppercase;
     margin: 10px 0 -5px 20px;
     color: $divider-text-color;
@@ -205,6 +209,11 @@ header .image-text .header-text {
     width: 60px;
     display: flex;
     align-items: center;
+}
+
+.sidebar i.icon.light-mode-icon,
+.sidebar i.icon.dark-mode-icon {
+    color: $text-color;
 }
 
 .menu-bar .mode i {
