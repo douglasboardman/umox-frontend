@@ -1,24 +1,30 @@
 <app-frame>
   <div class="columns">
     <div class="column">
-      <article class="panel is-info">
-        <p class="panel-heading">Novo Pedido</p>
-        <form (ngSubmit)="submit()" [formGroup]="novoPedidoForm" #formDir="ngForm">
-        <div class="panel-block">
-          <label style="min-width: 16%; margin: 0;" class="label">Finalidade do Pedido: </label>
+        <article class="panel is-info">
+          <p class="panel-heading">Novo Pedido</p>
+          <div class="panel-block">
+            <label style="min-width: 16%; margin: 0" class="label"
+              >Finalidade do Pedido:
+            </label>
             <input
-            class="input"
-            title="Descreva a finalidade do seu pedido com no mínimo 30 caracteres."
-            placeholder="A finalidade do pedido é..."
-            [class.is-danger]="finalidade.invalid && formDir.submitted"
-          />
-          <div *ngIf="finalidade.invalid && formDir.submitted">
-              <p *ngIf="finalidade.errors?.['minLength']" style="margin-left: 10px;" class="help is-danger">O campo finalidade deve ter, no mínimo, 30 (trinta) caracteres</p>
-              <p *ngIf="finalidade.errors?.['required']" style="margin-left: 10px;" class="help is-danger">O campo finalidade deve ser preenchido</p>
+              [(ngModel)]="finalidade.value"
+              class="input"
+              title="Descreva a finalidade do seu pedido com no mínimo 30 caracteres."
+              placeholder="A finalidade do pedido é..."
+              [class.is-danger]="finalidade.invalid && formNovoPedido.submitted"
+              (keyup)="onKeyUpTxtFinalidade()"
+            />
           </div>
-        </div>
-        <div class="panel-block">
-            <table style="box-shadow: none;" id="itens-pedido" class="generic rounded green">
+          <div *ngIf="finalidade.invalid && formNovoPedido.submitted" class="panel-block">
+            <p style="margin-left: 10px;" class="help is-danger">O campo finalidade deve ter, no mínimo, 30 (trinta) caracteres</p>
+          </div>
+          <div class="panel-block">
+            <table
+              style="box-shadow: none"
+              id="itens-pedido"
+              class="generic rounded green"
+            >
               <thead>
                 <tr>
                   <th width="8%" style="text-align: center">ID</th>
@@ -31,27 +37,33 @@
                 </tr>
               </thead>
               <tbody>
-                <ng-container>
                   <tr *ngFor="let itemPedido of itensPedido">
                     <td>{{ itemPedido.id_item }}</td>
                     <td>{{ itemPedido.descricao_item }}</td>
                     <td>{{ itemPedido.marca_item }}</td>
                     <td>{{ itemPedido.un_medida_item }}</td>
-                    <td style="text-align: center">{{ itemPedido.estoque_item }}</td>
-                    <td style="text-align: center">{{ itemPedido.qtd_pedido }}</td>
+                    <td style="text-align: center">
+                      {{ itemPedido.estoque_item }}
+                    </td>
+                    <td style="text-align: center">
+                      {{ itemPedido.qtd_pedido }}
+                    </td>
                     <td>
-                      <button title="Remover do pedido" class="btn sm-btn-red">-</button>
+                      <button (click)="onRemItemButtonClicked(itemPedido.id_item)" title="Remover do pedido" class="btn sm-btn-red">
+                        -
+                      </button>
                     </td>
                   </tr>
-                </ng-container>
               </tbody>
             </table>
         </div>
-        <div class="panel-block">
-          <input type="submit" style="width: 100%" class="button is-primary is-right" value="Encaminhar pedido">
+        <div *ngIf="this.itensPedido.length == 0 && formNovoPedido.submitted" class="panel-block">
+            <p style="margin-left: 10px;" class="help is-danger">O pedido deve ter pelo menos 1 (um) item.</p>
         </div>
-    </form>
-      </article>
+          <div class="panel-block">
+            <button (click)="submit()" style="width: 100%" class="button is-primary is-right">Encaminhar pedido</button>
+          </div>
+        </article>
       <article class="panel is-info">
         <p class="panel-heading">Consultar estoque</p>
         <div class="panel-block">
@@ -96,11 +108,16 @@
                 <input
                   [id]="'qtd_' + item.id_item"
                   class="input-qtd-item"
-                  (keyup)='onKeyUpInputQtd(item.id_item)'
+                  (keyup)="onKeyUpInputQtd(item.id_item)"
                   min="0"
                   max="{{ item.estoque_item }}"
                   type="number"
-                /><button (click)="onAddItemButtonClicked(item.id_item)" title="Adicionar ao Pedido" class="btn sm-btn-green">
+                /><button
+                  [id]="'btnAdd_' + item.id_item"
+                  (click)="onAddItemButtonClicked(item.id_item)"
+                  title="Adicionar ao Pedido"
+                  class="btn sm-btn-green"
+                >
                   +
                 </button>
               </div>

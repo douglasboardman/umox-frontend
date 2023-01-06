@@ -15,11 +15,8 @@ export class NovoPedidoComponent {
   dadosOriginais!: Array<any>;
   searchText!: string;
   itensPedido: Array<any> = [];
-  novoPedidoForm!: FormGroup;
-
-  get finalidade() {
-    return this.novoPedidoForm.get('finalidade')!;
-  }
+  formNovoPedido = {submitted: false, validated: false};
+  finalidade = {invalid: true, value: ''};
   
 
   ngOnInit(){
@@ -27,10 +24,6 @@ export class NovoPedidoComponent {
       this.dadosOriginais = dados.listaItens;
       this.dadosItens = dados.listaItens;
     });
-    
-    this.novoPedidoForm = new FormGroup({
-      finalidade: new FormControl('', Validators.compose([Validators.required, Validators.minLength(30)]))
-    })
   }
 
   onKeyUpTxtConsulta() {
@@ -40,6 +33,15 @@ export class NovoPedidoComponent {
     });
   }
 
+  onKeyUpTxtFinalidade() {
+    if(this.finalidade.value.length < 30) {
+      this.finalidade.invalid = true;
+    } else {
+      this.finalidade.invalid = false;
+    }
+    console.log(this.finalidade.value);
+  }
+
   onKeyUpInputQtd(id: string) {
     let input = document.getElementById('qtd_' + id) as HTMLInputElement;
     checaInputQtd(input);
@@ -47,19 +49,37 @@ export class NovoPedidoComponent {
 
   onAddItemButtonClicked(id: number) {
     let qtdInput = document.getElementById('qtd_' + id) as HTMLInputElement;
-    let qtd = qtdInput.value;
+    let btnAdd = document.getElementById('btnAdd_' + id) as HTMLButtonElement;
+    let qtd = parseInt(qtdInput.value);
     
-    let res = this.dadosOriginais.filter((i) => {
-       return i.id_item == id;
+    if(qtd > 0) {
+      let res = this.dadosOriginais.filter((i) => {
+         return i.id_item == id;
+      });
+  
+      let item = res[0];
+      item.qtd_pedido = qtd;
+      this.itensPedido.push(item);
+      qtdInput.disabled = true;
+      btnAdd.disabled = true;
+    }
+  }
+
+  onRemItemButtonClicked(id: number) {
+    let qtdInput = document.getElementById('qtd_' + id) as HTMLInputElement;
+    let btnAdd = document.getElementById('btnAdd_' + id) as HTMLButtonElement;
+
+    this.itensPedido = this.itensPedido.filter((item) => {
+      item.id_item != id;
     });
 
-    let item = res[0];
-    console.log(res[0]);
-    item.qtd_pedido = qtd;
-    this.itensPedido.push(item);
+    qtdInput.value = '';
+    qtdInput.disabled = false;
+    btnAdd.disabled = false;
   }
 
   submit() {
+    this.formNovoPedido.submitted = true;
     return console.log('Form submitted');
   }
 

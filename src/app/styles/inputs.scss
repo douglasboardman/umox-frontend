@@ -46,7 +46,7 @@
     background-color: $red;
 }
 
-.sm-btn-disabled {
+.btn:disabled {
     background-color: $dark-grey;
     height: 20px;
     width: fit-content;
@@ -55,7 +55,7 @@
     margin: auto;
 }
 
-.sm-btn-disabled:hover {
+.btn:disabled:hover {
     background-color: $dark-grey;
 }
 
