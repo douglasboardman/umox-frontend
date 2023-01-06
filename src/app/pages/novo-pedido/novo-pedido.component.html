@@ -9,11 +9,13 @@
               >Finalidade do Pedido:
             </label>
             <input
+              [(ngModel)]="finalidadePedido"
               formControlName="finalidade"
               class="input"
               title="Descreva a finalidade do seu pedido com no mínimo 30 caracteres."
               placeholder="A finalidade do pedido é..."
               [class.is-danger]="finalidade.invalid && formDir.submitted"
+              (keyup)="onKeyUpTxtFinalidade()"
             />
           </div>
           <div *ngIf="finalidade.invalid && formDir.submitted" class="panel-block">

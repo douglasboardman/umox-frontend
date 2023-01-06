@@ -3,6 +3,8 @@ import { DOCUMENT } from '@angular/common';
 import { OperacoesService } from 'src/app/services/operacoes.service';
 import { checaInputQtd } from 'src/app/utils/comon';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { PedidoPL } from 'src/models/PedidoPL';
+import { ItemPedidoPL } from 'src/models/ItemPedidoPL';
 
 @Component({
   selector: 'app-novo-pedido',
@@ -16,7 +18,8 @@ export class NovoPedidoComponent {
   searchText!: string;
   itensPedido: Array<any> = [];
   formNovoPedido!: FormGroup;
-  //finalidade = {invalid: true, value: ''};
+  payloadPedido = new PedidoPL('',[]);
+  finalidadePedido!: string;
   
   ngOnInit(){
     this.operacoes.consultarEstoque().subscribe((dados: any) => {
@@ -41,7 +44,7 @@ export class NovoPedidoComponent {
   }
 
   onKeyUpTxtFinalidade() {
-    
+    this.payloadPedido.finalidade = this.finalidadePedido;
   }
 
   onKeyUpInputQtd(id: string) {
@@ -58,10 +61,11 @@ export class NovoPedidoComponent {
       let res = this.dadosOriginais.filter((i) => {
          return i.id_item == id;
       });
-  
+      
       let item = res[0];
       item.qtd_pedido = qtd;
       this.itensPedido.push(item);
+      this.payloadPedido.addItem(id, qtd);
       qtdInput.disabled = true;
       btnAdd.disabled = true;
     }
@@ -78,10 +82,13 @@ export class NovoPedidoComponent {
     qtdInput.value = '';
     qtdInput.disabled = false;
     btnAdd.disabled = false;
+    this.payloadPedido.removeItem(id);
   }
 
   submit() {
-    //this.formNovoPedido.submitted = true;
+    if(!this.formNovoPedido.invalid && this.itensPedido.length > 0){
+      
+    }
     return console.log('Form submitted');
   }
 

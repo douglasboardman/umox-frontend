@@ -15,4 +15,8 @@ export class OperacoesService {
   consultarEstoque(){
     return this.webRequestService.get('operacoes/itens/consultarEstoque');
   }
+
+  cadastrarPedido(payload: Object){
+    return this.webRequestService.post('operacoes/pedidos/novoPedido', payload);
+  }
 }
