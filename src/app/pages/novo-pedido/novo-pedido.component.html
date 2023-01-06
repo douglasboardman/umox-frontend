@@ -2,22 +2,23 @@
   <div class="columns">
     <div class="column">
         <article class="panel is-info">
+            <form (ngSubmit)="submit()" [formGroup]="formNovoPedido" #formDir="ngForm">
           <p class="panel-heading">Novo Pedido</p>
           <div class="panel-block">
             <label style="min-width: 16%; margin: 0" class="label"
               >Finalidade do Pedido:
             </label>
             <input
-              [(ngModel)]="finalidade.value"
+              formControlName="finalidade"
               class="input"
               title="Descreva a finalidade do seu pedido com no mínimo 30 caracteres."
               placeholder="A finalidade do pedido é..."
-              [class.is-danger]="finalidade.invalid && formNovoPedido.submitted"
-              (keyup)="onKeyUpTxtFinalidade()"
+              [class.is-danger]="finalidade.invalid && formDir.submitted"
             />
           </div>
-          <div *ngIf="finalidade.invalid && formNovoPedido.submitted" class="panel-block">
-            <p style="margin-left: 10px;" class="help is-danger">O campo finalidade deve ter, no mínimo, 30 (trinta) caracteres</p>
+          <div *ngIf="finalidade.invalid && formDir.submitted" class="panel-block">
+            <p *ngIf="finalidade.errors?.['required']" style="margin-left: 10px;" class="help is-danger">O campo finalidade deve ser preenchido.</p>
+            <p *ngIf="finalidade.errors?.['minLenght']" style="margin-left: 10px;" class="help is-danger">O campo finalidade deve ter, no mínimo, 30 (trinta) caracteres</p>
           </div>
           <div class="panel-block">
             <table
@@ -57,12 +58,13 @@
               </tbody>
             </table>
         </div>
-        <div *ngIf="this.itensPedido.length == 0 && formNovoPedido.submitted" class="panel-block">
+        <div *ngIf="this.itensPedido.length == 0 && formDir.submitted" class="panel-block">
             <p style="margin-left: 10px;" class="help is-danger">O pedido deve ter pelo menos 1 (um) item.</p>
         </div>
           <div class="panel-block">
             <button (click)="submit()" style="width: 100%" class="button is-primary is-right">Encaminhar pedido</button>
           </div>
+        </form>
         </article>
       <article class="panel is-info">
         <p class="panel-heading">Consultar estoque</p>

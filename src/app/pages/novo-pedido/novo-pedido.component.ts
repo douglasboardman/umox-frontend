@@ -15,15 +15,22 @@ export class NovoPedidoComponent {
   dadosOriginais!: Array<any>;
   searchText!: string;
   itensPedido: Array<any> = [];
-  formNovoPedido = {submitted: false, validated: false};
-  finalidade = {invalid: true, value: ''};
+  formNovoPedido!: FormGroup;
+  //finalidade = {invalid: true, value: ''};
   
-
   ngOnInit(){
     this.operacoes.consultarEstoque().subscribe((dados: any) => {
       this.dadosOriginais = dados.listaItens;
       this.dadosItens = dados.listaItens;
     });
+    
+    this.formNovoPedido = new FormGroup({
+      finalidade: new FormControl('', Validators.compose([Validators.required, Validators.minLength(30)]))    
+    });
+  }
+
+  get finalidade() {
+    return this.formNovoPedido.get('finalidade')!;
   }
 
   onKeyUpTxtConsulta() {
@@ -34,12 +41,7 @@ export class NovoPedidoComponent {
   }
 
   onKeyUpTxtFinalidade() {
-    if(this.finalidade.value.length < 30) {
-      this.finalidade.invalid = true;
-    } else {
-      this.finalidade.invalid = false;
-    }
-    console.log(this.finalidade.value);
+    
   }
 
   onKeyUpInputQtd(id: string) {
@@ -79,7 +81,7 @@ export class NovoPedidoComponent {
   }
 
   submit() {
-    this.formNovoPedido.submitted = true;
+    //this.formNovoPedido.submitted = true;
     return console.log('Form submitted');
   }
 
