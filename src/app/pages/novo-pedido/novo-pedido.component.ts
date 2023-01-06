@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { OperacoesService } from 'src/app/services/operacoes.service';
 
 @Component({
@@ -7,10 +8,12 @@ import { OperacoesService } from 'src/app/services/operacoes.service';
   styleUrls: ['./novo-pedido.component.scss']
 })
 export class NovoPedidoComponent {
-  constructor(private operacoes: OperacoesService){}
+  constructor(@Inject(DOCUMENT) document: Document, private operacoes: OperacoesService){}
   dadosItens!: Array<any>;
   dadosOriginais!: Array<any>;
   searchText!: string;
+  itensPedido: Array<any> = [];
+  
 
   ngOnInit(){
     this.operacoes.consultarEstoque().subscribe((dados: any) => {
@@ -25,4 +28,19 @@ export class NovoPedidoComponent {
       return item.descricao_item.search(searchFor) > -1;
     });
   }
+
+  onAddItemButtonClicked(id: number) {
+    let qtdInput = document.getElementById('qtd_' + id) as HTMLInputElement;
+    let qtd = qtdInput.value;
+    
+    let res = this.dadosOriginais.filter((i) => {
+       return i.id_item == id;
+    });
+
+    let item = res[0];
+    console.log(res[0]);
+    item.qtd_pedido = qtd;
+    this.itensPedido.push(item);
+  }
+
 }

@@ -2,7 +2,7 @@
   <div class="columns">
     <div class="column">
       <article class="panel is-info">
-        <p class="panel-heading">Finalidade do Pedido</p>
+        <p class="panel-heading">Novo Pedido</p>
         <div class="panel-block">
           <input
             class="input"
@@ -11,31 +11,40 @@
           />
         </div>
         <div class="panel-block">
+            <table style="box-shadow: none;" id="itens-pedido" class="generic rounded green">
+              <thead>
+                <tr>
+                  <th width="8%" style="text-align: center">ID</th>
+                  <th width="32%" style="text-align: left">DESCRIÇÃO</th>
+                  <th width="25%" style="text-align: left">MARCA</th>
+                  <th width="16%" style="text-align: left">UNIDADE</th>
+                  <th width="7%" style="text-align: center">ESTOQUE</th>
+                  <th width="7%" style="text-align: center">QTD.</th>
+                  <th width="5%" style="text-align: center">AÇÕES</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container>
+                  <tr *ngFor="let itemPedido of itensPedido">
+                    <td>{{ itemPedido.id_item }}</td>
+                    <td>{{ itemPedido.descricao_item }}</td>
+                    <td>{{ itemPedido.marca_item }}</td>
+                    <td>{{ itemPedido.un_medida_item }}</td>
+                    <td>{{ itemPedido.estoque_item }}</td>
+                    <td>{{ itemPedido.qtd_pedido }}</td>
+                    <td>
+                      <button title="Remover do pedido" class="btn sm-btn-red">-</button>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+        </div>
+        <div class="panel-block">
           <button style="width: 100%" class="button is-success is-right">
             Encaminhar pedido
           </button>
         </div>
-      </article>
-      <article class="panel is-info">
-          <p class="panel-heading is-info">Itens do Pedido</p>
-          <div class="panel-block">
-              <table style="box-shadow: none;" id="itens-pedido" class="generic rounded green">
-                <thead>
-                  <tr>
-                    <th width="8%" style="text-align: center">ID</th>
-                    <th width="32%" style="text-align: left">DESCRIÇÃO</th>
-                    <th width="25%" style="text-align: left">MARCA</th>
-                    <th width="16%" style="text-align: left">UNIDADE</th>
-                    <th width="7%" style="text-align: center">ESTOQUE</th>
-                    <th width="7%" style="text-align: center">QTD.</th>
-                    <th width="5%" style="text-align: center">AÇÕES</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-              </table>
-          </div>
       </article>
       <article class="panel is-primary">
         <p class="panel-heading">Consultar estoque</p>
@@ -79,12 +88,12 @@
             <td>
               <div class="flex-div">
                 <input
-                  id="qtd-item-{{ item.id_item }}"
+                  [id]="'qtd_' + item.id_item"
                   class="input-qtd-item"
                   min="0"
                   max="{{ item.estoque_item }}"
                   type="number"
-                /><button title="Adicionar ao Pedido" class="btn sm-btn-green">
+                /><button (click)="onAddItemButtonClicked(item.id_item)" title="Adicionar ao Pedido" class="btn sm-btn-green">
                   +
                 </button>
               </div>
