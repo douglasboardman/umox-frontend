@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { MessangerService } from 'src/app/services/messanger.service';
-import { matchValidator } from 'src/app/utils/form-validators';
+import { matchValidator } from 'src/app/utils/comon';
 
 
 

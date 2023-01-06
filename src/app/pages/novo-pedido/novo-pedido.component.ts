@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { OperacoesService } from 'src/app/services/operacoes.service';
+import { checaInputQtd } from 'src/app/utils/comon';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-novo-pedido',
@@ -13,6 +15,11 @@ export class NovoPedidoComponent {
   dadosOriginais!: Array<any>;
   searchText!: string;
   itensPedido: Array<any> = [];
+  novoPedidoForm!: FormGroup;
+
+  get finalidade() {
+    return this.novoPedidoForm.get('finalidade')!;
+  }
   
 
   ngOnInit(){
@@ -20,6 +27,10 @@ export class NovoPedidoComponent {
       this.dadosOriginais = dados.listaItens;
       this.dadosItens = dados.listaItens;
     });
+    
+    this.novoPedidoForm = new FormGroup({
+      finalidade: new FormControl('', Validators.compose([Validators.required, Validators.minLength(30)]))
+    })
   }
 
   onKeyUpTxtConsulta() {
@@ -27,6 +38,11 @@ export class NovoPedidoComponent {
     this.dadosItens = this.dadosOriginais.filter((item) => {
       return item.descricao_item.search(searchFor) > -1;
     });
+  }
+
+  onKeyUpInputQtd(id: string) {
+    let input = document.getElementById('qtd_' + id) as HTMLInputElement;
+    checaInputQtd(input);
   }
 
   onAddItemButtonClicked(id: number) {
@@ -41,6 +57,10 @@ export class NovoPedidoComponent {
     console.log(res[0]);
     item.qtd_pedido = qtd;
     this.itensPedido.push(item);
+  }
+
+  submit() {
+    return console.log('Form submitted');
   }
 
 }

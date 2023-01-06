@@ -58,8 +58,12 @@ table.rounded tbody tr {
     transition: all .3s
 }
 
-table.rounded tbody tr:hover {
+table.rounded.blue tbody tr:hover {
     background-color: $light-blue;
+}
+
+table.rounded.green tbody tr:hover {
+    background-color: $light-green;
 }
 
 table.rounded tbody tr.tr-detalhe:hover {

@@ -11,7 +11,7 @@
     color: $light;
     transition: all .3s ease;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     font-weight: 600;
     margin: 10px 0 10px 0;
     cursor: pointer;
@@ -108,7 +108,7 @@
 
 .input-qtd-item {
     background: $grey;
-    border-radius: 5px;
+    border-radius: 3px;
     border: none;
     outline: none;
     font-size: 12px;
@@ -130,7 +130,7 @@
 input, select {
 	width: 100%;
 	background: $grey;
-	border-radius: 5px;
+	border-radius: 3px;
 	border: none;
 	outline: none;
 	padding: 10px 36px 10px 16px;
@@ -155,7 +155,7 @@ select > option:hover {
     height: fit-content;
     height: 38px;
     background-color: $grey;
-    border-radius: 5px;
+    border-radius: 3px;
     padding: 10px 16px;
 }
 
