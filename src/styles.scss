@@ -12,18 +12,15 @@ $dark-green: #509315;
 $light-green: #f2ffe7;
 $blue: #1775f1;
 $light-blue: #ebf4fe;
-//$dark-blue: #0c5fcd;
 $red: #d84458;
 $dark-red: #b7273a;
 $orange: #ef731a;
 $wrapper-shadow: 0px 1px 10px 1px rgb(199, 199, 199);
+
 // brand colors
 $dark-blue: #1e65ae;
 $link-color: #80a4dc;
-//$lighter-blue: #f7fbff;
-$body-color: #f2f2f2;
 $sidebar-color: #253343;
-$primary-light: #f6f5ff;
 $toggle-color: #ddd;
 $text-color: #707070;
 $login-cover-color: #888888;
@@ -32,8 +29,6 @@ $toggle-sidebar-trans: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
 $sidebar-hover-color: #32465d;
 $sidebar-text-hover-color: #789ac1;
 $table-head-background-color: $dark-blue;
-$table-head-cell-color: $primary-light;
-
 
 // App layout
 $sidebar-width: 280px;
@@ -51,6 +46,7 @@ $success: $dark-green;
 $link: $link-color;
 $radius: 3px;
 $radius-large: 3px;
+$background: white;
 
 
 @import '../node_modules/bulma/bulma.sass';
@@ -74,4 +70,12 @@ article {
 
 .flex-div {
     display: flex;
+}
+
+.panel-block {
+    background-color: $light;
+}
+
+.modal-card-head {
+    background-color: $grey;
 }

@@ -2,6 +2,7 @@ import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest } from '@a
 import { Injectable } from '@angular/core';
 import { catchError, empty, Observable, switchMap } from 'rxjs';
 import { AuthService } from './auth.service';
+import { MessengerService } from './messenger.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { AuthService } from './auth.service';
 
 export class WebReqInterceptorService implements HttpInterceptor {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private messenger: MessengerService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     // Handle the request
@@ -23,7 +24,9 @@ export class WebReqInterceptorService implements HttpInterceptor {
       }),
       catchError((err: any) => {
         console.log(err);
-        this.authService.logout()
+        let msg = err.message;
+        this.messenger.sendMessage(msg);
+        this.authService.logout();
         return empty();
       })
     )

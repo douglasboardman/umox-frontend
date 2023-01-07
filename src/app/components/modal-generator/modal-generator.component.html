@@ -1,42 +1,16 @@
-<!-- Modal cancelar/confirmar -->
-<div *ngIf="abrirModal == 'ModalConfirmar'" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-wrapper">
-        <h3 class="titulo-modal">{{ tituloModal }}</h3>
-        <p class="msg-modal">{{ msgModal }}</p>
-        <div class="flex-div buttons-div">
-            <button (click)="cancelButtonClicked()" id="btn-cancelar" class="btn btn-red">Cancelar</button>
-            <button (click)="confirmButtonClicked()" id="btn-confirmar" class="btn btn-blue">Confirmar</button>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Alerta -->
-<div *ngIf="abrirModal == 'ModalAlerta'" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-wrapper">
-        <h3 class="titulo-modal">{{ tituloModal }}</h3>
-        <div class="flex-div">
-            <i class='bx bx-error bx-lg icon'></i>
-            <p class="msg-modal">{{ msgModal }}</p>
-        </div>
-        <div class="flex-div buttons-div">
-            <a (click)="okButtonClicked()" id="btn-ok" class="btn btn-blue">Ok</a>
-        </div>
-    </div>
-</div>
-
-<!-- Modal sucesso -->
-<div *ngIf="abrirModal == 'ModalSucesso'" class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-wrapper">
-        <h3 class="titulo-modal">{{ tituloModal }}</h3>
-        <div class="flex-div">
-            <i class='bx bx-check-square bx-lg icon'></i>
-            <p class="msg-modal">{{ msgModal }}</p>
-        </div>
-        <div class="flex-div buttons-div">
-            <a (click)="okButtonClicked()" id="btn-ok" class="btn btn-blue">Ok</a>
-        </div>
+<div [class.is-active]="mostrarModal" class="modal">
+    <div (click)="cancelButtonClicked()" class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">{{ tituloModal }}</p>
+        <button (click)="cancelButtonClicked()" class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <p>{{ msgModal }}</p>
+      </section>
+      <footer class="modal-card-foot">
+        <button (click)="confirmButtonClicked()" class="button is-success">Confirmar</button>
+        <button (click)="cancelButtonClicked()" class="button">Cancelar</button>
+      </footer>
     </div>
 </div>

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { MessangerService } from 'src/app/services/messanger.service';
+import { MessengerService } from 'src/app/services/messenger.service';
 import { matchValidator } from 'src/app/utils/comon';
 
 
@@ -17,7 +18,7 @@ export class RegisterPageComponent {
   msgClasses!: Array<string>;
   msg!: string;
 
-  constructor(private authService: AuthService, private messanger: MessangerService) {}
+  constructor(private authService: AuthService, private messenger: MessengerService, private router: Router) {}
 
   ngOnInit() {
     this.registerForm = new FormGroup({
@@ -51,11 +52,10 @@ export class RegisterPageComponent {
     
     if(!this.registerForm.invalid) {
       this.authService.register(nome, email, senha).subscribe((response: any) => {
-        let msg = 'Sua solicitação de cadastro foi enviada com sucesso. Aguarde a aprovação do administrador para acessar o sistema.';
-        this.messanger.sendMessage(msg);
-        if(response == 200){
-        }
-      })
+        //console.log(response.body);
+        // let msg = response.body.message;
+        // this.messenger.sendMessage(msg);
+      });
     }
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { MessangerService } from 'src/app/services/messanger.service';
+import { MessengerService } from 'src/app/services/messenger.service';
 
 @Component({
   selector: 'app-login-page',
@@ -10,16 +10,16 @@ import { MessangerService } from 'src/app/services/messanger.service';
 })
 export class LoginPageComponent implements OnInit {
   
-  constructor(private authService: AuthService, private messanger: MessangerService) {}
+  constructor(private authService: AuthService, private messenger: MessengerService) {}
   
   loginForm!: FormGroup;
   msgClass!: string;
   message!: string;
   
   ngOnInit() {
-    this.messanger.receiveMessage().subscribe((msg) => {
-      this.message = msg;
-      this.msgClass = 'is-success';
+    this.messenger.receiveMessage().subscribe((msg) => {
+      this.message = msg.message;
+      this.msgClass = msg.msgType;
     })
     this.loginForm = new FormGroup({
       email: new FormControl('', Validators.compose([Validators.required, Validators.email])),

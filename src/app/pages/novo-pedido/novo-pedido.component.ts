@@ -4,7 +4,6 @@ import { OperacoesService } from 'src/app/services/operacoes.service';
 import { checaInputQtd } from 'src/app/utils/comon';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PedidoPL } from 'src/models/PedidoPL';
-import { ModalGeneratorComponent } from 'src/app/components/modal-generator/modal-generator.component';
 
 @Component({
   selector: 'app-novo-pedido',
@@ -19,10 +18,9 @@ export class NovoPedidoComponent {
   itensPedido: Array<any> = [];
   formNovoPedido!: FormGroup;
   payloadPedido = new PedidoPL('',[]);
-  finalidadePedido!: string;
-  mostrarModal!: string;
-  tituloModal!: string;
-  msgModal!: string;
+  mostrarModal: boolean = false;
+  tituloModal: string = '';
+  msgModal: string = '';
   
   ngOnInit(){
     this.operacoes.consultarEstoque().subscribe((dados: any) => {
@@ -47,7 +45,7 @@ export class NovoPedidoComponent {
   }
 
   onKeyUpTxtFinalidade() {
-    this.payloadPedido.finalidade = this.finalidadePedido;
+    this.payloadPedido.finalidade = this.formNovoPedido.get('finalidade')?.value;
   }
 
   onKeyUpInputQtd(id: string) {
@@ -92,13 +90,19 @@ export class NovoPedidoComponent {
     if(!this.formNovoPedido.invalid && this.itensPedido.length > 0){
       this.tituloModal = 'Enviar pedido';
       this.msgModal = 'Confirma o envio do pedido para o setor responsável pelo atendimento?';
-      this.mostrarModal = 'is-active';
+      this.mostrarModal = false;
+      this.mostrarModal = true;
+      return console.log('Form submitted');
     }
-    return console.log('Form submitted');
   }
 
   enviarPedido() {
-    console.log('Confirmado');
+    this.mostrarModal = false;
+    this.operacoes.cadastrarPedido(this.payloadPedido);
+  }
+
+  cancelarEnvioPedido() {
+    this.mostrarModal = false;
   }
 
 }

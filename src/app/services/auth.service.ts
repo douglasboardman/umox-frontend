@@ -2,7 +2,9 @@ import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { shareReplay, tap } from 'rxjs';
+import { TopMessage } from 'src/models/TopMessage';
 import { __param } from 'tslib';
+import { MessengerService } from './messenger.service';
 import { WebRequestService } from './web-request.service';
 
 @Injectable({
@@ -10,7 +12,7 @@ import { WebRequestService } from './web-request.service';
 })
 export class AuthService {
 
-  constructor(private webRequestService: WebRequestService, private router: Router) { }
+  constructor(private webRequestService: WebRequestService, private router: Router, private messenger: MessengerService) { }
   auth!: string;
 
   login(email: string, senha: string) {
@@ -34,8 +36,13 @@ export class AuthService {
 
   register(nome: string, email: string, senha: string) {
     return this.webRequestService.register(nome, email, senha).pipe(
+      shareReplay(),
       tap((res: HttpResponse<any>) => {
         if(res.status == 200) {
+          let msg = new TopMessage('Sua solicitação de cadastro foi enviada com sucesso.\n' +
+                                   'Aguarde a aprovação do administrador para acessar o sistema.',
+                                   'is-success');
+          this.messenger.sendMessage(msg);
           this.router.navigateByUrl('/login');
         }
       })
