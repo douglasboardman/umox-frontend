@@ -19,8 +19,7 @@
             />
           </div>
           <div *ngIf="finalidade.invalid && formDir.submitted" class="panel-block">
-            <p *ngIf="finalidade.errors?.['required']" style="margin-left: 10px;" class="help is-danger">O campo finalidade deve ser preenchido.</p>
-            <p *ngIf="finalidade.errors?.['minLenght']" style="margin-left: 10px;" class="help is-danger">O campo finalidade deve ter, no mínimo, 30 (trinta) caracteres</p>
+            <p style="margin-left: 10px;" class="help is-danger">O campo finalidade deve ter, no mínimo, 30 (trinta) caracteres</p>
           </div>
           <div class="panel-block">
             <table
