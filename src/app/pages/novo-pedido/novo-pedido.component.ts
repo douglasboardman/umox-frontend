@@ -1,9 +1,11 @@
-import { Component, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component } from '@angular/core';
 import { OperacoesService } from 'src/app/services/operacoes.service';
 import { checaInputQtd } from 'src/app/utils/comon';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PedidoPL } from 'src/models/PedidoPL';
+import { Router } from '@angular/router';
+import { TopMessage } from 'src/models/TopMessage';
+import { MessengerService } from 'src/app/services/messenger.service';
 
 @Component({
   selector: 'app-novo-pedido',
@@ -11,7 +13,8 @@ import { PedidoPL } from 'src/models/PedidoPL';
   styleUrls: ['./novo-pedido.component.scss']
 })
 export class NovoPedidoComponent {
-  constructor(private operacoes: OperacoesService){}
+  constructor(private operacoes: OperacoesService, private router: Router, private messenger: MessengerService){}
+
   dadosItens!: Array<any>;
   dadosOriginais!: Array<any>;
   searchText!: string;
@@ -98,7 +101,17 @@ export class NovoPedidoComponent {
 
   enviarPedido() {
     this.mostrarModal = false;
-    this.operacoes.cadastrarPedido(this.payloadPedido);
+    this.operacoes.cadastrarPedido(this.payloadPedido).subscribe((res: any) => {
+      if(res.status) {
+        let msg = new TopMessage(
+          'Pedido criado com sucesso! Confira os detalhes e acompanhe o andamento do seu pedido no menu "Meus Pedidos"',
+          'is-success',
+          'dashboard'
+        )
+        this.messenger.sendMessage(msg);
+        this.router.navigate(['dashboard']);
+      }
+    });
   }
 
   cancelarEnvioPedido() {

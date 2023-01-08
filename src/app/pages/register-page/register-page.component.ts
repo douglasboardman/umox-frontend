@@ -52,9 +52,7 @@ export class RegisterPageComponent {
     
     if(!this.registerForm.invalid) {
       this.authService.register(nome, email, senha).subscribe((response: any) => {
-        //console.log(response.body);
-        // let msg = response.body.message;
-        // this.messenger.sendMessage(msg);
+        
       });
     }
   }

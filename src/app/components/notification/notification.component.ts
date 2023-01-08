@@ -12,14 +12,14 @@ export class NotificationComponent {
   classes!: Array<string>;
 
   ngOnInit() {
-    if(this.message != 'Umox'){
+    if(this.message != ''){
       this.showMessage();
     }
   }
 
   showMessage() {
     this.classes = ['visible', this.class];
-    setTimeout(() => { this.closeMessage(); }, 5000);
+    setTimeout(() => { this.closeMessage(); }, 10000);
   }
 
   onDeleteButtonClicked() {

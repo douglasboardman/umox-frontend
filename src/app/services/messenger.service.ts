@@ -6,7 +6,7 @@ import { TopMessage } from 'src/models/TopMessage';
   providedIn: 'root'
 })
 export class MessengerService {
-  private subject = new BehaviorSubject<TopMessage>(new TopMessage('Umox', 'is-sucess')); //('Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur dicta nesciunt minima, harum pariatur, excepturi velit adipisci minus, aliquam quasi molestias placeat facere doloribus incidunt reprehenderit nobis atque quo? Repellat.');
+  private subject = new BehaviorSubject<TopMessage>(new TopMessage('', '', '')); //('Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur dicta nesciunt minima, harum pariatur, excepturi velit adipisci minus, aliquam quasi molestias placeat facere doloribus incidunt reprehenderit nobis atque quo? Repellat.');
   constructor() { }
 
   sendMessage(message: TopMessage){

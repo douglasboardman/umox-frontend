@@ -1,6 +1,7 @@
-import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, empty, Observable, switchMap } from 'rxjs';
+import { TopMessage } from 'src/models/TopMessage';
 import { AuthService } from './auth.service';
 import { MessengerService } from './messenger.service';
 
@@ -18,19 +19,18 @@ export class WebReqInterceptorService implements HttpInterceptor {
 
     // call next() and handle the response
     return next.handle(request).pipe(
-      switchMap(() => {
-        request = this.addAuthHeader(request);
-        return next.handle(request);
-      }),
-      catchError((err: any) => {
-        console.log(err);
-        let msg = err.message;
-        this.messenger.sendMessage(msg);
+      catchError((error: HttpErrorResponse) => {
+        console.log(error);
+        let msg = 'Não foi possível concluir a operação. \n' +
+                  'Mensagem de erro: ' + error.error.message;
+        let notification = new TopMessage(msg, 'is-danger', 'login');
+        this.messenger.sendMessage(notification);
         this.authService.logout();
         return empty();
       })
     )
   }
+  
 
   addAuthHeader(request: HttpRequest<any>){
     // get access token

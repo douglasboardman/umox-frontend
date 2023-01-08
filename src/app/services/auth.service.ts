@@ -36,12 +36,11 @@ export class AuthService {
 
   register(nome: string, email: string, senha: string) {
     return this.webRequestService.register(nome, email, senha).pipe(
-      shareReplay(),
       tap((res: HttpResponse<any>) => {
         if(res.status == 200) {
           let msg = new TopMessage('Sua solicitação de cadastro foi enviada com sucesso.\n' +
                                    'Aguarde a aprovação do administrador para acessar o sistema.',
-                                   'is-success');
+                                   'is-success', 'login');
           this.messenger.sendMessage(msg);
           this.router.navigateByUrl('/login');
         }

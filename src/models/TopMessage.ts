@@ -1,10 +1,12 @@
 export class TopMessage {
   private _message: string;
-  private _msgType: string;
+  private _msgClass: string;
+  private _target: string;
 
-  constructor(message: string, msgType: string) {
+  constructor(message: string, msgClass: string, target: string) {
     this._message = message;
-    this._msgType = msgType;
+    this._msgClass = msgClass;
+    this._target = target;
   }
 
   get message(): string {
@@ -15,12 +17,25 @@ export class TopMessage {
     this._message = message;
   }
 
-  get msgType(): string {
-    return this._msgType;
+  get msgClass(): string {
+    return this._msgClass;
   }
 
-  set msgType(msgType: string) {
-    this._msgType = msgType;
+  set msgClass(msgClass: string) {
+    this._msgClass = msgClass;
   }
 
+  get target(): string {
+    return this._target;
+  }
+
+  set target(target: string) {
+    this._target = target;
+  }
+
+  resetMessage() {
+    this._message = '';
+    this._msgClass = '';
+    this._target = '';
+  }
 }
