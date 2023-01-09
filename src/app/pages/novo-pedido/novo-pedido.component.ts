@@ -101,17 +101,7 @@ export class NovoPedidoComponent {
 
   enviarPedido() {
     this.mostrarModal = false;
-    this.operacoes.cadastrarPedido(this.payloadPedido).subscribe((res: any) => {
-      if(res.status) {
-        let msg = new TopMessage(
-          'Pedido criado com sucesso! Confira os detalhes e acompanhe o andamento do seu pedido no menu "Meus Pedidos"',
-          'is-success',
-          'dashboard'
-        )
-        this.messenger.sendMessage(msg);
-        this.router.navigate(['dashboard']);
-      }
-    });
+    this.operacoes.cadastrarPedido(this.payloadPedido)
   }
 
   cancelarEnvioPedido() {

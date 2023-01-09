@@ -17,6 +17,7 @@ import { WebReqInterceptorService } from './services/web-req-interceptor.service
 import { ConsultarEstoqueComponent } from './pages/consultar-estoque/consultar-estoque.component';
 import { NovoPedidoComponent } from './pages/novo-pedido/novo-pedido.component';
 import { ModalGeneratorComponent } from './components/modal-generator/modal-generator.component';
+import { MeusPedidosComponent } from './pages/meus-pedidos/meus-pedidos.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ModalGeneratorComponent } from './components/modal-generator/modal-gene
     NotificationComponent,
     ConsultarEstoqueComponent,
     NovoPedidoComponent,
-    ModalGeneratorComponent
+    ModalGeneratorComponent,
+    MeusPedidosComponent
   ],
   imports: [
     BrowserModule,
