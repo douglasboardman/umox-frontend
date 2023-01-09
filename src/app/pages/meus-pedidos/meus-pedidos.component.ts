@@ -11,13 +11,21 @@ export class MeusPedidosComponent {
 
   dados!: any;
   dadosPedidos!: any;
-  id_pedido!: any;
+  detalharPedido!: number;
+
 
   ngOnInit(){
     this.operacoes.consultarMeusPedidos().subscribe((response: any) => {
-      console.log(response._data)
-      this.dados = response._data;
-      
+      this.dadosPedidos = response._data;
     })
+  }
+
+  mostrarDetalhesPedido(id: number){
+    this.detalharPedido = id;
+    console.log(this.detalharPedido);
+  }
+
+  ocultarDetalhesPedido() {
+    this.detalharPedido = 0;
   }
 }
