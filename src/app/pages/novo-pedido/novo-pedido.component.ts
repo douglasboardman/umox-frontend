@@ -26,9 +26,9 @@ export class NovoPedidoComponent {
   msgModal: string = '';
   
   ngOnInit(){
-    this.operacoes.consultarEstoque().subscribe((dados: any) => {
-      this.dadosOriginais = dados.listaItens;
-      this.dadosItens = dados.listaItens;
+    this.operacoes.consultarEstoque().subscribe((response: any) => {
+      this.dadosOriginais = response._data;
+      this.dadosItens = response._data;
     });
     
     this.formNovoPedido = new FormGroup({

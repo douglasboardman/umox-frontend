@@ -68,6 +68,17 @@ article {
     box-shadow: $wrapper-shadow;
 }
 
+article .columns,
+article .column {
+    background-color: $light;
+    padding: 0;
+    margin: 0;
+}
+
+article label {
+    font-size: 12px;
+}
+
 .flex-div {
     display: flex;
 }
