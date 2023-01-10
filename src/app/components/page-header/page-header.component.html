@@ -1,0 +1,10 @@
+<div class="page-header">
+    <h1 class="page-title">{{tituloPagina}}</h1>
+    <div class="breadcrumbs">
+        <ng-container *ngFor="let b of breadcrumbs">
+            <a *ngIf="b.link != ''" [routerLink]="b.link">{{ b.pageName }}</a>
+            <span *ngIf="b.link != ''"> > </span>
+            <p *ngIf="b.link == ''">{{ b.pageName }}</p>
+        </ng-container>
+    </div>
+</div>

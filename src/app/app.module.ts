@@ -18,6 +18,7 @@ import { ConsultarEstoqueComponent } from './pages/consultar-estoque/consultar-e
 import { NovoPedidoComponent } from './pages/novo-pedido/novo-pedido.component';
 import { ModalGeneratorComponent } from './components/modal-generator/modal-generator.component';
 import { MeusPedidosComponent } from './pages/meus-pedidos/meus-pedidos.component';
+import { PageHeaderComponent } from './components/page-header/page-header.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MeusPedidosComponent } from './pages/meus-pedidos/meus-pedidos.componen
     ConsultarEstoqueComponent,
     NovoPedidoComponent,
     ModalGeneratorComponent,
-    MeusPedidosComponent
+    MeusPedidosComponent,
+    PageHeaderComponent
   ],
   imports: [
     BrowserModule,

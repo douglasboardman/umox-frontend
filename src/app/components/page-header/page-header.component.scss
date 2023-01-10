@@ -1,0 +1,29 @@
+@import '../../../styles.scss';
+
+.page-header {
+    margin: 10px auto 30px;
+}
+
+.page-header h1.page-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: auto 0 auto 0;
+}
+
+.breadcrumbs {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.breadcrumbs span {
+    margin: auto 10px;
+}
+
+.breadcrumbs a:link, .breadcrumbs a:visited {
+    color: $primary;
+}
+
+.breadcrumbs a:hover {
+    color: $link;
+}
+
