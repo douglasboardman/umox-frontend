@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { OperacoesService } from 'src/app/services/operacoes.service';
 import { checaInputQtd } from 'src/app/utils/comon';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { PedidoPL } from 'src/models/PedidoPL';
+import { PedidoPL } from 'src/models/Pedido';
 import { Router } from '@angular/router';
 import { TopMessage } from 'src/models/TopMessage';
 import { MessengerService } from 'src/app/services/messenger.service';

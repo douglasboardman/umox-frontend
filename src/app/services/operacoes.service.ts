@@ -20,6 +20,10 @@ export class OperacoesService {
     return this.webRequestService.get('operacoes/pedidos/meusPedidos');
   }
 
+  consultarPedidos() {
+    return this.webRequestService.get('operacoes/pedidos/consultarPedidos');
+  }
+
   cadastrarPedido(payload: Object){
     return this.webRequestService.post('operacoes/pedidos/novoPedido', payload).subscribe((res: any) => {
       if(!res.error) {

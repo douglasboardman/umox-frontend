@@ -1,14 +1,13 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export function matchValidator(
-  matchTo: string, 
+  matchTo: string,
   reverse?: boolean
 ): ValidatorFn {
-  return (control: AbstractControl): 
-  ValidationErrors | null => {
+  return (control: AbstractControl): ValidationErrors | null => {
     if (control.parent && reverse) {
-      const c = (control.parent?.controls as any)[matchTo] 
-       AbstractControl;
+      const c = (control.parent?.controls as any)[matchTo];
+      AbstractControl;
       if (c) {
         c.updateValueAndValidity();
       }
@@ -16,76 +15,83 @@ export function matchValidator(
     }
     return !!control.parent &&
       !!control.parent.value &&
-      control.value === 
-      (control.parent?.controls as any)[matchTo].value
+      control.value === (control.parent?.controls as any)[matchTo].value
       ? null
       : { matching: true };
   };
 }
 
 // FUNÇÕES AUXILIARES
-/**
- * 
- * @param {string} str 
- * @param {number} n 
- * @returns a partial string of 'n' letters picked from the left of the 'str'
- */
-export function Left(str: string, n: number){
-	if (n <= 0)
-	    return "";
-	else if (n > String(str).length)
-	    return str;
-	else
-	    return String(str).substring(0,n);
+
+export function Left(str: string, n: number) {
+  if (n <= 0) return '';
+  else if (n > String(str).length) return str;
+  else return String(str).substring(0, n);
 }
 
-/**
- * 
- * @param {string} str 
- * @param {number} n 
- * @returns a partial string of 'n' letters picked from the right of the 'str'
- */
-export function Right(str: string, n: number){
-    if (n <= 0)
-       return "";
-    else if (n > String(str).length)
-       return str;
-    else {
-       var iLen = String(str).length;
-       return String(str).substring(iLen, iLen - n);
-    }
+
+export function Right(str: string, n: number) {
+  if (n <= 0) return '';
+  else if (n > String(str).length) return str;
+  else {
+    var iLen = String(str).length;
+    return String(str).substring(iLen, iLen - n);
+  }
 }
 
-/**
- * 
- * @param {string} emailUsuario 
- * @returns boolean as a result of the regex email string test
- */
+
 export function emailValido(emailUsuario: string) {
-    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailUsuario);
+  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailUsuario);
 }
 
-// IMPEDE A INSERÇÃO DE VALORES INDESEJADOS NO CAMPO QUANTITATIVO DO ITEM
-/**
- * 
- * @param {HTMLInputElement} input 
- */
+
 export function checaInputQtd(input: HTMLInputElement) {
-    let max = parseInt(input.max);
-    let min = input.min == "" ? 0 : parseInt(input.min);
-    let val = parseInt(input.value);
+  let max = parseInt(input.max);
+  let min = input.min == '' ? 0 : parseInt(input.min);
+  let val = parseInt(input.value);
 
-    let regEx = /[1-9]{1,5}/;
-    
-    if (val > max) {
-        input.value = String(max);
-    } 
-    
-    if (val < min) {
-        input.value = String(min);
-    }
+  let regEx = /[1-9]{1,5}/;
 
-    if (!input.value.match(regEx)) {
-        input.value = '';
-    }
+  if (val > max) {
+    input.value = String(max);
+  }
+
+  if (val < min) {
+    input.value = String(min);
+  }
+
+  if (!input.value.match(regEx)) {
+    input.value = '';
+  }
+}
+
+export function dateToBD(dt: Date) {
+  let dia = dt.getDate();
+  let mes = dt.getMonth() + 1;
+  let ano = dt.getFullYear();
+  let d: string;
+  let m: string;
+
+  d = dia < 10 ? '0' + dia : String(dia);
+  m = mes < 10 ? '0' + mes : String(mes);
+
+  return `${ano}-${m}-${d}`;
+}
+
+export function dateToView(dt: Date) {
+  if (dt == null) {
+    return '-';
+  } else {
+    let date = new Date(dt);
+    let dia = date.getDate();
+    let mes = date.getMonth() + 1;
+    let ano = date.getFullYear();
+    let d: string;
+    let m: string;
+
+    d = dia < 10 ? '0' + dia : String(dia);
+    m = mes < 10 ? '0' + mes : String(mes);
+
+    return `${d}/${m}/${ano}`;
+  }
 }

@@ -16,6 +16,7 @@ export class MeusPedidosComponent {
 
   ngOnInit(){
     this.operacoes.consultarMeusPedidos().subscribe((response: any) => {
+      console.log(response);
       this.dadosPedidos = response._data;
     })
   }
