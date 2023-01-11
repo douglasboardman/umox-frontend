@@ -29,7 +29,7 @@ export class OperacoesService {
   }
 
   consultarPedidoParaAtendimento(idPedido: string) {
-    return this.webRequestService.get('admin/pedidos/atenderPedido?pid=' + idPedido);
+    return this.webRequestService.get('admin/pedidos/atenderPedido/' + idPedido);
   }
 
   cadastrarPedido(payload: Object){
