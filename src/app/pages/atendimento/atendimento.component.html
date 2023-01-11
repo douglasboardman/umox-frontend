@@ -1,9 +1,5 @@
 <app-frame>
-    <div class="columns">
-      <div class="column">
-        <app-page-header tituloPagina="Atendimento"></app-page-header>
-      </div>
-    </div>
+    <app-page-header tituloPagina="Atendimento"></app-page-header>
     <div class="columns">
       <div class="column">
         <table class="generic rounded blue">
@@ -57,7 +53,6 @@
                         <th width="10%" style="text-align: left">UN. MEDIDA</th>
                         <th width="8%" style="text-align: center">ESTOQUE</th>
                         <th width="8%" style="text-align: center">QTD. SOLIC.</th>
-                        <th width="8%" style="text-align: center">QTD. ATEND.</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -71,9 +66,6 @@
                         </td>
                         <td style="text-align: center">
                           {{ item.qtd_solicitada }}
-                        </td>
-                        <td style="text-align: center">
-                          {{ item.qtd_atendida }}
                         </td>
                       </tr>
                     </tbody>

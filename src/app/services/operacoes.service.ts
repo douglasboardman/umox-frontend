@@ -25,7 +25,7 @@ export class OperacoesService {
   }
 
   consultarPedidosParaAtendimento() {
-    return this.webRequestService.get('operacoes/pedidos/aguardandoAtendimento');
+    return this.webRequestService.get('admin/pedidos/atendimento');
   }
 
   cadastrarPedido(payload: Object){
