@@ -12,6 +12,13 @@ export class SidebarComponent {
   sidebarMode: string = '';
   @Output() toggle: EventEmitter<any> = new EventEmitter()
 
+  ngOnInit() {
+    let toggle = localStorage.getItem('sidebar-toggle') == 'true' ? true : false;
+    if(toggle){
+      this.onToggleSidebarClicked()
+    }
+  }
+
   onToggleSidebarClicked(){
     if(this.sidebarMode == '') {
       this.sidebarMode = 'minimized'

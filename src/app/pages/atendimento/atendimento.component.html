@@ -1,0 +1,89 @@
+<app-frame>
+    <div class="columns">
+      <div class="column">
+        <app-page-header tituloPagina="Atendimento"></app-page-header>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <table class="generic rounded blue">
+          <thead>
+            <tr>
+              <th style="width: 5%; text-align: center">ID</th>
+              <th style="width: 45%">FINALIDADE</th>
+              <th style="width: 25%">USUÁRIO</th>
+              <th style="width: 10%">DT. PEDIDO</th>
+              <th style="width: 15%; text-align: center">AÇÕES</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let dadosPedido of dadosPedidos">
+              <tr>
+                <td style="text-align: center">{{ dadosPedido.id_pedido }}</td>
+                <td>{{ dadosPedido.finalidade_pedido }}</td>
+                <td>{{ dadosPedido.nome_usuario }}</td>
+                <td>{{ dadosPedido.data_pedido }}</td>
+                <td>
+                    <div class="flex-div">
+                        <button
+                          *ngIf="detalharPedido != dadosPedido.id_pedido"
+                          (click)="mostrarDetalhesPedido(dadosPedido.id_pedido)"
+                          class="btn sm-btn-green"
+                        >
+                          <i class="bx bx-show icon"></i>
+                        </button>
+                        <button
+                          *ngIf="detalharPedido == dadosPedido.id_pedido"
+                          (click)="ocultarDetalhesPedido()"
+                          class="btn sm-btn-red"
+                        >
+                          <i class="bx bx-hide icon"></i>
+                        </button>
+                        <a id="btn-atender-pedido-<%= dados[i].id_pedido %>" class="btn sm-btn-blue sm-btn-acao" [routerLink]="'/admin/pedidos/atenderPedido?pid=' + dadosPedido.id_pedido">ATENDER</a>
+                    </div>
+                </td>
+              </tr>
+              <tr
+                *ngIf="detalharPedido == dadosPedido.id_pedido"
+                class="tr-detalhe"
+              >
+                <td colspan="5">
+                  <table class="inner-table rounded grey">
+                    <thead>
+                      <tr>
+                        <th width="8%" style="text-align: center">ID</th>
+                        <th width="40%" style="text-align: left">DESCRIÇÃO</th>
+                        <th width="18%" style="text-align: left">MARCA</th>
+                        <th width="10%" style="text-align: left">UN. MEDIDA</th>
+                        <th width="8%" style="text-align: center">ESTOQUE</th>
+                        <th width="8%" style="text-align: center">QTD. SOLIC.</th>
+                        <th width="8%" style="text-align: center">QTD. ATEND.</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of dadosPedido.itens">
+                        <td style="text-align: center">{{ item.id_item }}</td>
+                        <td>{{ item.descricao_item }}</td>
+                        <td>{{ item.marca_item }}</td>
+                        <td>{{ item.un_medida_item }}</td>
+                        <td style="text-align: center">
+                          {{ item.estoque_item }}
+                        </td>
+                        <td style="text-align: center">
+                          {{ item.qtd_solicitada }}
+                        </td>
+                        <td style="text-align: center">
+                          {{ item.qtd_atendida }}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </app-frame>
+  

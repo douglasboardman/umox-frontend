@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AtendimentoComponent } from './pages/atendimento/atendimento.component';
 import { ConsultarEstoqueComponent } from './pages/consultar-estoque/consultar-estoque.component';
 import { ConsultarPedidosComponent } from './pages/consultar-pedidos/consultar-pedidos.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'operacoes/itens/consultarEstoque', component: ConsultarEstoqueComponent},
   { path: 'operacoes/pedidos/novoPedido', component: NovoPedidoComponent},
   { path: 'operacoes/pedidos/meusPedidos', component: MeusPedidosComponent},
-  { path: 'operacoes/pedidos/consultarPedidos', component: ConsultarPedidosComponent}
+  { path: 'operacoes/pedidos/consultarPedidos', component: ConsultarPedidosComponent},
+  { path: 'admin/pedidos/atendimento', component: AtendimentoComponent}
 ];
 
 @NgModule({

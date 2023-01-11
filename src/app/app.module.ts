@@ -20,6 +20,7 @@ import { ModalGeneratorComponent } from './components/modal-generator/modal-gene
 import { MeusPedidosComponent } from './pages/meus-pedidos/meus-pedidos.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { ConsultarPedidosComponent } from './pages/consultar-pedidos/consultar-pedidos.component';
+import { AtendimentoComponent } from './pages/atendimento/atendimento.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ConsultarPedidosComponent } from './pages/consultar-pedidos/consultar-p
     ModalGeneratorComponent,
     MeusPedidosComponent,
     PageHeaderComponent,
-    ConsultarPedidosComponent
+    ConsultarPedidosComponent,
+    AtendimentoComponent
   ],
   imports: [
     BrowserModule,
