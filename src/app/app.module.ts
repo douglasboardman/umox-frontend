@@ -21,6 +21,7 @@ import { MeusPedidosComponent } from './pages/meus-pedidos/meus-pedidos.componen
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { ConsultarPedidosComponent } from './pages/consultar-pedidos/consultar-pedidos.component';
 import { AtendimentoComponent } from './pages/atendimento/atendimento.component';
+import { AtenderPedidoComponent } from './pages/atender-pedido/atender-pedido.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AtendimentoComponent } from './pages/atendimento/atendimento.component'
     MeusPedidosComponent,
     PageHeaderComponent,
     ConsultarPedidosComponent,
-    AtendimentoComponent
+    AtendimentoComponent,
+    AtenderPedidoComponent
   ],
   imports: [
     BrowserModule,

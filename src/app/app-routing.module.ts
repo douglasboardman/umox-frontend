@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AtenderPedidoComponent } from './pages/atender-pedido/atender-pedido.component';
 import { AtendimentoComponent } from './pages/atendimento/atendimento.component';
 import { ConsultarEstoqueComponent } from './pages/consultar-estoque/consultar-estoque.component';
 import { ConsultarPedidosComponent } from './pages/consultar-pedidos/consultar-pedidos.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'operacoes/pedidos/novoPedido', component: NovoPedidoComponent},
   { path: 'operacoes/pedidos/meusPedidos', component: MeusPedidosComponent},
   { path: 'operacoes/pedidos/consultarPedidos', component: ConsultarPedidosComponent},
-  { path: 'admin/pedidos/atendimento', component: AtendimentoComponent}
+  { path: 'admin/pedidos/atendimento', component: AtendimentoComponent},
+  { path: 'admin/pedidos/atenderPedido/:pid', component: AtenderPedidoComponent}
 ];
 
 @NgModule({

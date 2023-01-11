@@ -80,8 +80,10 @@ article label {
 }
 
 .flex-div {
+    width: 100%;
     display: flex;
     justify-content: center;
+    gap: 10px;
 }
 
 .panel-block {
@@ -94,4 +96,32 @@ article label {
 
 .notification {
     z-index: 1000;
+}
+
+.panel-block .panel-label,
+.panel-block .panel-info {
+    padding: 0;
+    margin: 0;
+}
+
+.panel-block .panel-label {
+    width: 20%;
+    padding-left: 8px;
+}
+
+.panel-block .panel-info {
+    width: 80%;
+}
+
+.panel-info textarea {
+    width: 100%;
+}
+
+.panel-label {
+    height: 100%;
+}
+
+.panel-label .label {
+    font-size: 14px;
+    font-weight: 500;
 }

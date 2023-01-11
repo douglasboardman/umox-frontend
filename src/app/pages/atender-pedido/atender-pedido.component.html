@@ -1,0 +1,80 @@
+<app-frame>
+<app-page-header tituloPagina="Atender pedido"></app-page-header>
+<div class="columns">
+    <div class="column">
+        <nav class="panel is-info">
+            <p class="panel-heading">
+              Dados do pedido
+            </p>
+            <div class="panel-block">
+                <div class="panel-label">
+                    <label class="label">ID do Pedido:</label>
+                </div>
+                <div class="panel-info"></div>
+            </div>
+            <div class="panel-block">
+                <div class="panel-label">
+                    <label class="label">Solicitante:</label>
+                </div>
+                <div class="panel-info"></div>
+            </div>
+            <div class="panel-block">
+                <div class="panel-label">
+                    <label class="label">Data do Pedido:</label>
+                </div>
+                <div class="panel-info"></div>
+            </div>
+            <div class="panel-block">
+                <div class="panel-label">
+                    <label class="label">Finalidade do Pedido:</label>
+                </div>
+                <div class="panel-info"></div>
+            </div>
+            <div class="panel-block">
+                <div class="panel-label">
+                    <label class="label">Observação de atendimento:</label>
+                </div>
+                <div class="panel-info">
+                    <textarea title="Observação com, no mínimo, 30 caracteres." id="obsPedido" type="text" placeholder="Observação..." cols="60" rows="3" oninput="this.value = this.value.toUpperCase()"></textarea>
+                </div>
+            </div>
+            <div class="panel-block">
+                <div class="flex-div">
+                    <button class="button is-danger is-outlined is-fullwidth">
+                        Cancelar
+                    </button>
+                    <button class="button is-success is-outlined is-fullwidth">
+                        Finalizar atendimento
+                    </button>
+                </div>
+            </div>
+          </nav>
+        
+        <table class="generic rounded grey">
+            <thead>
+                <tr>
+                    <th width="8%" style="text-align: center;">ID</th>
+                    <th width="40%" style="text-align: left;">DESCRIÇÃO</th>
+                    <th width="18%" style="text-align: left;">MARCA</th>
+                    <th width="10%" style="text-align: left;">UN. MEDIDA</th>
+                    <th width="8%" style="text-align: center;">ESTOQUE</th>
+                    <th width="8%" style="text-align: center;">QTD. SOLIC.</th>
+                    <th width="8%" style="text-align: center;">QTD. ATEND.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="detalhe-pedido-10">
+                    <td style="text-align: center">10</td>
+                    <td id="descricao-item">DESCRIÇÃO DE UM ITEM QUALQUER</td>
+                    <td>MARCA</td>
+                    <td>UNIDADE</td>
+                    <td style="text-align: center">25</td>
+                    <td style="text-align: center">3</td>
+                    <td style="text-align: center"><input id="qtd-item-<%= dados[i].id_item %>" class="input-qtd-item" min="0" max="<%= dados[i].qtd_solicitada %>" type="number" onkeyup="checaInputQtd(this)"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</app-frame>

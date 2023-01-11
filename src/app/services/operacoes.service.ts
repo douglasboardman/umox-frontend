@@ -28,6 +28,10 @@ export class OperacoesService {
     return this.webRequestService.get('admin/pedidos/atendimento');
   }
 
+  consultarPedidoParaAtendimento(idPedido: string) {
+    return this.webRequestService.get('admin/pedidos/atenderPedido?pid=' + idPedido);
+  }
+
   cadastrarPedido(payload: Object){
     return this.webRequestService.post('operacoes/pedidos/novoPedido', payload).subscribe((res: any) => {
       if(!res.error) {

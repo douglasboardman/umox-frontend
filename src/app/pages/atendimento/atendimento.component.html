@@ -35,7 +35,7 @@
                         >
                           <i class="bx bx-hide icon"></i>
                         </button>
-                        <a id="btn-atender-pedido-<%= dados[i].id_pedido %>" class="btn sm-btn-blue sm-btn-acao" [routerLink]="'/admin/pedidos/atenderPedido?pid=' + dadosPedido.id_pedido">ATENDER</a>
+                        <a class="btn sm-btn-blue sm-btn-acao" [routerLink]="['/admin/pedidos/atenderPedido', dadosPedido.id_pedido]">ATENDER</a>
                     </div>
                 </td>
               </tr>
