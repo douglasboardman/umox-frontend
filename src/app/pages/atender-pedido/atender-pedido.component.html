@@ -1,80 +1,127 @@
 <app-frame>
-<app-page-header tituloPagina="Atender pedido"></app-page-header>
-<div class="columns">
+  <app-page-header tituloPagina="Atender pedido"></app-page-header>
+  <div class="columns">
     <div class="column">
-        <nav class="panel is-info">
-            <p class="panel-heading">
-              Dados do pedido
-            </p>
-            <div class="panel-block">
-                <div class="panel-label">
-                    <label class="label">ID do Pedido:</label>
-                </div>
-                <div class="panel-info">{{ idPedido }}</div>
+      <nav class="panel is-info">
+        <form
+          (ngSubmit)="submit()"
+          [formGroup]="atenderPedidoForm"
+          #formDir="ngForm"
+        >
+          <p class="panel-heading">Dados do pedido</p>
+          <div class="panel-block">
+            <div class="panel-label">
+              <label class="label">ID do Pedido:</label>
             </div>
-            <div class="panel-block">
-                <div class="panel-label">
-                    <label class="label">Solicitante:</label>
-                </div>
-                <div class="panel-info">{{ solicitante }}</div>
+            <div class="panel-info">{{ idPedido }}</div>
+          </div>
+          <div class="panel-block">
+            <div class="panel-label">
+              <label class="label">Solicitante:</label>
             </div>
-            <div class="panel-block">
-                <div class="panel-label">
-                    <label class="label">Data do Pedido:</label>
-                </div>
-                <div class="panel-info">{{ dataPedido }}</div>
+            <div class="panel-info">{{ solicitante }}</div>
+          </div>
+          <div class="panel-block">
+            <div class="panel-label">
+              <label class="label">Data do Pedido:</label>
             </div>
-            <div class="panel-block">
-                <div class="panel-label">
-                    <label class="label">Finalidade do Pedido:</label>
-                </div>
-                <div class="panel-info"></div>
+            <div class="panel-info">{{ dataPedido }}</div>
+          </div>
+          <div class="panel-block">
+            <div class="panel-label">
+              <label class="label">Finalidade do Pedido:</label>
             </div>
-            <div class="panel-block">
-                <div class="panel-label">
-                    <label class="label">Observação de atendimento:</label>
-                </div>
-                <div class="panel-info">
-                    <textarea title="Observação com, no mínimo, 30 caracteres." id="obsPedido" type="text" placeholder="Observação..." cols="60" rows="3" oninput="this.value = this.value.toUpperCase()"></textarea>
-                </div>
+            <div class="panel-info">{{ finalidade }}</div>
+          </div>
+          <div class="panel-block">
+            <div class="panel-label">
+              <label class="label">Observação de atendimento:</label>
             </div>
-            <div class="panel-block">
-                <div class="flex-div">
-                    <button class="button is-danger is-outlined is-fullwidth">
-                        Cancelar
-                    </button>
-                    <button class="button is-success is-outlined is-fullwidth">
-                        Finalizar atendimento
-                    </button>
-                </div>
+            <div class="panel-info">
+              <textarea
+                formControlName="obsAtendimento"
+                ngModel minlength="30"
+                class="textarea"
+                [class.is-danger]="obsAtendimento.invalid && formDir.submitted"
+                title="Observação com, no mínimo, 30 caracteres."
+                type="text"
+                placeholder="Observação..."
+                cols="60"
+                rows="3"
+                onkeyup="this.value = this.value.toUpperCase()"
+              ></textarea>
+              <div *ngIf="obsAtendimento.invalid && formDir.submitted">
+                <p
+                  *ngIf="obsAtendimento.errors?.['required']"
+                  class="help is-danger"
+                >
+                  Observação de atendimento não informada!
+                </p>
+                <p
+                  *ngIf="obsAtendimento.errors?.['minlength']"
+                  class="help is-danger"
+                >
+                  Observação deve ter, pelo menos, 30 (trinta) caracteres.
+                </p>
+              </div>
             </div>
-          </nav>
-        
-        <table class="generic rounded grey">
-            <thead>
-                <tr>
-                    <th width="8%" style="text-align: center;">ID</th>
-                    <th width="40%" style="text-align: left;">DESCRIÇÃO</th>
-                    <th width="18%" style="text-align: left;">MARCA</th>
-                    <th width="10%" style="text-align: left;">UN. MEDIDA</th>
-                    <th width="8%" style="text-align: center;">ESTOQUE</th>
-                    <th width="8%" style="text-align: center;">QTD. SOLIC.</th>
-                    <th width="8%" style="text-align: center;">QTD. ATEND.</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr id="detalhe-pedido-10">
-                    <td style="text-align: center">10</td>
-                    <td id="descricao-item">DESCRIÇÃO DE UM ITEM QUALQUER</td>
-                    <td>MARCA</td>
-                    <td>UNIDADE</td>
-                    <td style="text-align: center">25</td>
-                    <td style="text-align: center">3</td>
-                    <td style="text-align: center"><input id="qtd-item-<%= dados[i].id_item %>" class="input-qtd-item" min="0" max="<%= dados[i].qtd_solicitada %>" type="number" onkeyup="checaInputQtd(this)"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+          </div>
+          <div class="panel-block">
+            <div class="flex-div">
+              <button class="button is-danger is-outlined is-fullwidth">
+                Cancelar
+              </button>
+              <input 
+                type="submit"
+                class="button is-success is-outlined is-fullwidth"
+                value="Finalizar atendimento"
+              />
+            </div>
+          </div>
+        </form>
+      </nav>
 
+      <table class="generic rounded grey">
+        <thead>
+          <tr>
+            <th width="8%" style="text-align: center">ID</th>
+            <th width="38%" style="text-align: left">DESCRIÇÃO</th>
+            <th width="12%" style="text-align: left">MARCA</th>
+            <th width="10%" style="text-align: left">UN. MEDIDA</th>
+            <th width="8%" style="text-align: center">ESTOQUE</th>
+            <th width="12%" style="text-align: center">QTD. SOLIC.</th>
+            <th width="12%" style="text-align: center">QTD. ATEND.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dadosPedido">
+            <td style="text-align: center">{{ item.id_item }}</td>
+            <td id="descricao-item">{{ item.descricao_item }}</td>
+            <td>{{ item.marca_item }}</td>
+            <td>{{ item.un_medida_item }}</td>
+            <td style="text-align: center">{{ item.estoque_item }}</td>
+            <td style="text-align: center">{{ item.qtd_solicitada }}</td>
+            <td style="text-align: center">
+              <input
+                [id]="'input-qtd-item-' + item.id_item"
+                class="input-qtd-item"
+                min="0"
+                [max]="item.qtd_solicitada < item.estoque_item ? item.qtd_solicitada : item.estoque_item"
+                type="number"
+                (keyup)="onKeyPressedInputQtd('input-qtd-item-' + item.id_item)"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <app-modal-generator
+    [tituloModal]="tituloModal" 
+    [msgModal]="msgModal" 
+    [mostrarModal]="mostrarModal" 
+    (CancelButtonClicked)="cancelarFinalizacaoPedido()" 
+    (ConfirmButtonClicked)="finalizarPedido()">
+  >
+  </app-modal-generator>
 </app-frame>

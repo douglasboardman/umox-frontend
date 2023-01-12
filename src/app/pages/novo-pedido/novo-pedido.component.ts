@@ -3,9 +3,6 @@ import { OperacoesService } from 'src/app/services/operacoes.service';
 import { checaInputQtd } from 'src/app/utils/comon';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PedidoPL } from 'src/models/Pedido';
-import { Router } from '@angular/router';
-import { TopMessage } from 'src/models/TopMessage';
-import { MessengerService } from 'src/app/services/messenger.service';
 
 @Component({
   selector: 'app-novo-pedido',
@@ -13,7 +10,7 @@ import { MessengerService } from 'src/app/services/messenger.service';
   styleUrls: ['./novo-pedido.component.scss']
 })
 export class NovoPedidoComponent {
-  constructor(private operacoes: OperacoesService, private router: Router, private messenger: MessengerService){}
+  constructor(private operacoes: OperacoesService){}
 
   dadosItens!: Array<any>;
   dadosOriginais!: Array<any>;

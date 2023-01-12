@@ -3,14 +3,13 @@
   <div class="columns">
     <div class="column">
         <article class="panel is-info">
-            <form (ngSubmit)="submit()" [formGroup]="formNovoPedido" #formDir="ngForm">
+            <form (ngSubmit)="submit" [formGroup]="formNovoPedido" #formDir="ngForm">
           <p class="panel-heading">Novo Pedido</p>
           <div class="panel-block">
             <label style="min-width: 16%; margin: 0" class="label"
               >Finalidade do Pedido:
             </label>
             <input
-              
               formControlName="finalidade"
               class="input"
               title="Descreva a finalidade do seu pedido com no mínimo 30 caracteres."
@@ -20,7 +19,8 @@
             />
           </div>
           <div *ngIf="finalidade.invalid && formDir.submitted" class="panel-block">
-            <p style="margin-left: 10px;" class="help is-danger">O campo finalidade deve ter, no mínimo, 30 (trinta) caracteres</p>
+            <p *ngIf="finalidade.errors?.['required']" style="margin-left: 10px;" class="help is-danger">É preciso informar a finalidade do pedido</p>
+            <p *ngIf="finalidade.errors?.['minlength']" style="margin-left: 10px;" class="help is-danger">O campo finalidade deve ter, no mínimo, 30 (trinta) caracteres</p>
           </div>
           <div class="panel-block">
             <table
