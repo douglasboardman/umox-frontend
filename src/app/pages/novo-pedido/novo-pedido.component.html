@@ -16,6 +16,7 @@
               placeholder="A finalidade do pedido é..."
               [class.is-danger]="finalidade.invalid && formDir.submitted"
               (keyup)="onKeyUpTxtFinalidade()"
+              onkeyup="this.value = this.value.toUpperCase()"
             />
           </div>
           <div *ngIf="finalidade.invalid && formDir.submitted" class="panel-block">

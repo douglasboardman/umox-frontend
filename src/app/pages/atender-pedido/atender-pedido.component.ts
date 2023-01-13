@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
-import { dateToView } from 'src/app/utils/comon';
+import { dateToView, formatIdPedido } from 'src/app/utils/comon';
 import { checaInputQtd } from 'src/app/utils/comon';
-import { ResponseData } from 'src/models/ResponseData';
 
 @Component({
   selector: 'app-atender-pedido',
@@ -16,7 +15,7 @@ export class AtenderPedidoComponent {
 
   atenderPedidoForm!: FormGroup;
   dadosPedido!: any;
-  idPedido!: number;
+  idPedido!: string;
   solicitante!: string;
   dataPedido!: string;
   finalidade!: string;
@@ -31,7 +30,7 @@ export class AtenderPedidoComponent {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.idPedido = params['pid'];
+        this.idPedido = formatIdPedido(params['pid']);
         this.admin.consultarPedidoParaAtendimento(String(this.idPedido)).subscribe((response: any) => {
           this.dadosPedido = response._data;
           let dados = this.dadosPedido[0];
@@ -109,7 +108,7 @@ export class AtenderPedidoComponent {
     
     // Cria payload
     let payload = {
-      id_pedido: this.idPedido,
+      id_pedido: parseInt(this.idPedido),
       observacao_atendimento: this.atenderPedidoForm.get('obsAtendimento')?.value,
       status_pedido: this.statusPedido,
       objItens: objItens

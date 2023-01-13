@@ -16,4 +16,10 @@ export class MessengerService {
   receiveMessage(): Observable<TopMessage> {
     return this.subject.asObservable();
   }
+
+  cleanMessage(){
+    let msg = new TopMessage('','','');
+    this.subject.next(msg);
+  }
+
 }

@@ -58,6 +58,14 @@ $background: white;
     box-sizing: border-box;
 }
 
+a:active, a:focus,
+button:active, button:focus {
+    outline: 0;
+    border: none;
+    outline-style: none;
+    -moz-outline-style: none;
+}
+
 body {
     height: 100vh;
     background: $body-color;

@@ -95,3 +95,10 @@ export function dateToView(dt: Date) {
     return `${d}/${m}/${ano}`;
   }
 }
+
+export function formatIdPedido(id: string) {
+  let l = id.length;
+  let s = '0';
+  let formattedId = s.repeat(4 - l) + id;
+  return formattedId;
+}

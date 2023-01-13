@@ -37,6 +37,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.$subs.unsubscribe();
+    this.messenger.cleanMessage();
   }
 
   get email() {

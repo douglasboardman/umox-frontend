@@ -33,6 +33,7 @@ export class AtendimentoComponent {
 
   ngOnDestroy(){
     this.$subs.unsubscribe();
+    this.messenger.cleanMessage();
   }
 
   mostrarDetalhesPedido(id: number){
