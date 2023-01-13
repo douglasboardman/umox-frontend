@@ -45,7 +45,9 @@ export class NovoPedidoComponent {
   }
 
   onKeyUpTxtFinalidade() {
-    this.payloadPedido.finalidade = this.formNovoPedido.get('finalidade')?.value;
+    let val = this.formNovoPedido.get('finalidade')?.value.toUpperCase();
+    this.formNovoPedido.get('finalidade')?.setValue(val);
+    this.payloadPedido.finalidade = val;
   }
 
   onKeyUpInputQtd(id: string) {

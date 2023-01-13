@@ -50,7 +50,7 @@
                 <textarea
                   formControlName="obsAtendimento"
                   minlength="30"
-                  class="textarea"
+                  class="textarea uppercase-field"
                   [class.is-danger]="obsAtendimento.invalid && formDir.submitted"
                   title="Observação com, no mínimo, 30 caracteres."
                   type="text"
@@ -58,7 +58,6 @@
                   cols="60"
                   rows="3"
                   style="font-size: 12px;"
-                  onkeyup="this.value = this.value.toUpperCase()"
                 ></textarea>
                 <div *ngIf="obsAtendimento.invalid && formDir.submitted">
                   <p

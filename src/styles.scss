@@ -131,3 +131,19 @@ article label {
     z-index: 1000;
 }
 
+.uppercase-field {
+    text-transform: uppercase;
+}
+
+.input {
+    font-size: 12px;
+}
+
+.control.has-icons-left .input {
+    padding-left: 35px !important;
+}
+
+.control span.icon {
+    height: 30px !important;
+}
+

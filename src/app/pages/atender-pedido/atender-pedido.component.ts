@@ -30,8 +30,9 @@ export class AtenderPedidoComponent {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.idPedido = formatIdPedido(params['pid']);
+        this.idPedido = params['pid'];
         this.admin.consultarPedidoParaAtendimento(String(this.idPedido)).subscribe((response: any) => {
+          console.log(response);
           this.dadosPedido = response._data;
           let dados = this.dadosPedido[0];
           this.solicitante = dados.nome_usuario.toUpperCase(); // MODIFICAR A VIEW PARA DISPENSAR ESTA ALTERAÇÃO DE CASO
@@ -66,8 +67,6 @@ export class AtenderPedidoComponent {
     
     return soma;
   }
-
-  
 
   onKeyPressedInputQtd(idInput: string) {
     let input = document.getElementById(idInput) as HTMLInputElement;
@@ -109,7 +108,7 @@ export class AtenderPedidoComponent {
     // Cria payload
     let payload = {
       id_pedido: parseInt(this.idPedido),
-      observacao_atendimento: this.atenderPedidoForm.get('obsAtendimento')?.value,
+      observacao_atendimento: this.atenderPedidoForm.get('obsAtendimento')?.value.toUpperCase(),
       status_pedido: this.statusPedido,
       objItens: objItens
     }
@@ -118,9 +117,3 @@ export class AtenderPedidoComponent {
     return this.admin.finalizarPedido(payload);
   }
 }
-
-
-// idPedido = req.body.id_pedido;
-// observacao = req.body.observacao_atendimento;
-// statusPedido = req.body.status_pedido;
-// objItens = req.body.objItens;
