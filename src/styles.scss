@@ -90,6 +90,31 @@ article label {
     background-color: $light;
 }
 
+.panel-block .columns {
+    width: 100%;
+    height: 100%;
+}
+
+.panel-block .columns,
+.panel-block .columns .column {
+    padding: 0;
+    margin: 0;
+}
+
+.column.label-column {
+    max-width: 300px;
+    padding-left: .5em !important;
+}
+
+.column.label-column label{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.column.info-column p{
+    font-size: 12px;
+}
+
 .modal-card-head {
     background-color: $grey;
 }
@@ -98,30 +123,3 @@ article label {
     z-index: 1000;
 }
 
-.panel-block .panel-label,
-.panel-block .panel-info {
-    padding: 0;
-    margin: 0;
-}
-
-.panel-block .panel-label {
-    width: 20%;
-    padding-left: 8px;
-}
-
-.panel-block .panel-info {
-    width: 80%;
-}
-
-.panel-info textarea {
-    width: 100%;
-}
-
-.panel-label {
-    height: 100%;
-}
-
-.panel-label .label {
-    font-size: 14px;
-    font-weight: 500;
-}

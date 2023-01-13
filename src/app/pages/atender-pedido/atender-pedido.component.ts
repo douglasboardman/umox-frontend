@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-import { OperacoesService } from 'src/app/services/operacoes.service';
+import { AdminService } from 'src/app/services/admin.service';
 import { dateToView } from 'src/app/utils/comon';
 import { checaInputQtd } from 'src/app/utils/comon';
+import { ResponseData } from 'src/models/ResponseData';
 
 @Component({
   selector: 'app-atender-pedido',
@@ -11,7 +12,7 @@ import { checaInputQtd } from 'src/app/utils/comon';
   styleUrls: ['./atender-pedido.component.scss']
 })
 export class AtenderPedidoComponent {
-  constructor(private route: ActivatedRoute, private operacoes: OperacoesService) {}
+  constructor(private route: ActivatedRoute, private admin: AdminService) {}
 
   atenderPedidoForm!: FormGroup;
   dadosPedido!: any;
@@ -21,6 +22,8 @@ export class AtenderPedidoComponent {
   finalidade!: string;
   qtdsTotais!: number;
   idsItens: Array<string> = [];
+  statusPedido!: string;
+  
   tituloModal!: string;
   msgModal!: string;
   mostrarModal: boolean = false;
@@ -29,10 +32,10 @@ export class AtenderPedidoComponent {
     this.route.params.subscribe(
       (params: Params) => {
         this.idPedido = params['pid'];
-        this.operacoes.consultarPedidoParaAtendimento(String(this.idPedido)).subscribe((response: any) => {
+        this.admin.consultarPedidoParaAtendimento(String(this.idPedido)).subscribe((response: any) => {
           this.dadosPedido = response._data;
           let dados = this.dadosPedido[0];
-          this.solicitante = dados.nome_usuario;
+          this.solicitante = dados.nome_usuario.toUpperCase(); // MODIFICAR A VIEW PARA DISPENSAR ESTA ALTERAÇÃO DE CASO
           this.dataPedido = dateToView(dados.data_pedido);
           this.finalidade = dados.finalidade_pedido;
           this.qtdsTotais = this.dadosPedido.reduce((acc: number, curr: any) => { return acc + parseFloat(curr.qtd_solicitada) }, 0);
@@ -84,6 +87,7 @@ export class AtenderPedidoComponent {
       } else {
         status = 'ATENDIDO PARCIALMENTE';
       }
+      this.statusPedido = status;
       this.msgModal = `Confirma a finalização do atendimento do presente pedido com o status de '${status}'?`
       this.tituloModal = 'Finalizar Atendimento';
       this.mostrarModal = true;
@@ -93,5 +97,31 @@ export class AtenderPedidoComponent {
   cancelarFinalizacaoPedido() {
     this.mostrarModal = false;
   }
-  finalizarPedido() {}
+
+  finalizarPedido() {
+    // Cria objItens
+    let objItens: Array<any> = [];
+    this.idsItens.forEach((id: String) => {
+      let input = document.getElementById('input-qtd-item-' + id) as HTMLInputElement
+      let qtd = parseFloat(input.value);
+      objItens.push({id_item: id, qtd_atendida: qtd});
+    });
+    
+    // Cria payload
+    let payload = {
+      id_pedido: this.idPedido,
+      observacao_atendimento: this.atenderPedidoForm.get('obsAtendimento')?.value,
+      status_pedido: this.statusPedido,
+      objItens: objItens
+    }
+
+    // Finaliza pedido
+    return this.admin.finalizarPedido(payload);
+  }
 }
+
+
+// idPedido = req.body.id_pedido;
+// observacao = req.body.observacao_atendimento;
+// statusPedido = req.body.status_pedido;
+// objItens = req.body.objItens;

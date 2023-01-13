@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ResponseData } from 'src/models/ResponseData';
 import { TopMessage } from 'src/models/TopMessage';
 import { MessengerService } from './messenger.service';
 import { WebRequestService } from './web-request.service';
@@ -22,14 +23,6 @@ export class OperacoesService {
 
   consultarPedidos() {
     return this.webRequestService.get('operacoes/pedidos/consultarPedidos');
-  }
-
-  consultarPedidosParaAtendimento() {
-    return this.webRequestService.get('admin/pedidos/atendimento');
-  }
-
-  consultarPedidoParaAtendimento(idPedido: string) {
-    return this.webRequestService.get('admin/pedidos/atenderPedido/' + idPedido);
   }
 
   cadastrarPedido(payload: Object){

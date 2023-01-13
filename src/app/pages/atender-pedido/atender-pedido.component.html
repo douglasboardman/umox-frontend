@@ -10,72 +10,88 @@
         >
           <p class="panel-heading">Dados do pedido</p>
           <div class="panel-block">
-            <div class="panel-label">
-              <label class="label">ID do Pedido:</label>
+            <div class="columns">
+              <div class="column label-column">
+                <label class="label">ID do Pedido:</label>
+              </div>
+              <div class="column info-column"><p>{{ idPedido }}</p></div>
             </div>
-            <div class="panel-info">{{ idPedido }}</div>
           </div>
           <div class="panel-block">
-            <div class="panel-label">
-              <label class="label">Solicitante:</label>
+            <div class="columns">
+              <div class="column label-column">
+                <label class="label">Solicitante:</label>
+              </div>
+              <div class="column info-column"><p>{{ solicitante }}</p></div>
             </div>
-            <div class="panel-info">{{ solicitante }}</div>
           </div>
           <div class="panel-block">
-            <div class="panel-label">
-              <label class="label">Data do Pedido:</label>
+            <div class="columns">  
+              <div class="column label-column">
+                <label class="label">Data do Pedido:</label>
+              </div>
+              <div class="column info-column"><p>{{ dataPedido }}</p></div>
             </div>
-            <div class="panel-info">{{ dataPedido }}</div>
           </div>
           <div class="panel-block">
-            <div class="panel-label">
-              <label class="label">Finalidade do Pedido:</label>
+            <div class="columns">
+              <div class="column label-column">
+                <label class="label">Finalidade do Pedido:</label>
+              </div>
+              <div class="column info-column"><p>{{ finalidade }}</p></div>
             </div>
-            <div class="panel-info">{{ finalidade }}</div>
           </div>
           <div class="panel-block">
-            <div class="panel-label">
-              <label class="label">Observação de atendimento:</label>
-            </div>
-            <div class="panel-info">
-              <textarea
-                formControlName="obsAtendimento"
-                ngModel minlength="30"
-                class="textarea"
-                [class.is-danger]="obsAtendimento.invalid && formDir.submitted"
-                title="Observação com, no mínimo, 30 caracteres."
-                type="text"
-                placeholder="Observação..."
-                cols="60"
-                rows="3"
-                onkeyup="this.value = this.value.toUpperCase()"
-              ></textarea>
-              <div *ngIf="obsAtendimento.invalid && formDir.submitted">
-                <p
-                  *ngIf="obsAtendimento.errors?.['required']"
-                  class="help is-danger"
-                >
-                  Observação de atendimento não informada!
-                </p>
-                <p
-                  *ngIf="obsAtendimento.errors?.['minlength']"
-                  class="help is-danger"
-                >
-                  Observação deve ter, pelo menos, 30 (trinta) caracteres.
-                </p>
+            <div class="columns"> 
+              <div class="column label-column">
+                <label class="label">Observação de atendimento:</label>
+              </div>
+              <div class="column info-column">
+                <textarea
+                  formControlName="obsAtendimento"
+                  minlength="30"
+                  class="textarea"
+                  [class.is-danger]="obsAtendimento.invalid && formDir.submitted"
+                  title="Observação com, no mínimo, 30 caracteres."
+                  type="text"
+                  placeholder="Observação..."
+                  cols="60"
+                  rows="3"
+                  style="font-size: 12px;"
+                  onkeyup="this.value = this.value.toUpperCase()"
+                ></textarea>
+                <div *ngIf="obsAtendimento.invalid && formDir.submitted">
+                  <p
+                    *ngIf="obsAtendimento.errors?.['required']"
+                    class="help is-danger"
+                  >
+                    Observação de atendimento não informada!
+                  </p>
+                  <p
+                    *ngIf="obsAtendimento.errors?.['minlength']"
+                    class="help is-danger"
+                  >
+                    Observação deve ter, pelo menos, 30 (trinta) caracteres.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
           <div class="panel-block">
-            <div class="flex-div">
-              <button class="button is-danger is-outlined is-fullwidth">
-                Cancelar
-              </button>
-              <input 
-                type="submit"
-                class="button is-success is-outlined is-fullwidth"
-                value="Finalizar atendimento"
-              />
+            <div class="columns">
+              <div class="column" style="min-width: 50%;"></div>
+              <div class="column">
+                <div class="flex-div">
+                  <a routerLink="/admin/pedidos/atendimento" class="button is-danger is-outlined is-fullwidth">
+                    Cancelar
+                  </a>
+                  <input 
+                    type="submit"
+                    class="button is-success is-outlined is-fullwidth"
+                    value="Finalizar atendimento"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </form>

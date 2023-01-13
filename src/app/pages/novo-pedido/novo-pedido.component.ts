@@ -98,7 +98,7 @@ export class NovoPedidoComponent {
 
   enviarPedido() {
     this.mostrarModal = false;
-    this.operacoes.cadastrarPedido(this.payloadPedido)
+    this.operacoes.cadastrarPedido(this.payloadPedido);
   }
 
   cancelarEnvioPedido() {
