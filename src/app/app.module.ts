@@ -22,6 +22,8 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
 import { ConsultarPedidosComponent } from './pages/consultar-pedidos/consultar-pedidos.component';
 import { AtendimentoComponent } from './pages/atendimento/atendimento.component';
 import { AtenderPedidoComponent } from './pages/atender-pedido/atender-pedido.component';
+import { GerenciarEstoqueComponent } from './pages/gerenciar-estoque/gerenciar-estoque.component';
+import { EditarItemComponent } from './pages/editar-item/editar-item.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { AtenderPedidoComponent } from './pages/atender-pedido/atender-pedido.co
     PageHeaderComponent,
     ConsultarPedidosComponent,
     AtendimentoComponent,
-    AtenderPedidoComponent
+    AtenderPedidoComponent,
+    GerenciarEstoqueComponent,
+    EditarItemComponent
   ],
   imports: [
     BrowserModule,
