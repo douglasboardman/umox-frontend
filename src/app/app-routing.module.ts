@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'admin/pedidos/atendimento', component: AtendimentoComponent},
   { path: 'admin/pedidos/atenderPedido/:pid', component: AtenderPedidoComponent},
   { path: 'admin/itens/gerenciarEstoque', component: GerenciarEstoqueComponent},
-  { path: 'admin/itens/editarItem', component: EditarItemComponent}
+  { path: 'admin/itens/editarItem/:id', component: EditarItemComponent}
 ];
 
 @NgModule({

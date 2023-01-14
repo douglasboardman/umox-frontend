@@ -19,11 +19,12 @@
                 <thead>
                     <tr>
                         <th style="width: 5%; text-align: center;">ID</th>
-                        <th style="width: 40%;">DESCRIÇÃO</th>
+                        <th style="width: 35%;">DESCRIÇÃO</th>
                         <th style="width: 25%;">NATUREZA</th>
-                        <th style="width: 15%;">MARCA</th>
-                        <th style="width: 10%;">UN. MEDIDA</th>
-                        <th style="width: 5%; text-align: center;">ESTOQUE</th>
+                        <th style="width: 12%;">MARCA</th>
+                        <th style="width: 8%;">UN. MEDIDA</th>
+                        <th style="width: 8%; text-align: center;">ESTOQUE</th>
+                        <th style="width: 7%; text-align: center;">AÇÕES</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,7 @@
                         <td>{{item.marca_item}}</td>
                         <td>{{item.un_medida_item}}</td>
                         <td style="width: 5%; text-align: center;">{{item.estoque_item}}</td>
+                        <td><a class="btn sm-btn-blue sm-btn-acao" [routerLink]="['/admin/itens/editarItem', item.id_item]">EDITAR</a></td>
                     </tr>
                 </tbody>
             </table>

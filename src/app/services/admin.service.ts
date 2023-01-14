@@ -35,4 +35,8 @@ export class AdminService {
     });
   }
 
+  editarItem(idItem: string) {
+    return this.webRequestService.get('admin/itens/editarItem/' + idItem);
+  }
+
 }

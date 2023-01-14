@@ -109,6 +109,12 @@ article label {
     margin: 0;
 }
 
+.panel-block .column .select,
+.panel-block .column .select select {
+    width: 100%;
+    font-size: 12px;
+}
+
 .column.label-column {
     max-width: 300px;
     padding-left: .5em !important;
@@ -148,3 +154,24 @@ article label {
     height: 30px !important;
 }
 
+.panel.form {
+    width: 50%;
+}
+
+@media (max-width: 1400px) {
+    .panel.form {
+        width: 70%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .panel.form {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .panel.form {
+        width: 100%;
+    }
+}

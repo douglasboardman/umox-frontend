@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
-import { dateToView, formatIdPedido } from 'src/app/utils/comon';
+import { dateToView } from 'src/app/utils/comon';
 import { checaInputQtd } from 'src/app/utils/comon';
 
 @Component({
