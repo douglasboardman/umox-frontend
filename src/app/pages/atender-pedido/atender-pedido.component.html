@@ -2,7 +2,7 @@
   <app-page-header tituloPagina="Atender pedido"></app-page-header>
   <div class="columns">
     <div class="column">
-      <nav class="panel is-info">
+      <nav class="panel is-info form">
         <form
           (ngSubmit)="submit()"
           [formGroup]="atenderPedidoForm"
@@ -78,18 +78,21 @@
           </div>
           <div class="panel-block">
             <div class="columns">
-              <div class="column" style="min-width: 50%;"></div>
-              <div class="column">
-                <div class="flex-div">
-                  <a routerLink="/admin/pedidos/atendimento" class="button is-danger is-outlined is-fullwidth">
-                    Cancelar
-                  </a>
-                  <input 
-                    type="submit"
-                    class="button is-success is-outlined is-fullwidth"
-                    value="Finalizar atendimento"
-                  />
-                </div>
+              <div class="column flex-div-align-right">
+                  <div class="field is-grouped">
+                      <p class="control">
+                        <a routerLink="/admin/pedidos/atendimento" class="button is-danger is-outlined is-fullwidth">
+                          Cancelar
+                        </a>
+                      </p>
+                      <p class="control">
+                        <input 
+                          type="submit"
+                          class="button is-success is-outlined is-fullwidth"
+                          value="Finalizar atendimento"
+                        />
+                      </p>
+                  </div>
               </div>
             </div>
           </div>

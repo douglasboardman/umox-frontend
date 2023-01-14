@@ -32,7 +32,6 @@ export class AtenderPedidoComponent {
       (params: Params) => {
         this.idPedido = params['pid'];
         this.admin.consultarPedidoParaAtendimento(String(this.idPedido)).subscribe((response: any) => {
-          console.log(response);
           this.dadosPedido = response._data;
           let dados = this.dadosPedido[0];
           this.solicitante = dados.nome_usuario.toUpperCase(); // MODIFICAR A VIEW PARA DISPENSAR ESTA ALTERAÇÃO DE CASO

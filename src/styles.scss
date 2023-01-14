@@ -155,12 +155,24 @@ article label {
 }
 
 .panel.form {
-    width: 50%;
+    width: 60%;
+}
+
+.flex-div-align-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 538px) {
+    div.breadcrumbs {
+        display: none;
+    }
 }
 
 @media (max-width: 1400px) {
     .panel.form {
         width: 70%;
+        min-width: 330px;
     }
 }
 

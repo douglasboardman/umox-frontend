@@ -54,7 +54,6 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
     if(!this.loginForm.invalid) {
       this.authService.login(email, senha).subscribe((response: any) => {
-        console.log(response);
       })
     }
   }

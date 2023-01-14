@@ -35,8 +35,23 @@ export class AdminService {
     });
   }
 
-  editarItem(idItem: string) {
+  abrirEdicaoItem(idItem: string) {
     return this.webRequestService.get('admin/itens/editarItem/' + idItem);
+  }
+
+  concluirEdicaoItem(payload: any) {
+    return this.webRequestService.post('admin/itens/editarItem', payload).subscribe((res: any) => {
+        
+      if(!res.error) {
+        let msg = new TopMessage(
+          'Item atualizado com sucesso!',
+          'is-success',
+          'gerenciarEstoque'
+        )
+        this.messenger.sendMessage(msg);
+        this.router.navigate(['admin/itens/gerenciarEstoque']);
+      };
+    })
   }
 
 }

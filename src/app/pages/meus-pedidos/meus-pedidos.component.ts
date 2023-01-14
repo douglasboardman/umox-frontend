@@ -16,14 +16,12 @@ export class MeusPedidosComponent {
 
   ngOnInit(){
     this.operacoes.consultarMeusPedidos().subscribe((response: any) => {
-      console.log(response);
       this.dadosPedidos = response._data;
     })
   }
 
   mostrarDetalhesPedido(id: number){
     this.detalharPedido = id;
-    console.log(this.detalharPedido);
   }
 
   ocultarDetalhesPedido() {

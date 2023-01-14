@@ -94,7 +94,6 @@ export class NovoPedidoComponent {
       this.msgModal = 'Confirma o envio do pedido para o setor responsável pelo atendimento?';
       this.mostrarModal = false;
       this.mostrarModal = true;
-      return console.log('Form submitted');
     }
   }
 

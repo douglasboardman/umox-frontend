@@ -21,7 +21,6 @@ export class AuthService {
       tap((res: HttpResponse<any>) => {
         let usuario = res.body;
         this.setSession(usuario.id, String(res.headers.get('x-access-token')));
-        console.log('Logado');
         this.auth = 'logged-in';
         this.router.navigateByUrl('/dashboard');
       })
