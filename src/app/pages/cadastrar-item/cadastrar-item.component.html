@@ -1,0 +1,82 @@
+<app-frame>
+    <app-page-header tituloPagina="Cadastrar Item"></app-page-header>
+    <article class="panel is-info form">
+        <p class="panel-heading">
+            Dados do Item
+        </p>
+        <form (ngSubmit)="submit()" [formGroup]="editarItemForm" #formDir="ngForm">
+        <div class="panel-block">
+            <div class="columns">
+                <div class="column label-column" style="max-width: 180px;">
+                    <label>Descrição:</label>
+                </div>
+                <div class="column">
+                    <input class="input uppercase-field" formControlName="descricao_item">
+                </div>
+            </div>
+        </div>
+        <div class="panel-block">
+            <div class="columns">
+                <div class="column label-column" style="max-width: 180px;">
+                    <label>Natureza:</label>
+                </div>
+                <div class="column">
+                    <div class="select">
+                        <select class="uppercase-field" formControlName="id_natureza">
+                          <option *ngFor="let natureza of listaNaturezas" [value]="natureza.id_natureza">{{ natureza.natureza }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-block">
+            <div class="columns">
+                <div class="column label-column" style="max-width: 180px;">
+                    <label>Marca:</label>
+                </div>
+                <div class="column">
+                    <input class="input uppercase-field" formControlName="marca_item">
+                </div>
+            </div>
+        </div>
+        <div class="panel-block">
+            <div class="columns">
+                <div class="column label-column" style="max-width: 180px;">
+                    <label>Unidade de Medida:</label>
+                </div>
+                <div class="column">
+                    <div class="select">
+                        <select class="uppercase-field" formControlName="un_medida_item">
+                          <option *ngFor="let un of unidades" [value]="un">{{ un }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-block">
+            <div class="columns">
+                <div class="column label-column" style="max-width: 180px;">
+                    <label>Estoque:</label>
+                </div>
+                <div class="column">
+                    <input type="number" min="0" max="10000" class="input uppercase-field" formControlName="estoque_item">
+                </div>
+            </div>
+        </div>
+        <div class="panel-block">
+            <div class="columns">
+                <div class="column flex-div-align-right">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <a routerLink="/admin/itens/gerenciarEstoque" class="button is-danger is-outlined" style="width: 100%;">Cancelar</a>
+                        </p>
+                        <p class="control">
+                            <input type="submit" class="button is-outlined is-success" [disabled]="!dadosAlterados" style="width: 100%;" value="Salvar Alterações">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    </article>
+</app-frame>
