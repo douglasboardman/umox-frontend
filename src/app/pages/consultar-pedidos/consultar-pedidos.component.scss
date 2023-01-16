@@ -5,3 +5,9 @@
 .input, .control span {
     font-size: 13.5px;
 }
+
+.label-column {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}

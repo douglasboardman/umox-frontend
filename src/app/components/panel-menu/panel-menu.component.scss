@@ -1,0 +1,95 @@
+@import '../../../styles.scss';
+
+.middle-frame {
+    width: 70%;
+    margin: 100px auto 0 auto;
+}
+
+.middle-frame a {
+    color: unset;
+    width: 100%;
+}
+
+.middle-frame > .columns > .column {
+    width: 50%;
+}
+
+.panel-menu {
+    width: 100%;
+    height: 150px;
+    border-radius: 5px;
+    background-color: $light;
+    transition: all cubic-bezier(0.215, 0.610, 0.355, 1) .3s
+}
+
+.panel-menu:hover {
+    transform: scale(1.05);
+    box-shadow: $wrapper-shadow;
+    color: $link;
+    //cursor: pointer;
+}
+
+.panel-menu-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 30%;
+    font-size: 80px;
+    padding: 30px;
+}
+
+.panel-menu-content {
+    min-width: 70%;
+    padding: 30px 30px 30px 0;
+}
+
+.panel-menu-content span {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.panel-menu-content p {
+    font-weight: 300;
+}
+
+@media (max-width: 1800px) {
+    .middle-frame {
+        width: 80%;
+    }
+}
+
+@media (max-width: 1400px) {
+    .middle-frame {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .middle-frame > .columns {
+        width: 100%;
+        display: block;
+    }
+
+    .panel-menu {
+        height: unset;
+    }
+
+    .middle-frame > .columns > .column {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 750px) {
+    .panel-menu {
+        text-align: center;
+    }
+
+    .panel-menu-icon {
+        padding-bottom: 0;
+    }
+    
+    .panel-menu-content {
+        padding: 20px;
+    }
+}

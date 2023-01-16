@@ -4,46 +4,48 @@
     <div class="column">
       <article class="panel is-primary">
         <p class="panel-heading">Consultas</p>
-        <div class="columns">
-          <div class="column">
             <div class="panel-block">
-              <label for="txtBuscarPorItem">Buscar por item</label>
-              <p class="control has-icons-left">
-                <input
-                  id="txtBuscarPorItem"
-                  [(ngModel)]="strBuscarPorItem"
-                  (ngModelChange)="strBuscarPorItem = $event.toUpperCase()"
-                  (keyup)="onKeyUpTxtBuscarPorItem()"
-                  class="input is-primary"
-                  type="text"
-                  placeholder="Buscar por item"
-                />
-                <span class="icon is-left">
-                  <i class="bx bx-search" aria-hidden="true"></i>
-                </span>
-              </p>
+              <div class="columns">
+                <div class="column label-column">
+                  <label for="txtBuscarPorItem">Buscar por item:</label>
+                </div>
+                <div class="column" style="min-width: 40%;">
+                  <p class="control has-icons-left">
+                    <input
+                      id="txtBuscarPorItem"
+                      [(ngModel)]="strBuscarPorItem"
+                      (ngModelChange)="strBuscarPorItem = $event.toUpperCase()"
+                      (keyup)="onKeyUpTxtBuscarPorItem()"
+                      class="input is-primary"
+                      type="text"
+                      placeholder="Buscar por item"
+                    />
+                    <span class="icon is-left">
+                      <i class="bx bx-search" aria-hidden="true"></i>
+                    </span>
+                  </p>
+                </div>
+                <div class="column label-column">
+                  <label for="txtBuscarPorUsuario">Buscar por usuário:</label>
+                </div>
+                <div class="column" style="min-width: 40%;">
+                  <p class="control has-icons-left">
+                    <input
+                      id="txtBuscarPorUsuario"
+                      [ngModel]="strBuscarPorUsuario"
+                      (ngModelChange)="strBuscarPorUsuario = $event.toUpperCase()"
+                      (keyup)="onKeyUpTxtBuscarPorUsuario()"
+                      class="input is-primary"
+                      type="text"
+                      placeholder="Buscar por usuário"
+                    />
+                    <span class="icon is-left">
+                      <i class="bx bx-search" aria-hidden="true"></i>
+                    </span>
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="column">
-            <div class="panel-block">
-              <label for="txtBuscarPorUsuario">Buscar por usuário</label>
-              <p class="control has-icons-left">
-                <input
-                  id="txtBuscarPorUsuario"
-                  [ngModel]="strBuscarPorUsuario"
-                  (ngModelChange)="strBuscarPorUsuario = $event.toUpperCase()"
-                  (keyup)="onKeyUpTxtBuscarPorUsuario()"
-                  class="input is-primary"
-                  type="text"
-                  placeholder="Buscar por usuário"
-                />
-                <span class="icon is-left">
-                  <i class="bx bx-search" aria-hidden="true"></i>
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
       </article>
     </div>
   </div>

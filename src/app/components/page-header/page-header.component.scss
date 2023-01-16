@@ -5,15 +5,16 @@
 }
 
 .page-header h1.page-title {
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 700;
-    margin: auto 0 auto 0;
+    margin: auto 0 10px 0;
 }
 
 .breadcrumbs {
     display: flex;
     justify-content: flex-start;
     font-size: 14px;
+    margin-left: 5px;
 }
 
 .breadcrumbs span {

@@ -11,6 +11,7 @@ import { GerenciarEstoqueComponent } from './pages/gerenciar-estoque/gerenciar-e
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MeusPedidosComponent } from './pages/meus-pedidos/meus-pedidos.component';
 import { NovoPedidoComponent } from './pages/novo-pedido/novo-pedido.component';
+import { OperacoesComponent } from './pages/operacoes/operacoes.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'admin/pedidos/atenderPedido/:pid', component: AtenderPedidoComponent},
   { path: 'admin/itens/gerenciarEstoque', component: GerenciarEstoqueComponent},
   { path: 'admin/itens/editarItem/:id', component: EditarItemComponent},
-  { path: 'admin/itens/cadastrarItem', component: CadastrarItemComponent}
+  { path: 'admin/itens/cadastrarItem', component: CadastrarItemComponent},
+  { path: 'operacoes', component: OperacoesComponent}
 ];
 
 @NgModule({

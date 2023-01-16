@@ -25,6 +25,8 @@ import { AtenderPedidoComponent } from './pages/atender-pedido/atender-pedido.co
 import { GerenciarEstoqueComponent } from './pages/gerenciar-estoque/gerenciar-estoque.component';
 import { EditarItemComponent } from './pages/editar-item/editar-item.component';
 import { CadastrarItemComponent } from './pages/cadastrar-item/cadastrar-item.component';
+import { OperacoesComponent } from './pages/operacoes/operacoes.component';
+import { PanelMenuComponent } from './components/panel-menu/panel-menu.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { CadastrarItemComponent } from './pages/cadastrar-item/cadastrar-item.co
     AtenderPedidoComponent,
     GerenciarEstoqueComponent,
     EditarItemComponent,
-    CadastrarItemComponent
+    CadastrarItemComponent,
+    OperacoesComponent,
+    PanelMenuComponent
   ],
   imports: [
     BrowserModule,
