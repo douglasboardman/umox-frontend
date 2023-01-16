@@ -1,5 +1,11 @@
 <app-frame>
     <app-page-header tituloPagina="Gerenciar estoque"></app-page-header>
+    <a routerLink="/admin/itens/cadastrarItem" id="btnNovoItem" class="button is-success">
+        <span class="icon is-small">
+            <i class='bx bx-plus'></i>
+        </span>
+        <span>Criar novo item</span>
+    </a>
     <div class="columns">
         <div class="column">
             <article class="panel is-primary">
@@ -35,18 +41,18 @@
                         <td>{{item.marca_item}}</td>
                         <td>{{item.un_medida_item}}</td>
                         <td style="width: 5%; text-align: center;">{{item.estoque_item}}</td>
-                        <td><a class="btn sm-btn-blue sm-btn-acao" [routerLink]="['/admin/itens/editarItem', item.id_item]">EDITAR</a></td>
+                        <td>
+                            <a [routerLink]="['/admin/itens/editarItem', item.id_item]" class="button is-info is-small">
+                                <span class="icon is-small">
+                                    <i class='bx bx-edit' ></i>
+                                </span>
+                                <span>Editar</span>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <div class="white-bottom-gradient"></div>
-        <a routerLink="/admin/itens/cadastrarItem" id="btnNovoItem" class="button is-success">
-            <span class="icon is-small">
-                <i class='bx bx-plus'></i>
-            </span>
-            <span>Criar novo item</span>
-        </a>
     <app-notification [class]="notification.msgClass" [message]="notification.message"></app-notification>
 </app-frame>

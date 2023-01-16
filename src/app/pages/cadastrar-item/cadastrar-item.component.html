@@ -4,7 +4,7 @@
         <p class="panel-heading">
             Dados do Item
         </p>
-        <form (ngSubmit)="submit()" [formGroup]="editarItemForm" #formDir="ngForm">
+        <form (ngSubmit)="submit()" [formGroup]="novoItemForm" #formDir="ngForm">
         <div class="panel-block">
             <div class="columns">
                 <div class="column label-column" style="max-width: 180px;">
@@ -71,7 +71,7 @@
                             <a routerLink="/admin/itens/gerenciarEstoque" class="button is-danger is-outlined" style="width: 100%;">Cancelar</a>
                         </p>
                         <p class="control">
-                            <input type="submit" class="button is-outlined is-success" [disabled]="!dadosAlterados" style="width: 100%;" value="Salvar Alterações">
+                            <input type="submit" class="button is-outlined is-success" [disabled]="novoItemForm.invalid" style="width: 100%;" value="Salvar Alterações">
                         </p>
                     </div>
                 </div>

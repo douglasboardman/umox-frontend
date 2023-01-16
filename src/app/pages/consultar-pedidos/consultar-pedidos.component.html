@@ -70,20 +70,24 @@
               <td>{{ dadosPedido.data_pedido }}</td>
               <td>{{ dadosPedido.data_atendimento }}</td>
               <td>{{ dadosPedido.status_pedido }}</td>
-              <td>
+              <td style="text-align: center;">
                 <button
                   *ngIf="detalharPedido != dadosPedido.id_pedido"
                   (click)="mostrarDetalhesPedido(dadosPedido.id_pedido)"
-                  class="btn sm-btn-green"
+                  class="button is-small is-success"
                 >
+                <span class="icon is-small">
                   <i class="bx bx-show icon"></i>
+                </span>
                 </button>
                 <button
                   *ngIf="detalharPedido == dadosPedido.id_pedido"
                   (click)="ocultarDetalhesPedido()"
-                  class="btn sm-btn-red"
+                  class="button is-small is-danger"
                 >
+                <span class="icon is-small">
                   <i class="bx bx-hide icon"></i>
+                </span>
                 </button>
               </td>
             </tr>

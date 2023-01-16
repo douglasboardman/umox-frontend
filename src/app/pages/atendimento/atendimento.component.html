@@ -24,18 +24,27 @@
                         <button
                           *ngIf="detalharPedido != dadosPedido.id_pedido"
                           (click)="mostrarDetalhesPedido(dadosPedido.id_pedido)"
-                          class="btn sm-btn-green"
+                          class="button is-small is-success"
                         >
+                        <span class="icon is-small">
                           <i class="bx bx-show icon"></i>
+                        </span>
                         </button>
                         <button
                           *ngIf="detalharPedido == dadosPedido.id_pedido"
                           (click)="ocultarDetalhesPedido()"
-                          class="btn sm-btn-red"
+                          class="button is-small is-danger"
                         >
+                        <span class="icon is-small">
                           <i class="bx bx-hide icon"></i>
+                        </span>
                         </button>
-                        <a class="btn sm-btn-blue sm-btn-acao" [routerLink]="['/admin/pedidos/atenderPedido', dadosPedido.id_pedido]">ATENDER</a>
+                        <a class="button is-info is-small" [routerLink]="['/admin/pedidos/atenderPedido', dadosPedido.id_pedido]">
+                          <span class="icon is-small">
+                            <i class='bx bx-package' ></i>
+                          </span>
+                          <span>ATENDER</span>
+                        </a>
                     </div>
                 </td>
               </tr>

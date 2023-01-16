@@ -1,5 +1,7 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
+export const unidades = [ "UNIDADE","PACOTE","CAIXA","KG","GR","L","ML","M" ]
+
 export function matchValidator(
   matchTo: string,
   reverse?: boolean

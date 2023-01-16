@@ -35,6 +35,10 @@ export class AdminService {
     });
   }
 
+  listarNaturezas() {
+    return this.webRequestService.get('admin/itens/listarNaturezas');
+  }
+
   abrirEdicaoItem(idItem: string) {
     return this.webRequestService.get('admin/itens/editarItem/' + idItem);
   }
@@ -45,6 +49,21 @@ export class AdminService {
       if(!res.error) {
         let msg = new TopMessage(
           'Item atualizado com sucesso!',
+          'is-success',
+          'gerenciarEstoque'
+        )
+        this.messenger.sendMessage(msg);
+        this.router.navigate(['admin/itens/gerenciarEstoque']);
+      };
+    })
+  }
+
+  cadastrarItem(payload: any) {
+    return this.webRequestService.post('admin/itens/cadastrarItem', payload).subscribe((res: any) => {
+        
+      if(!res.error) {
+        let msg = new TopMessage(
+          'Item cadastrado com sucesso!',
           'is-success',
           'gerenciarEstoque'
         )

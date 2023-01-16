@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Route } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
+import { unidades } from 'src/app/utils/comon';
 
 @Component({
   selector: 'app-editar-item',
@@ -11,7 +12,7 @@ import { AdminService } from 'src/app/services/admin.service';
 export class EditarItemComponent {
   constructor(private admin: AdminService, private route: ActivatedRoute){}
 
-  unidades = [ "UNIDADE","PACOTE","CAIXA","KG","GR","L","ML","M" ]; // tenho que arrumar isso. Colocar em um lugar mais adequado
+  unidades = unidades;
   idItem!: string;
   dadosItem!: any;
   listaNaturezas!: any;
@@ -22,11 +23,11 @@ export class EditarItemComponent {
 
   ngOnInit() {
     this.editarItemForm = new FormGroup({
-      descricao_item: new FormControl('', Validators.required),
+      descricao_item: new FormControl('', Validators.compose([Validators.required, Validators.minLength(10)])),
       id_natureza: new FormControl('', Validators.required),
       marca_item: new FormControl('', Validators.required),
       un_medida_item: new FormControl('', Validators.required),
-      estoque_item: new FormControl('', Validators.required)
+      estoque_item: new FormControl('', Validators.compose([Validators.required, Validators.min(1)]))
     });
 
     this.route.params.subscribe(
@@ -47,6 +48,8 @@ export class EditarItemComponent {
     this.editarItemForm.valueChanges.subscribe(objDados => {
         this.confereAlteracoes(objDados);
         this.payload = objDados;
+        this.payload.descricao_item = this.payload.descricao_item.toUpperCase();
+        this.payload.marca_item = this.payload.marca_item.toUpperCase();
     });
   }
 
