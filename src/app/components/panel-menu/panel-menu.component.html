@@ -1,7 +1,7 @@
 <div class="middle-frame">
     <div *ngFor="let pair of menuPairs" class="columns">
       <div class="column">
-        <a>
+        <a [routerLink]="pair._left._menuLink">
           <div class="columns panel-menu">
             <div class="column panel-menu-icon">
               <i [ngClass]="pair._left._iconClass" class="bx"></i>
@@ -15,8 +15,9 @@
           </div>
         </a>
       </div>
-      <div class="column">
-        <a>
+      <div *ngIf="pair._right._menuTitle == ''" class="column"></div>
+      <div *ngIf="pair._right._menuTitle != ''" class="column">
+        <a [routerLink]="pair._right._menuLink">
           <div class="columns panel-menu">
             <div class="column panel-menu-icon">
               <i [ngClass]="pair._right._iconClass" class="bx"></i>

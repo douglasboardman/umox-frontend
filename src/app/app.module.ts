@@ -25,8 +25,10 @@ import { AtenderPedidoComponent } from './pages/atender-pedido/atender-pedido.co
 import { GerenciarEstoqueComponent } from './pages/gerenciar-estoque/gerenciar-estoque.component';
 import { EditarItemComponent } from './pages/editar-item/editar-item.component';
 import { CadastrarItemComponent } from './pages/cadastrar-item/cadastrar-item.component';
-import { OperacoesComponent } from './pages/operacoes/operacoes.component';
+import { OperacoesMenuComponent } from './pages/operacoes-menu/operacoes-menu.component';
 import { PanelMenuComponent } from './components/panel-menu/panel-menu.component';
+import { AdminMenuComponent } from './pages/admin-menu/admin-menu.component';
+import { OperacoesPedidosMenuComponent } from './pages/operacoes-pedidos-menu/operacoes-pedidos-menu.component';
 
 @NgModule({
   declarations: [
@@ -50,8 +52,10 @@ import { PanelMenuComponent } from './components/panel-menu/panel-menu.component
     GerenciarEstoqueComponent,
     EditarItemComponent,
     CadastrarItemComponent,
-    OperacoesComponent,
-    PanelMenuComponent
+    OperacoesMenuComponent,
+    PanelMenuComponent,
+    AdminMenuComponent,
+    OperacoesPedidosMenuComponent
   ],
   imports: [
     BrowserModule,

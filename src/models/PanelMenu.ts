@@ -2,11 +2,13 @@ export class PanelMenu {
   public _menuTitle: string;
   public _menuDescription: string;
   public _iconClass: string;
+  public _menuLink: string;
 
-  constructor(menuTitle: string, menuDescription: string, iconClass: string) {
+  constructor(menuTitle: string, menuDescription: string, iconClass: string, menuLink: string) {
     this._menuTitle = menuTitle;
     this._menuDescription = menuDescription;
     this._iconClass = iconClass;
+    this._menuLink = menuLink;
   }
 
   public get menuTitle(): string {
@@ -38,6 +40,11 @@ export class PanelMenu {
 export class PanelMenuPair {
   public _left!: PanelMenu;
   public _right!: PanelMenu;
+
+  constructor(left: PanelMenu, right: PanelMenu) {
+    this._left = left;
+    this._right = right;
+  }
 
   public get left(): PanelMenu {
     return this._left;

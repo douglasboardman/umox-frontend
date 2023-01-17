@@ -1,34 +1,5 @@
 import { Left } from '../app/utils/comon';
-
-class AppStructMember {
-    route: string;
-    link: string;
-    pageName: string;
-    parent: string;
-    members: any[];
-
-    constructor(route: string, link: string, pageName: string, parent: string, members: any[]) {
-        this.route = route;
-        this.link = link;
-        this.pageName = pageName;
-        this.parent = parent;
-        this.members = members;
-    }
-}
-
-class AppStruct {
-    route: string;
-    link: string;
-    pageName: string;
-    members: AppStructMember[];
-
-    constructor(route: string, link: string, pageName: string, members: AppStructMember[]) {
-        this.route = route;
-        this.link = link;
-        this.pageName = pageName;
-        this.members = members;
-    }
-}
+import { AppStructLevel2, AppStructLevel3 } from './AppStruct';
 
 class Breadcrumb {
     pageName: string;
@@ -40,85 +11,6 @@ class Breadcrumb {
     }
   }
 
-const appStruct = new AppStruct(
-    'Home',
-    '/home',
-    'Home',
-    [
-        new AppStructMember(
-            'operações',
-            '/operacoes',
-            'operações',
-            'home',
-            [
-                new AppStructMember(
-                    'itens',
-                    '/operacoes/itens',
-                    'itens',
-                    'operações',
-                    ['consultar estoque'],
-                ),
-                new AppStructMember(
-                    'pedidos',
-                    '/operacoes/pedidos',
-                    'pedidos',
-                    'operações',
-                    ['consultar pedidos', 'meus pedidos', 'cadastrar pedido'],
-                ),
-            ],
-        ),
-        new AppStructMember(
-            'administração',
-            '/admin',
-            'administração',
-            'home',
-            [
-                new AppStructMember(
-                    'itens',
-                    '/admin/itens',
-                    'estoque',
-                    'administração',
-                    ['editar item', 'cadastrar item', 'gerenciar estoque'],
-                ),
-                new AppStructMember(
-                    'pedidos',
-                    '/admin/pedidos',
-                    'gerenciar Pedidos',
-                    'administração',
-                    ['atendimento', 'atender pedido'],
-                ),
-                new AppStructMember(
-                    'usuários',
-                    '/admin/usuarios',
-                    'usuários',
-                    'administração',
-                    ['editar usuário'],
-                ),
-            ],
-        ),
-    ],
-);
-
-
-const AppStructLevel2 = (): AppStructMember[] => {
-    let level2 = appStruct.members.map((member: AppStructMember) => {
-      return { route: member.route, link: member.link, pageName: member.pageName, parent: member.parent, members: member.members };
-    });
-    return level2;
-};
-  
- const AppStructLevel3 = (): AppStructMember[] => {
-    let l2 = AppStructLevel2();
-    let level3 = l2.reduce((accum: AppStructMember[], { route, members }: AppStructMember) => {
-      let parent = route;
-      members.forEach((m: any) => {
-        accum.push({ route: m.route, link: m.link, pageName: m.pageName, parent: parent, members: m.members });
-      });
-      return accum;
-    }, []);
-  
-    return level3;
-};
 
 function priMaiuscula(palavra: string): string {
     let pLetra = Left(palavra, 1);

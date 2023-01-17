@@ -13,14 +13,15 @@ export class PanelMenuComponent {
   ngOnInit() {
     let j = 0;
     for(let i = 0; i < this.menus.length; i++) {
-      if(i % 2 != 0) {
-        this.menuPairs[j] = new PanelMenuPair();
-        this.menuPairs[j]._left = this.menus[i];
-      } else {
-        this.menuPairs[j]._right = this.menus[i];
+      if(i % 2 == 0) {
+        if ((i + 1) < this.menus.length){
+          this.menuPairs[j] = new PanelMenuPair(this.menus[i], this.menus[i+1]);
+        } else {
+          this.menuPairs[j] = new PanelMenuPair(this.menus[i], new PanelMenu('','','',''));
+        }
         j++;
-      }
-    }
+      } 
+    }   
   }
   
 }

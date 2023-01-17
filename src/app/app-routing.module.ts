@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminMenuComponent } from './pages/admin-menu/admin-menu.component';
 import { AtenderPedidoComponent } from './pages/atender-pedido/atender-pedido.component';
 import { AtendimentoComponent } from './pages/atendimento/atendimento.component';
 import { CadastrarItemComponent } from './pages/cadastrar-item/cadastrar-item.component';
@@ -11,15 +12,18 @@ import { GerenciarEstoqueComponent } from './pages/gerenciar-estoque/gerenciar-e
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MeusPedidosComponent } from './pages/meus-pedidos/meus-pedidos.component';
 import { NovoPedidoComponent } from './pages/novo-pedido/novo-pedido.component';
-import { OperacoesComponent } from './pages/operacoes/operacoes.component';
+import { OperacoesMenuComponent } from './pages/operacoes-menu/operacoes-menu.component';
+import { OperacoesPedidosMenuComponent } from './pages/operacoes-pedidos-menu/operacoes-pedidos-menu.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'home', redirectTo: 'dashboard', pathMatch: 'full'},
   { path: 'login', component: LoginPageComponent},
   { path: 'register', component: RegisterPageComponent},
   { path: 'dashboard', component: DashboardComponent},
   { path: 'operacoes/itens/consultarEstoque', component: ConsultarEstoqueComponent},
+  { path: 'operacoes/itens', redirectTo: 'operacoes/itens/consultarEstoque', pathMatch: 'full'},
   { path: 'operacoes/pedidos/novoPedido', component: NovoPedidoComponent},
   { path: 'operacoes/pedidos/meusPedidos', component: MeusPedidosComponent},
   { path: 'operacoes/pedidos/consultarPedidos', component: ConsultarPedidosComponent},
@@ -28,7 +32,9 @@ const routes: Routes = [
   { path: 'admin/itens/gerenciarEstoque', component: GerenciarEstoqueComponent},
   { path: 'admin/itens/editarItem/:id', component: EditarItemComponent},
   { path: 'admin/itens/cadastrarItem', component: CadastrarItemComponent},
-  { path: 'operacoes', component: OperacoesComponent}
+  { path: 'operacoes', component: OperacoesMenuComponent},
+  { path: 'admin', component: AdminMenuComponent},
+  { path: 'operacoes/pedidos', component: OperacoesPedidosMenuComponent}
 ];
 
 @NgModule({
