@@ -1,16 +1,15 @@
 <div class="middle-frame">
-    <div class="columns">
+    <div *ngFor="let pair of menuPairs" class="columns">
       <div class="column">
         <a>
           <div class="columns panel-menu">
             <div class="column panel-menu-icon">
-              <i class="bx bxs-inbox"></i>
+              <i [ngClass]="pair._left._iconClass" class="bx"></i>
             </div>
             <div class="column panel-menu-content">
-              <span>Pedidos</span>
+              <span>{{ pair._left._menuTitle }}</span>
               <p>
-                Fazer pedidos e consultar pedidos de material realizados na
-                instituição.
+                {{ pair._left._menuDescription }}
               </p>
             </div>
           </div>
@@ -20,11 +19,11 @@
         <a>
           <div class="columns panel-menu">
             <div class="column panel-menu-icon">
-              <i class="bx bxs-component"></i>
+              <i [ngClass]="pair._right._iconClass" class="bx"></i>
             </div>
             <div class="column panel-menu-content">
-              <span>Itens</span>
-              <p>Consultar itens em estoque no almoxarifado do Campus</p>
+              <span>{{ pair._right._menuTitle }}</span>
+              <p>{{ pair._right._menuDescription }}</p>
             </div>
           </div>
         </a>

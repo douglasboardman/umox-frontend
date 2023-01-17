@@ -34,3 +34,25 @@ export class PanelMenu {
   }
   
 }
+
+export class PanelMenuPair {
+  public _left!: PanelMenu;
+  public _right!: PanelMenu;
+
+  public get left(): PanelMenu {
+    return this._left;
+  }
+
+  public get right(): PanelMenu {
+    return this._right;
+  }
+
+
+  public set left(left: PanelMenu) {
+    this._left = left;
+  }
+
+  public set right(right: PanelMenu) {
+    this._right = right;
+  }
+}
