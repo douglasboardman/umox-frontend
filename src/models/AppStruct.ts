@@ -134,7 +134,7 @@ export const AppMenuGroups = {
         new PanelMenu(
             'Consultar Pedidos',
             'Consultar pedidos de material realizados no campus',
-            'bxs-search-alt',
+            'bx-search-alt',
             'consultarPedidos'
         ),
         new PanelMenu(

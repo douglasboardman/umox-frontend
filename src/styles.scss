@@ -154,10 +154,6 @@ article label {
     height: 30px !important;
 }
 
-.panel.form {
-    width: 60%;
-}
-
 .flex-div-align-right {
     display: flex;
     justify-content: flex-end;
@@ -171,29 +167,8 @@ article label {
     margin: auto;
 }
 
-
-
 @media (max-width: 538px) {
     div.breadcrumbs {
         display: none;
-    }
-}
-
-@media (max-width: 1400px) {
-    .panel.form {
-        width: 70%;
-        min-width: 350px;
-    }
-}
-
-@media (max-width: 1200px) {
-    .panel.form {
-        width: 90%;
-    }
-}
-
-@media (max-width: 1000px) {
-    .panel.form {
-        width: 100%;
     }
 }
