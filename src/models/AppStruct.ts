@@ -46,14 +46,14 @@ const appStruct = new AppStruct(
                     '/operacoes/itens',
                     'itens',
                     'operações',
-                    ['consultar estoque'],
+                    ['consultar estoque']
                 ),
                 new AppStructMember(
                     'pedidos',
                     '/operacoes/pedidos',
                     'pedidos',
                     'operações',
-                    ['consultar pedidos', 'meus pedidos', 'cadastrar pedido'],
+                    ['consultar pedidos', 'meus pedidos', 'cadastrar pedido']
                 ),
             ],
         ),
@@ -65,24 +65,24 @@ const appStruct = new AppStruct(
             [
                 new AppStructMember(
                     'itens',
-                    '/admin/itens',
+                    '/admin/itens/gerenciarEstoque',
                     'estoque',
                     'administração',
-                    ['editar item', 'cadastrar item', 'gerenciar estoque'],
+                    ['editar item', 'cadastrar item', 'gerenciar estoque']
                 ),
                 new AppStructMember(
                     'pedidos',
                     '/admin/pedidos',
                     'gerenciar pedidos',
                     'administração',
-                    ['atendimento', 'atender pedido'],
+                    ['atendimento', 'atender pedido']
                 ),
                 new AppStructMember(
                     'usuários',
                     '/admin/usuarios',
-                    'usuários',
+                    'gerenciar usuários',
                     'administração',
-                    ['editar usuário'],
+                    ['editar usuário']
                 ),
             ],
         ),
@@ -155,7 +155,7 @@ export const AppMenuGroups = {
             'Itens',
             'Consultar, alterar e adicionar novos itens ao almoxarifado do campus',
             'bxs-component',
-            'itens'
+            'itens/gerenciarEstoque'
         ),
         new PanelMenu(
             'Usuarios',

@@ -1,0 +1,68 @@
+<app-frame>
+    <app-page-header tituloPagina="Editar usuário"></app-page-header>
+    <article class="panel is-info form">
+        <p class="panel-heading">
+            Dados do Usuário
+        </p>
+        <form (ngSubmit)="submit()" [formGroup]="editarUsuarioForm" #formDir="ngForm">
+        <div class="panel-block">
+            <div class="columns">
+                <div class="column label-column" style="max-width: 180px;">
+                    <label>Nome:</label>
+                </div>
+                <div class="column">
+                    <input class="input uppercase-field" formControlName="nome_usuario">
+                </div>
+            </div>
+        </div>
+        <div class="panel-block">
+            <div class="columns">
+                <div class="column label-column" style="max-width: 180px;">
+                    <label>Email:</label>
+                </div>
+                <div class="column">
+                    <input class="input uppercase-field" formControlName="email_usuario">
+                </div>
+            </div>
+        </div>
+        <div class="panel-block">
+            <div class="columns">
+                <div class="column label-column" style="max-width: 180px;">
+                    <label>Perfil:</label>
+                </div>
+                <div class="column">
+                    <div class="select">
+                        <select class="uppercase-field" formControlName="perfil_usuario">
+                          <option *ngFor="let perfil of listaPerfis" [value]="perfil.perfil">{{ perfil.perfil }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-block">
+            <div class="columns">
+                <div class="column label-column" style="max-width: 180px;">
+                    <label>Acesso:</label>
+                </div>
+                <div class="column">
+                    <input class="input uppercase-field" formControlName="acesso_permitido">
+                </div>
+            </div>
+        </div>
+        <div class="panel-block">
+            <div class="columns">
+                <div class="column flex-div-align-right">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <a routerLink="/admin/usuarios" class="button is-danger is-outlined" style="width: 100%;">Cancelar</a>
+                        </p>
+                        <p class="control">
+                            <input type="submit" class="button is-outlined is-success" [disabled]="!dadosAlterados" style="width: 100%;" value="Salvar Alterações">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    </article>
+</app-frame>

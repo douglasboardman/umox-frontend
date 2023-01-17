@@ -73,4 +73,12 @@ export class AdminService {
     })
   }
 
+  listarUsuarios() {
+    return this.webRequestService.get('admin/usuarios');
+  }
+
+  abrirEdicaoUsuario(idUsuario: string) {
+    return this.webRequestService.get('admin/usuarios/editarUsuario/' + idUsuario);
+  }
+
 }

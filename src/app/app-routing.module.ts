@@ -9,6 +9,7 @@ import { ConsultarEstoqueComponent } from './pages/consultar-estoque/consultar-e
 import { ConsultarPedidosComponent } from './pages/consultar-pedidos/consultar-pedidos.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditarItemComponent } from './pages/editar-item/editar-item.component';
+import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 import { GerenciarEstoqueComponent } from './pages/gerenciar-estoque/gerenciar-estoque.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MeusPedidosComponent } from './pages/meus-pedidos/meus-pedidos.component';
@@ -16,6 +17,7 @@ import { NovoPedidoComponent } from './pages/novo-pedido/novo-pedido.component';
 import { OperacoesMenuComponent } from './pages/operacoes-menu/operacoes-menu.component';
 import { OperacoesPedidosMenuComponent } from './pages/operacoes-pedidos-menu/operacoes-pedidos-menu.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -36,7 +38,9 @@ const routes: Routes = [
   { path: 'operacoes', component: OperacoesMenuComponent},
   { path: 'admin', component: AdminMenuComponent},
   { path: 'operacoes/pedidos', component: OperacoesPedidosMenuComponent},
-  { path: 'admin/pedidos', component: AdminPedidosMenuComponent}
+  { path: 'admin/pedidos', component: AdminPedidosMenuComponent},
+  { path: 'admin/usuarios', component: UsuariosComponent},
+  { path: 'admin/usuarios/editarUsuario/:uid', component: EditarUsuarioComponent}
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params, Route } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { unidades } from 'src/app/utils/comon';
 
