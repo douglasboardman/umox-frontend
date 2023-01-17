@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminMenuComponent } from './pages/admin-menu/admin-menu.component';
+import { AdminPedidosMenuComponent } from './pages/admin-pedidos-menu/admin-pedidos-menu.component';
 import { AtenderPedidoComponent } from './pages/atender-pedido/atender-pedido.component';
 import { AtendimentoComponent } from './pages/atendimento/atendimento.component';
 import { CadastrarItemComponent } from './pages/cadastrar-item/cadastrar-item.component';
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: 'admin/itens/cadastrarItem', component: CadastrarItemComponent},
   { path: 'operacoes', component: OperacoesMenuComponent},
   { path: 'admin', component: AdminMenuComponent},
-  { path: 'operacoes/pedidos', component: OperacoesPedidosMenuComponent}
+  { path: 'operacoes/pedidos', component: OperacoesPedidosMenuComponent},
+  { path: 'admin/pedidos', component: AdminPedidosMenuComponent}
 ];
 
 @NgModule({

@@ -73,7 +73,7 @@ const appStruct = new AppStruct(
                 new AppStructMember(
                     'pedidos',
                     '/admin/pedidos',
-                    'gerenciar Pedidos',
+                    'gerenciar pedidos',
                     'administração',
                     ['atendimento', 'atender pedido'],
                 ),
@@ -134,7 +134,7 @@ export const AppMenuGroups = {
         new PanelMenu(
             'Consultar Pedidos',
             'Consultar pedidos de material realizados no campus',
-            'bxs-inbox',
+            'bxs-search-alt',
             'consultarPedidos'
         ),
         new PanelMenu(
@@ -149,7 +149,7 @@ export const AppMenuGroups = {
             'Pedidos',
             'Fazer, consultar e atender pedidos de material realizados na instituição.',
             'bxs-inbox',
-            'pedidos'
+            '/admin/pedidos'
         ),
         new PanelMenu(
             'Itens',
@@ -162,6 +162,32 @@ export const AppMenuGroups = {
             'Consultar e editar cadastro de usuários do sistema',
             'bxs-user-account',
             'usuarios'
+        )
+    ],
+    admin_pedidos: [
+        new PanelMenu(
+            'Atender Pedidos',
+            'Atender pedidos de material encaminhados ao setor.',
+            'bxs-inbox',
+            'atendimento'
+        ),
+        new PanelMenu(
+            'Criar Pedido',
+            'Criar novo pedido de material e enviar para setor de atendimento.',
+            'bxs-plus-square',
+            '/operacoes/pedidos/novoPedido'
+        ),
+        new PanelMenu(
+            'Consultar Pedidos',
+            'Consultar pedidos de material realizados no campus',
+            'bx-search-alt',
+            '/operacoes/pedidos/consultarPedidos'
+        ),
+        new PanelMenu(
+            'Meus Pedidos',
+            'Acompanhe o andamento dos seus pedidos',
+            'bxs-user-detail',
+            '/operacoes/pedidos/meusPedidos'
         )
     ]
 }

@@ -29,6 +29,7 @@ import { OperacoesMenuComponent } from './pages/operacoes-menu/operacoes-menu.co
 import { PanelMenuComponent } from './components/panel-menu/panel-menu.component';
 import { AdminMenuComponent } from './pages/admin-menu/admin-menu.component';
 import { OperacoesPedidosMenuComponent } from './pages/operacoes-pedidos-menu/operacoes-pedidos-menu.component';
+import { AdminPedidosMenuComponent } from './pages/admin-pedidos-menu/admin-pedidos-menu.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { OperacoesPedidosMenuComponent } from './pages/operacoes-pedidos-menu/op
     OperacoesMenuComponent,
     PanelMenuComponent,
     AdminMenuComponent,
-    OperacoesPedidosMenuComponent
+    OperacoesPedidosMenuComponent,
+    AdminPedidosMenuComponent
   ],
   imports: [
     BrowserModule,
