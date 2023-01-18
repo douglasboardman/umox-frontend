@@ -16,6 +16,7 @@ export class EditarUsuarioComponent {
   idUsuario!: string;
   dadosUsuario!: any;
   payload!: any;
+  btnSalvarEnabled: boolean = false;
 
   ngOnInit() {
     this.editarUsuarioForm = new FormGroup({
@@ -31,7 +32,6 @@ export class EditarUsuarioComponent {
         this.admin.abrirEdicaoUsuario(this.idUsuario).subscribe((response: any) => {
           this.dadosUsuario = response._data.dadosUsuario;
           this.listaPerfis = response._data.perfis;
-          console.log(this.dadosUsuario);
           this.editarUsuarioForm.get('nome_usuario')?.setValue(this.dadosUsuario.nome_usuario);
           this.editarUsuarioForm.get('nome_usuario')?.disable();
           this.editarUsuarioForm.get('email_usuario')?.setValue(this.dadosUsuario.email_usuario);
@@ -42,10 +42,10 @@ export class EditarUsuarioComponent {
     )
 
     this.editarUsuarioForm.valueChanges.subscribe(objDados => {
-      this.confereAlteracoes(objDados);
       this.payload = objDados;
       this.payload.nome_usuario = this.dadosUsuario.nome_usuario;
       this.payload.email_usuario = this.payload.email_usuario.toLowerCase();
+      this.confereAlteracoes();
     });
 
   }
@@ -63,8 +63,30 @@ export class EditarUsuarioComponent {
      this.editarUsuarioForm.get('acesso_permitido')!.setValue(value)
   }
 
-  confereAlteracoes(objDados: any) {
+  get email_usuario () {
+    return this.editarUsuarioForm.get('email_usuario')!;
+  }
 
+  confereAlteracoes() {
+    if(
+      this.payload.email_usuario == this.dadosUsuario.email_usuario &&
+      this.payload.perfil_usuario == this.dadosUsuario.perfil_usuario &&
+      this.payload.acesso_permitido == this.dadosUsuario.acesso_permitido
+    ) {
+      this.dadosAlterados = false;
+      this.toggleBtnSalvar();
+    } else {
+      this.dadosAlterados = true;
+      this.toggleBtnSalvar();
+    }
+  }
+
+  toggleBtnSalvar() {
+    if(this.dadosAlterados == true && !this.editarUsuarioForm.invalid) {
+      this.btnSalvarEnabled = true;
+    } else {
+      this.btnSalvarEnabled = false;
+    }
   }
 
   submit() {

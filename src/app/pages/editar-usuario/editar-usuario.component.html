@@ -21,7 +21,11 @@
                     <label>Email:</label>
                 </div>
                 <div class="column">
-                    <input class="input uppercase-field" formControlName="email_usuario">
+                    <input [class.is-danger]="email_usuario.invalid" class="input lowercase-field" formControlName="email_usuario">
+                    <div *ngIf="email_usuario.invalid">
+                        <p *ngIf="email_usuario.errors?.['required']" class="help is-danger validation-msg">* Email não informado</p>
+                        <p *ngIf="email_usuario.errors?.['email']" class="help is-danger validation-msg">* Email inválido</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -46,7 +50,7 @@
                 </div>
                 <div class="column">
                     <div class="checkbox-field">
-                        <input type="checkbox" id="cbxAcessoPermitido" formControlName="acesso_permitido" class="switch is-small is-rtl is-success" [checked]="acesso_permitido">
+                        <input type="checkbox" id="cbxAcessoPermitido" formControlName="acesso_permitido" class="switch is-small is-success" [checked]="acesso_permitido">
                         <label class="checkbox-label" for="cbxAcessoPermitido">{{acesso_permitido ? 'PERMITIDO' : 'NÃO PERMITIDO'}}</label>
                     </div>
                 </div>
@@ -60,7 +64,7 @@
                             <a routerLink="/admin/usuarios" class="button is-danger is-outlined" style="width: 100%;">Cancelar</a>
                         </p>
                         <p class="control">
-                            <input type="submit" class="button is-outlined is-success" [disabled]="!dadosAlterados" style="width: 100%;" value="Salvar Alterações">
+                            <input type="submit" class="button is-outlined is-success" [disabled]="!btnSalvarEnabled" style="width: 100%;" value="Salvar Alterações">
                         </p>
                     </div>
                 </div>

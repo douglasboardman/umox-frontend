@@ -77,6 +77,10 @@ article {
     box-shadow: $wrapper-shadow;
 }
 
+article.form {
+    min-width: 320px !important;
+}
+
 article .columns,
 article .column {
     background-color: $light;
@@ -141,6 +145,10 @@ article label {
 
 .uppercase-field {
     text-transform: uppercase;
+}
+
+.lowercase-field {
+    text-transform: lowercase;
 }
 
 .input {
