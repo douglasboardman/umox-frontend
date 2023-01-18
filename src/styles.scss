@@ -50,6 +50,7 @@ $background: white;
 
 
 @import '../node_modules/bulma/bulma.sass';
+@import '../node_modules/bulma-switch/src/sass/index.sass';
 
 * {
     font-family: 'Poppins', sans-serif;
@@ -144,6 +145,12 @@ article label {
 
 .input {
     font-size: 12px;
+}
+
+.input:disabled {
+    color: $text-color;
+    background-color: $grey;
+    border-color: rgb(219, 219, 219);
 }
 
 .control.has-icons-left .input {

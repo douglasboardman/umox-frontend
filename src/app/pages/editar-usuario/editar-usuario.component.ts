@@ -31,8 +31,9 @@ export class EditarUsuarioComponent {
         this.admin.abrirEdicaoUsuario(this.idUsuario).subscribe((response: any) => {
           this.dadosUsuario = response._data.dadosUsuario;
           this.listaPerfis = response._data.perfis;
-          console.log(this.listaPerfis);
+          console.log(this.dadosUsuario);
           this.editarUsuarioForm.get('nome_usuario')?.setValue(this.dadosUsuario.nome_usuario);
+          this.editarUsuarioForm.get('nome_usuario')?.disable();
           this.editarUsuarioForm.get('email_usuario')?.setValue(this.dadosUsuario.email_usuario);
           this.editarUsuarioForm.get('perfil_usuario')?.setValue(this.dadosUsuario.perfil_usuario);
           this.editarUsuarioForm.get('acesso_permitido')?.setValue(this.dadosUsuario.acesso_permitido);
@@ -43,9 +44,23 @@ export class EditarUsuarioComponent {
     this.editarUsuarioForm.valueChanges.subscribe(objDados => {
       this.confereAlteracoes(objDados);
       this.payload = objDados;
-      this.payload.nome_usuario = this.payload.nome_usuario.toUpperCase();
+      this.payload.nome_usuario = this.dadosUsuario.nome_usuario;
       this.payload.email_usuario = this.payload.email_usuario.toLowerCase();
-    })
+    });
+
+  }
+
+  onClickInputAcessoPermitido() {
+    this.acesso_permitido = !this.acesso_permitido;
+    console.log(this.acesso_permitido);
+  }
+
+  get acesso_permitido () {
+    return this.editarUsuarioForm.get('acesso_permitido')!.value;
+  }
+
+   set acesso_permitido (value: boolean) {
+     this.editarUsuarioForm.get('acesso_permitido')!.setValue(value)
   }
 
   confereAlteracoes(objDados: any) {

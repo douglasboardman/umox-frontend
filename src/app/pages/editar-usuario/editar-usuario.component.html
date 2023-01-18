@@ -11,7 +11,7 @@
                     <label>Nome:</label>
                 </div>
                 <div class="column">
-                    <input class="input uppercase-field" formControlName="nome_usuario">
+                    <input class="input uppercase-field" formControlName="nome_usuario" ng-disabled="true">
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <div class="column">
                     <div class="select">
                         <select class="uppercase-field" formControlName="perfil_usuario">
-                          <option *ngFor="let perfil of listaPerfis" [value]="perfil.perfil">{{ perfil.perfil }}</option>
+                          <option *ngFor="let perfil of listaPerfis" [value]="perfil.perfil">{{ perfil.perfil.toUpperCase() }}</option>
                         </select>
                     </div>
                 </div>
@@ -45,7 +45,10 @@
                     <label>Acesso:</label>
                 </div>
                 <div class="column">
-                    <input class="input uppercase-field" formControlName="acesso_permitido">
+                    <div class="checkbox-field">
+                        <input type="checkbox" id="cbxAcessoPermitido" formControlName="acesso_permitido" class="switch is-small is-rtl is-success" [checked]="acesso_permitido">
+                        <label class="checkbox-label" for="cbxAcessoPermitido">{{acesso_permitido ? 'PERMITIDO' : 'NÃO PERMITIDO'}}</label>
+                    </div>
                 </div>
             </div>
         </div>

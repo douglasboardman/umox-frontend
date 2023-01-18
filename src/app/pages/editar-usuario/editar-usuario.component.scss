@@ -1,0 +1,40 @@
+@import '../../../styles.scss';
+@import '../../styles/inputs.scss';
+
+.checkbox-field {
+    height: 30px;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox-field:hover {
+    border: 1px solid rgb(181, 181, 181);
+}
+
+.checkbox-label::before {
+    transform: translateY(2px);
+}
+
+.checkbox-label::after {
+    transform: translateY(2px) !important;
+}
+
+.checkbox-label::after, 
+.checkbox-field::before {
+    margin-right: 0 !important;
+    margin-left: auto !important;
+}
+
+.checkbox-label  {
+    font-size: 12px !important;
+    color: rgb(54, 54, 54);
+} 
+
+
+
