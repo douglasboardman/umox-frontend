@@ -23,8 +23,8 @@
                 <div class="column">
                     <input [class.is-danger]="email_usuario.invalid" class="input lowercase-field" formControlName="email_usuario">
                     <div *ngIf="email_usuario.invalid">
-                        <p *ngIf="email_usuario.errors?.['required']" class="help is-danger validation-msg">* Email não informado</p>
-                        <p *ngIf="email_usuario.errors?.['email']" class="help is-danger validation-msg">* Email inválido</p>
+                        <p *ngIf="email_usuario.errors?.['required']" class="help is-danger">* Email não informado</p>
+                        <p *ngIf="email_usuario.errors?.['email']" class="help is-danger">* Email inválido</p>
                     </div>
                 </div>
             </div>
