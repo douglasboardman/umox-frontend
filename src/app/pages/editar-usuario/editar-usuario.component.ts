@@ -43,6 +43,7 @@ export class EditarUsuarioComponent {
 
     this.editarUsuarioForm.valueChanges.subscribe(objDados => {
       this.payload = objDados;
+      this.payload.id_usuario = this.idUsuario;
       this.payload.nome_usuario = this.dadosUsuario.nome_usuario;
       this.payload.email_usuario = this.payload.email_usuario.toLowerCase();
       this.confereAlteracoes();
@@ -90,6 +91,6 @@ export class EditarUsuarioComponent {
   }
 
   submit() {
-
+    this.admin.concluirEdicaoUsuario(this.payload);
   }
 }

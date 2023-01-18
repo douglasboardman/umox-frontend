@@ -17,7 +17,7 @@ import { NovoPedidoComponent } from './pages/novo-pedido/novo-pedido.component';
 import { OperacoesMenuComponent } from './pages/operacoes-menu/operacoes-menu.component';
 import { OperacoesPedidosMenuComponent } from './pages/operacoes-pedidos-menu/operacoes-pedidos-menu.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
-import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { GerenciarUsuariosComponent } from './pages/gerenciar-usuarios/gerenciar-usuarios.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminMenuComponent},
   { path: 'operacoes/pedidos', component: OperacoesPedidosMenuComponent},
   { path: 'admin/pedidos', component: AdminPedidosMenuComponent},
-  { path: 'admin/usuarios', component: UsuariosComponent},
+  { path: 'admin/usuarios', component: GerenciarUsuariosComponent},
   { path: 'admin/usuarios/editarUsuario/:uid', component: EditarUsuarioComponent}
 ];
 

@@ -30,7 +30,7 @@ import { PanelMenuComponent } from './components/panel-menu/panel-menu.component
 import { AdminMenuComponent } from './pages/admin-menu/admin-menu.component';
 import { OperacoesPedidosMenuComponent } from './pages/operacoes-pedidos-menu/operacoes-pedidos-menu.component';
 import { AdminPedidosMenuComponent } from './pages/admin-pedidos-menu/admin-pedidos-menu.component';
-import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { GerenciarUsuariosComponent } from './pages/gerenciar-usuarios/gerenciar-usuarios.component';
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 
 @NgModule({
@@ -60,7 +60,7 @@ import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.co
     AdminMenuComponent,
     OperacoesPedidosMenuComponent,
     AdminPedidosMenuComponent,
-    UsuariosComponent,
+    GerenciarUsuariosComponent,
     EditarUsuarioComponent
   ],
   imports: [

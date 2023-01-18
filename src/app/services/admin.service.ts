@@ -81,4 +81,19 @@ export class AdminService {
     return this.webRequestService.get('admin/usuarios/editarUsuario/' + idUsuario);
   }
 
+  concluirEdicaoUsuario(payload: any) {
+    return this.webRequestService.post('admin/usuarios/editarUsuario', payload).subscribe((res: any) => {
+        
+      if(!res.error) {
+        let msg = new TopMessage(
+          'Cadastro do usuário atualizado com sucesso!',
+          'is-success',
+          'gerenciarUsuarios'
+        )
+        this.messenger.sendMessage(msg);
+        this.router.navigate(['admin/usuarios']);
+      };
+    })
+  }
+
 }
