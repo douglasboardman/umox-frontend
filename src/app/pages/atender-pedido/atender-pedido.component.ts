@@ -100,7 +100,7 @@ export class AtenderPedidoComponent {
     let objItens: Array<any> = [];
     this.idsItens.forEach((id: String) => {
       let input = document.getElementById('input-qtd-item-' + id) as HTMLInputElement
-      let qtd = parseFloat(input.value);
+      let qtd = isNaN(parseFloat(input.value)) ? 0 : parseFloat(input.value);
       objItens.push({id_item: id, qtd_atendida: qtd});
     });
     
@@ -111,6 +111,8 @@ export class AtenderPedidoComponent {
       status_pedido: this.statusPedido,
       objItens: objItens
     }
+
+    console.log(payload);
 
     // Finaliza pedido
     return this.admin.finalizarPedido(payload);
