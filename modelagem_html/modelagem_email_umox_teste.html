@@ -5,10 +5,6 @@
         font-family: Poppins;
     }
 
-    h1 {
-        color: #1e65ae;
-    }
-
     h2 {
         margin-bottom: 10px;
         margin-top: 20px;
@@ -62,10 +58,10 @@
 
 </style>
 <div id="email-container">
-<h1>UMOX - Gestão de Almoxarifado</h1>
+<h1 style="color:#1e65ae">UMOX - Gestão de Almoxarifado</h1>
 <div id="div-corpo-email">
 <p>Prezado(a) servidor(a)</p>
-<p>Seu pedido de material nº ${this.idPedido} foi finalizado pelo atendente com o status: <b>${this.statusAtendimento}</b></p>
+<p>Seu pedido de material nº 2023030 foi finalizado pelo atendente com o status: <b>ATENDIDO</b></p>
 <h2>Detalhes do pedido</h2>
 <table id="tabela-detalhes-pedido">
     <tbody>
@@ -76,20 +72,61 @@
             <td>Status do atendimento:</td>
         </tr>
         <tr id="tr-info-detalhe-pedido">
-            <td>${this.idPedido}</td>
-            <td>${this.dataPedido}</td>
-            <td>${this.dataAtendimento}</td>
-            <td>${this.statusAtendimento}</td>
+            <td>2023030</td>
+            <td>19/01/2023</td>
+            <td>19/01/2023</td>
+            <td>ATENDIDO</td>
         </tr>
         <tr id="tr-label-detalhe-pedido">
             <td colspan="4">Despacho do atendimento:</td>
         </tr>
         <tr id="tr-info-detalhe-pedido">
-            <td colspan="4">${this.obsAtendimento}</td>
+            <td colspan="4">ATENDIMENTO PARA TESTAR A FORMATAÇÃO DO EMAIL</td>
         </tr>
     </tbody>
 </table>
 <h2>Itens do pedido:</h2>
-${tabelaItens}
+<table id="tabela-itens-pedido">
+    <thead>
+        <tr>
+            <th style="text-align:left;width:10%">ID ITEM</th>
+            <th style="text-align:left;width:50%">DESCRIÇÃO</th>
+            <th style="text-align:left;width:20%">MARCA</th>
+            <th style="text-align:left;width:10%">QTD. SOLIC.</th>
+            <th style="text-align:left;width:10%">QTD. ATEND.</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>302400001</td>
+            <td>ABRAÇADEIRA DE AÇO 127X146MM</td>
+            <td>INCA</td>
+            <td>1.00</td>
+            <td>1.00</td>
+        </tr>
+        <tr>
+            <td>302400002</td>
+            <td>ABRAÇADEIRA DE AÇO 19X25MM</td>
+            <td>INCA</td>
+            <td>1.00</td>
+            <td>1.00</td>
+        </tr>
+        <tr>
+            <td>302400003</td>
+            <td>ABRAÇADEIRA DE AÇO 76X89MM</td>
+            <td>PROGERAL</td>
+            <td>1.00</td>
+            <td>1.00</td>
+        </tr>
+        <tr>
+            <td>302400004</td>
+            <td>ABRAÇADEIRA DE AÇO 8X13MM</td>
+            <td>INCA</td>
+            <td>1.00</td>
+            <td>1.00</td>
+        </tr>
+        
+    </tbody>
+</table>
 </div>
 </div>
