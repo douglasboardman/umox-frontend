@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { OperacoesService } from 'src/app/services/operacoes.service';
+import { Permissoes } from 'src/models/Permissoes';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,11 +8,16 @@ import { OperacoesService } from 'src/app/services/operacoes.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent {
-  constructor(private authService: AuthService, private operacoes: OperacoesService) {}
+  constructor(private authService: AuthService) {}
+  
+  permissoes: Permissoes = new Permissoes(false,false,false,false,false,false,false);
   sidebarMode: string = '';
   @Output() toggle: EventEmitter<any> = new EventEmitter()
 
   ngOnInit() {
+    this.authService.listarPermissoesUsuario().subscribe((perm) => {
+      this.permissoes = perm as Permissoes;
+    })
     let toggle = localStorage.getItem('sidebar-toggle') == 'true' ? true : false;
     if(toggle){
       this.onToggleSidebarClicked()

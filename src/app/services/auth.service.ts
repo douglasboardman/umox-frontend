@@ -47,6 +47,10 @@ export class AuthService {
     )
   }
 
+  listarPermissoesUsuario() {
+    return this.webRequestService.get('auth/permissoesUsuario');
+  }
+
   getAccessToken() {
     return localStorage.getItem('x-access-token')
   }

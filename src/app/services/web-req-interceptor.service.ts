@@ -1,5 +1,6 @@
 import { HttpErrorResponse, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, empty, Observable } from 'rxjs';
 import { TopMessage } from 'src/models/TopMessage';
 import { AuthService } from './auth.service';
@@ -11,7 +12,7 @@ import { MessengerService } from './messenger.service';
 
 export class WebReqInterceptorService implements HttpInterceptor {
 
-  constructor(private authService: AuthService, private messenger: MessengerService) { }
+  constructor(private authService: AuthService, private messenger: MessengerService, private router: Router) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     // Handle the request
@@ -22,14 +23,20 @@ export class WebReqInterceptorService implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         console.log(error);
         let errorMsg = '';
-        if(error.error.message.search('jwt') > -1) {
-          errorMsg = 'Sua sessão expirou'
+
+        if(typeof error.error.message != 'undefined') {
+          if(error.error.message.search('jwt') > -1) {
+            errorMsg = 'Sua sessão expirou';
+          }
+        } else if(typeof error.error._message != 'undefined') {
+          errorMsg = error.error._message;
         } else {
-          errorMsg = error.error.message;
+          errorMsg = error.error;
         }
         let msg = 'Não foi possível concluir a operação. \n' +
                   'Mensagem de erro: ' + errorMsg;
         let notification = new TopMessage(msg, 'is-danger', 'login');
+        console.log(notification);
         this.messenger.sendMessage(notification);
         this.authService.logout();
         return empty();

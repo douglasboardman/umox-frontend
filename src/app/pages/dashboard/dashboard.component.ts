@@ -25,6 +25,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
     this.$subs.unsubscribe();
-    this.messenger.cleanMessage();
+    //this.messenger.cleanMessage();
   }
 }

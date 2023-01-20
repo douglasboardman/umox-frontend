@@ -11,11 +11,15 @@ export class AdminService {
 
   constructor(private webRequestService: WebRequestService, private router: Router, private messenger: MessengerService) { }
 
+  gerenciarEstoque() {
+    return this.webRequestService.get('admin/itens/gerenciarEstoque');
+  }
+
   consultarPedidosParaAtendimento() {
     return this.webRequestService.get('admin/pedidos/atendimento');
   }
 
-  consultarPedidoParaAtendimento(idPedido: string) {
+  abrirAtendimentoPedido(idPedido: string) {
     return this.webRequestService.get('admin/pedidos/atenderPedido/' + idPedido);
   }
 

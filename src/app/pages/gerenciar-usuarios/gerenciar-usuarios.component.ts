@@ -30,7 +30,6 @@ export class GerenciarUsuariosComponent {
 
   ngOnDestroy(){
     this.$subs.unsubscribe();
-    this.messenger.cleanMessage();
   }
 
 }

@@ -49,6 +49,7 @@
               <span class="text nav-text">Consultar estoque</span>
             </a>
           </li>
+          <div *ngIf="permissoes.atender_pedidos">
           <li id="Operações" class="divider"><span class="divider-title">Administração</span><span class="toggled-text">--</span></li>
           <li class="nav-link">
             <a routerLink="/admin/pedidos/atendimento">
@@ -56,18 +57,19 @@
               <span class="text nav-text">Atender Pedido</span>
             </a>
           </li>
-          <li class="nav-link">
+          <li *ngIf="permissoes.gerenciar_estoque" class="nav-link">
             <a routerLink="/admin/itens/gerenciarEstoque">
               <i class='bx bx-clipboard icon'></i>
               <span class="text nav-text">Gerenciar estoque</span>
             </a>
           </li>
-          <li class="nav-link">
+          <li *ngIf="permissoes.gerenciar_usuarios" class="nav-link">
             <a routerLink="/admin/usuarios">
               <i class='bx bxs-user-account icon'></i>
               <span class="text nav-text">Gerenciar Usuários</span>
             </a>
           </li>
+        </div>
         </ul>
       </div>
       <div class="bottom-content">
