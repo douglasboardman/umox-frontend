@@ -15,6 +15,10 @@ export class AuthService {
   constructor(private webRequestService: WebRequestService, private router: Router, private messenger: MessengerService) { }
   auth!: string;
 
+  carregaDadosDashboard() {
+    return this.webRequestService.get('auth/dashboard');
+  }
+
   login(email: string, senha: string) {
     return this.webRequestService.login(email, senha).pipe(
       shareReplay(),

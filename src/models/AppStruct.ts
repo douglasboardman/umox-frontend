@@ -31,15 +31,15 @@ class AppStruct {
 }
 
 const appStruct = new AppStruct(
-    'Home',
-    '/home',
-    'Home',
+    'Dashboard',
+    '/dashboard',
+    'Dasboard',
     [
         new AppStructMember(
             'operações',
             '/operacoes',
             'operações',
-            'home',
+            'dashboard',
             [
                 new AppStructMember(
                     'itens',
@@ -61,7 +61,7 @@ const appStruct = new AppStruct(
             'administração',
             '/admin',
             'administração',
-            'home',
+            'dashboard',
             [
                 new AppStructMember(
                     'itens',

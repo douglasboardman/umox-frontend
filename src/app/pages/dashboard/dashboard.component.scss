@@ -1,0 +1,62 @@
+@import '../../../styles.scss';
+
+.top-dashboard-card-icon.is-primary {
+    background-color: $primary;
+}
+
+.top-dashboard-card-icon.is-success {
+    background-color: $success;
+}
+
+.top-dashboard-card-icon.is-warning {
+    background-color: $warning;
+}
+
+.top-dashboard-card-icon.is-danger {
+    background-color: $danger;
+}
+
+.card-content {
+    padding: 0;
+    height: 100%;
+}
+
+.card-content > .columns {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.top-dashboard-card {
+    height: 120px;
+}
+
+.top-dashboard-card-icon {
+    display: flex;
+    font-size: 50px;
+    text-align: center;
+    color: $light;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.top-dashboard-card-icon i {
+    margin: auto;
+    padding: 0;
+}
+.column.top-dashboard-card-icon {
+    max-width: 40%;
+}
+
+.column.top-dashboard-card-content {
+    text-align: center;
+}
+
+.column.top-dashboard-card-content p {
+    font-size: 12px;
+}
+
+.column.top-dashboard-card-content h1 {
+    font-size: 30px;
+    font-weight: 600;
+}

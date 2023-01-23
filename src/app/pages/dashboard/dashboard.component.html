@@ -1,11 +1,66 @@
 <app-frame>
-  <app-page-header tituloPagina="Home"></app-page-header>
-  <div class="card">
-      <div class="card-content">
-        <div class="content">
-          Lorem ipsum leo risus, porta ac consectetur ac, vestibulum at eros. Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras mattis consectetur purus sit amet fermentum.
+  <app-page-header tituloPagina="Dashboard"></app-page-header>
+  <div class="columns">
+    <div class="column">
+      <div class="card top-dashboard-card">
+        <div class="card-content">
+          <div class="columns">
+            <div class="column top-dashboard-card-icon is-primary">
+              <i class='bx bxs-inbox'></i>
+            </div>
+            <div class="column top-dashboard-card-content">
+              <p>Total de pedidos</p>
+              <h1>{{ totalPedidos }}</h1>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="column">
+      <div class="card top-dashboard-card">
+        <div class="card-content">
+          <div class="columns">
+            <div class="column top-dashboard-card-icon is-success">
+              <i class='bx bx-basket'></i>
+            </div>
+            <div class="column top-dashboard-card-content">
+              <p>Atendidos</p>
+              <h1>{{ pedidosAtendidos }}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card top-dashboard-card">
+        <div class="card-content">
+          <div class="columns">
+            <div class="column top-dashboard-card-icon is-warning">
+              <i class='bx bxs-hourglass-top'></i>
+            </div>
+            <div class="column top-dashboard-card-content">
+              <p>Aguardando atendimento</p>
+              <h1>{{ pedidosAguardandoAtendimento }}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card top-dashboard-card">
+        <div class="card-content">
+          <div class="columns">
+            <div class="column top-dashboard-card-icon is-danger">
+              <i class='bx bx-no-entry'></i>
+            </div>
+            <div class="column top-dashboard-card-content">
+              <p>Não atendidos</p>
+              <h1>{{ pedidosNaoAtendidos }}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <app-notification [class]="notification.msgClass" [message]="notification.message"></app-notification>
 </app-frame>
