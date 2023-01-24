@@ -62,5 +62,53 @@
       </div>
     </div>
   </div>
+  <div class="columns">
+    <div class="column">
+      <div class="card">
+        <div class="card-content grafico">
+          <canvas #pedidosUlt12Meses></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <div class="card-content grafico"> 
+        <div class="columns">
+        <div class="column" style="padding: 0;">
+          <div>
+            <canvas #incidNaturezasPedidos></canvas>
+          </div>
+        </div>  
+        <div class="column">
+
+        </div>  
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <h2>Composição do estoque</h2>
+          <table>
+            <thead>
+              <tr>
+                <th  style="width: 95%;">Natureza</th>
+                <th style="width: 5%; text-align: center;">Registros</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let comp of composicaoEstoque">
+                <td>{{ comp.natureza }}</td>
+                <td style="text-align: center;">{{ comp.incidencias }}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+  </div>
   <app-notification [class]="notification.msgClass" [message]="notification.message"></app-notification>
 </app-frame>

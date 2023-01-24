@@ -16,8 +16,11 @@
     background-color: $danger;
 }
 
-.card-content {
+.top-dashboard-card > .card-content {
     padding: 0;
+}
+
+.card-content {
     height: 100%;
 }
 
@@ -28,7 +31,7 @@
 }
 
 .top-dashboard-card {
-    height: 120px;
+    height: 100px;
 }
 
 .top-dashboard-card-icon {
@@ -44,6 +47,7 @@
     margin: auto;
     padding: 0;
 }
+
 .column.top-dashboard-card-icon {
     max-width: 40%;
 }
@@ -53,10 +57,51 @@
 }
 
 .column.top-dashboard-card-content p {
-    font-size: 12px;
+    font-size: 11px;
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-items: end;
+    vertical-align: bottom;
 }
 
 .column.top-dashboard-card-content h1 {
     font-size: 30px;
     font-weight: 600;
+}
+
+.card-content.grafico {
+    height: 400px;
+}
+
+.grafico {
+    display: flex;
+    justify-content: center;
+}
+
+canvas {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    font-size: 11px;
+    color: $text-color;
+}
+
+table tr {
+    border-bottom: 1px dashed $dark-grey;
+}
+
+table tr:hover {
+    background-color: $grey;
+}
+
+h2 {
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
