@@ -4,97 +4,83 @@
     <div class="column">
       <div class="card top-dashboard-card">
         <div class="card-content">
-          <div class="columns">
-            <div class="column top-dashboard-card-icon is-primary">
+          <div class="top-dashboard-card-content is-primary">
+            <p>Total de pedidos</p>
+            <h1>{{ totalPedidos }}</h1>
+          </div>
+            <div class="top-dashboard-card-icon is-primary">
               <i class="bx bxs-inbox"></i>
             </div>
-            <div class="column top-dashboard-card-content is-primary">
-              <p>Total de pedidos</p>
-              <h1>{{ totalPedidos }}</h1>
-            </div>
-          </div>
         </div>
       </div>
     </div>
     <div class="column">
       <div class="card top-dashboard-card">
         <div class="card-content">
-          <div class="columns">
-            <div class="column top-dashboard-card-icon is-success">
+          <div class="top-dashboard-card-content is-success">
+            <p>Atendidos</p>
+            <h1>{{ pedidosAtendidos }}</h1>
+          </div>
+            <div class="top-dashboard-card-icon is-success">
               <i class="bx bx-basket"></i>
             </div>
-            <div class="column top-dashboard-card-content is-success">
-              <p>Atendidos</p>
-              <h1>{{ pedidosAtendidos }}</h1>
-            </div>
-          </div>
         </div>
       </div>
     </div>
     <div class="column">
       <div class="card top-dashboard-card">
         <div class="card-content">
-          <div class="columns">
-            <div class="column top-dashboard-card-icon is-warning">
+          <div class="top-dashboard-card-content is-warning">
+            <p>Aguardando atendimento</p>
+            <h1>{{ pedidosAguardandoAtendimento }}</h1>
+          </div>
+            <div class="top-dashboard-card-icon is-warning">
               <i class="bx bxs-hourglass-top"></i>
             </div>
-            <div class="column top-dashboard-card-content is-warning">
-              <p>Aguardando atendimento</p>
-              <h1>{{ pedidosAguardandoAtendimento }}</h1>
-            </div>
-          </div>
         </div>
       </div>
     </div>
     <div class="column">
       <div class="card top-dashboard-card">
         <div class="card-content">
-          <div class="columns">
-            <div class="column top-dashboard-card-icon is-danger">
+          <div class="top-dashboard-card-content is-danger">
+            <p>Não atendidos</p>
+            <h1>{{ pedidosNaoAtendidos }}</h1>
+          </div>
+            <div class="top-dashboard-card-icon is-danger">
               <i class="bx bx-no-entry"></i>
             </div>
-            <div class="column top-dashboard-card-content is-danger">
-              <p>Não atendidos</p>
-              <h1>{{ pedidosNaoAtendidos }}</h1>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="columns">
+  <div class="columns dashboard-middle-panels">
     <div class="column">
       <article class="panel">
         <p class="panel-heading">Volume de pedidos</p>
-        <div class="card">
-          <div class="card-content grafico">
-            <canvas #pedidosUlt12Meses></canvas>
+          <div class="panel-block grafico">
+              <canvas #pedidosUlt12Meses></canvas>
           </div>
-        </div>
       </article>
     </div>
     <div class="column">
       <article class="panel">
         <p class="panel-heading">Composição dos pedidos por natureza</p>
-        <div class="card" style="width: 100%">
-          <div class="card-content">
-            <div class="columns">
-              <div class="column grafico">
-                <canvas #composicaoPedidos></canvas>
-              </div>
-              <div id="column-labels-compos-pedidos" class="column">
-                <table id="tb-labels-naturezas-mais-solicitadas">
-                  <tbody>
-                    <tr *ngFor="let label of labelsComposPedidos">
-                      <td><div [id]="label.id" class="cor-label"></div></td>
-                      <td>{{ label.label }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+          <div class="panel-block">
+            <div class="grafico">
+              <canvas #composicaoPedidos></canvas>
+            </div>
+            <div id="column-labels-compos-pedidos" class="column">
+              <table id="tb-labels-naturezas-mais-solicitadas">
+                <tbody>
+                  <tr *ngFor="let label of labelsComposPedidos">
+                    <td><div [id]="label.id" class="cor-label"></div></td>
+                    <td>{{ label.label }}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-        </div>
       </article>
     </div>
   </div>

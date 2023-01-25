@@ -331,3 +331,8 @@ li.mode {
 .sidebar.minimized span.switch {
     left: 18px;
 }
+
+.sidebar.responsive {
+    transform: translateX(-280px);
+    position: absolute;
+}

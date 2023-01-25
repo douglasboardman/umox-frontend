@@ -6,3 +6,9 @@
     padding: 81px 38px;
     background-color: whitesmoke;
 }
+
+@media (max-width: 600px) {
+    .content-div {
+        padding: 81px 15px;
+    }
+}

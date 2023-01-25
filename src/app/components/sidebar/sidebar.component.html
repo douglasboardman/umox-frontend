@@ -1,4 +1,4 @@
-<nav class="sidebar" [ngClass]=" sidebarMode ">
+<nav class="sidebar" [ngClass]=" sidebarMode " (window:resize)="onResize($event)">
     <header>
       <div class="image-text">
         <span class="image">

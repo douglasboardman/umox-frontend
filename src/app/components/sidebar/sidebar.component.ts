@@ -15,27 +15,49 @@ export class SidebarComponent {
   @Output() toggle: EventEmitter<any> = new EventEmitter()
 
   ngOnInit() {
+    const width = window.innerWidth;
     this.authService.listarPermissoesUsuario().subscribe((perm) => {
       this.permissoes = perm as Permissoes;
     })
     let toggle = localStorage.getItem('sidebar-toggle') == 'true' ? true : false;
-    if(toggle){
+    if(width <= 750) {
+      this.sidebarMode = 'responsive';
+    } else if(toggle){
       this.onToggleSidebarClicked()
     }
   }
 
   onToggleSidebarClicked(){
-    if(this.sidebarMode == '') {
-      this.sidebarMode = 'minimized'
-      this.toggle.emit();
+    if(window.innerWidth <= 750) {
+      if(this.sidebarMode == 'responsive'){
+        this.sidebarMode = 'minimized'
+        this.toggle.emit();
+      } else {
+        this.sidebarMode = 'responsive';
+        this.toggle.emit();
+      }
     } else {
-      this.sidebarMode = ''
-      this.toggle.emit();
+      if(this.sidebarMode == '') {
+        this.sidebarMode = 'minimized'
+        this.toggle.emit();
+      } else {
+        this.sidebarMode = ''
+        this.toggle.emit();
+      }
     }
   }
 
   onLogoutButtonClicked() {
     this.authService.logout();
+  }
+
+  onResize(event: any) {
+    const width = event.target.innerWidth;
+    if(width <= 750) {
+      this.sidebarMode = 'responsive';
+    } else {
+      this.sidebarMode = 'minimized';
+    }
   }
   
 }

@@ -25,6 +25,7 @@ $corLabel6: rgb(151, 62, 214);
 
 .top-dashboard-card > .card-content {
     padding: 0;
+    display: flex;
 }
 
 .card, .top-dashboard-card {
@@ -33,7 +34,6 @@ $corLabel6: rgb(151, 62, 214);
 
 .card-content {
     height: 100%;
-    
 }
 
 .card-content > .columns {
@@ -43,15 +43,18 @@ $corLabel6: rgb(151, 62, 214);
 }
 
 .top-dashboard-card {
-    height: 100px;
+    height: 150px;
     color: $light;
 }
 
 .top-dashboard-card-icon {
+    width: 40%;
     display: flex;
     font-size: 50px;
     text-align: center;
     color: $light;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 .top-dashboard-card-icon i {
@@ -59,33 +62,39 @@ $corLabel6: rgb(151, 62, 214);
     padding: 0;
 }
 
-.column.top-dashboard-card-icon {
-    max-width: 40%;
-}
-
-.column.top-dashboard-card-content {
+.top-dashboard-card-content {
     text-align: center;
+    width: 60%;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
 }
 
-.column.top-dashboard-card-content p {
+.top-dashboard-card-content p {
     font-size: 11px;
     height: 30px;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    justify-items: end;
-    vertical-align: bottom;
+    line-height: 15px;
+    margin-top: 15px;
 }
 
-.column.top-dashboard-card-content h1 {
-    font-size: 30px;
+.top-dashboard-card-content h1 {
+    font-size: 60px;
     font-weight: 600;
+    margin-top: -10px;
 }
 
 .panel-block {
-    height: 100%;
+    padding: 24px;
+    height: calc(100% - 55px);
+    min-height: 261px;
     display: flex;
     justify-content: center;
+    justify-items: center;
+    gap: 10px;
+}
+
+.panel-heading {
+    background-color: unset;
 }
 
 .grafico {
@@ -93,20 +102,22 @@ $corLabel6: rgb(151, 62, 214);
     justify-content: center;
 }
 
-canvas {
-    max-height: 350px;
+
+
+.dashboard-middle-panels article {
+    height: 400px;
+    min-width: 380px;
+    background-color: $light;
 }
 
-article {
-    min-height: 316px;
-    background-color: $light;
+.column {
+    height: fit-content;
 }
 
 table {
     width: 100%;
     font-size: 11px;
     color: $text-color;
-    margin: 15px;
 }
 
 table tr {
@@ -123,6 +134,14 @@ table tr:hover {
 
 #tb-composicao-estoque tr:nth-child(even) {
     background-color: $light-blue;
+}
+
+#tb-solicitantes-mais-ativos tr:nth-child(even) {
+    background-color: $light-green;
+}
+
+#tb-itens-mais-solicitados tr:nth-child(even) {
+    background-color: $light-red;
 }
 
 
@@ -144,6 +163,7 @@ h2 {
 }
 
 #tb-labels-naturezas-mais-solicitadas {
+    width: 80%;
     font-size: 10px;
     margin: auto;
 }
@@ -167,3 +187,16 @@ h2 {
 #cor-label5 { background-color: $corLabel5 }
 
 #cor-label6 { background-color: $corLabel6 }
+
+
+@media (max-width: 750px) {
+    .panel-block {
+        display: block;
+        max-height: unset;
+    }
+
+    article {
+        height: unset;
+    }
+}
+

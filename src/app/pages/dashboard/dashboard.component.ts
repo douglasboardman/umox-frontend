@@ -81,27 +81,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
   carregaGraficoPedidosUlt12Meses(dados: any) {
     
    new Chart(this.graficoPedidosUlt12Meses.nativeElement, {
-      type: 'bar',
+      type: 'line',
       data: {
         labels: dados.map((row: any) => row.mes),
         datasets: [
           {
-            label: 'Pedidos últimos 12 meses',
-            data: dados.map((row: any) => row.incidencia)
+            label: 'volume de pedidos',
+            data: dados.map((row: any) => row.incidencia),
+            tension: 0.2
           }
         ]
       },
       options: {
-        indexAxis: 'y',
-        elements: {
-          bar: {
-            borderWidth: 2,
-          }
-        },
         responsive: true,
+        layout: {autoPadding: true},
         plugins: {
           legend: {
-            position: 'bottom',
+            display: false,
           }
         }
       }

@@ -1,3 +1,9 @@
 .navbar {
     height: 56px;
 }
+
+@media (max-width: 1025px) {
+    .navbar-end {
+        display: none;
+    }
+}

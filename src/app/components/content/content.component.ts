@@ -10,5 +10,4 @@ export class ContentComponent {
 
   toggleContent: string = this.sidebarToggle ? 'maximized' : '';
 
-
 }
