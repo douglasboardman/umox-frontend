@@ -6,9 +6,9 @@
         <div class="card-content">
           <div class="columns">
             <div class="column top-dashboard-card-icon is-primary">
-              <i class='bx bxs-inbox'></i>
+              <i class="bx bxs-inbox"></i>
             </div>
-            <div class="column top-dashboard-card-content">
+            <div class="column top-dashboard-card-content is-primary">
               <p>Total de pedidos</p>
               <h1>{{ totalPedidos }}</h1>
             </div>
@@ -21,9 +21,9 @@
         <div class="card-content">
           <div class="columns">
             <div class="column top-dashboard-card-icon is-success">
-              <i class='bx bx-basket'></i>
+              <i class="bx bx-basket"></i>
             </div>
-            <div class="column top-dashboard-card-content">
+            <div class="column top-dashboard-card-content is-success">
               <p>Atendidos</p>
               <h1>{{ pedidosAtendidos }}</h1>
             </div>
@@ -36,9 +36,9 @@
         <div class="card-content">
           <div class="columns">
             <div class="column top-dashboard-card-icon is-warning">
-              <i class='bx bxs-hourglass-top'></i>
+              <i class="bx bxs-hourglass-top"></i>
             </div>
-            <div class="column top-dashboard-card-content">
+            <div class="column top-dashboard-card-content is-warning">
               <p>Aguardando atendimento</p>
               <h1>{{ pedidosAguardandoAtendimento }}</h1>
             </div>
@@ -51,9 +51,9 @@
         <div class="card-content">
           <div class="columns">
             <div class="column top-dashboard-card-icon is-danger">
-              <i class='bx bx-no-entry'></i>
+              <i class="bx bx-no-entry"></i>
             </div>
-            <div class="column top-dashboard-card-content">
+            <div class="column top-dashboard-card-content is-danger">
               <p>Não atendidos</p>
               <h1>{{ pedidosNaoAtendidos }}</h1>
             </div>
@@ -64,51 +64,107 @@
   </div>
   <div class="columns">
     <div class="column">
-      <div class="card">
-        <div class="card-content grafico">
-          <canvas #pedidosUlt12Meses></canvas>
+      <article class="panel">
+        <p class="panel-heading">Volume de pedidos</p>
+        <div class="card">
+          <div class="card-content grafico">
+            <canvas #pedidosUlt12Meses></canvas>
+          </div>
         </div>
-      </div>
+      </article>
     </div>
     <div class="column">
-      <div class="card">
-        <div class="card-content grafico"> 
-        <div class="columns">
-        <div class="column" style="padding: 0;">
-          <div>
-            <canvas #incidNaturezasPedidos></canvas>
+      <article class="panel">
+        <p class="panel-heading">Composição dos pedidos por natureza</p>
+        <div class="card" style="width: 100%">
+          <div class="card-content">
+            <div class="columns">
+              <div class="column grafico">
+                <canvas #composicaoPedidos></canvas>
+              </div>
+              <div id="column-labels-compos-pedidos" class="column">
+                <table id="tb-labels-naturezas-mais-solicitadas">
+                  <tbody>
+                    <tr *ngFor="let label of labelsComposPedidos">
+                      <td><div [id]="label.id" class="cor-label"></div></td>
+                      <td>{{ label.label }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
-        </div>  
-        <div class="column">
-
-        </div>  
         </div>
-      </div>
-      </div>
+      </article>
     </div>
   </div>
   <div class="columns">
     <div class="column">
-      <div class="card">
-        <div class="card-content">
-          <h2>Composição do estoque</h2>
-          <table>
+      <article class="panel">
+        <p class="panel-heading">Composição do estoque</p>
+        <div class="panel-block">
+          <table id="tb-composicao-estoque">
             <thead>
               <tr>
-                <th  style="width: 95%;">Natureza</th>
-                <th style="width: 5%; text-align: center;">Registros</th>
+                <th style="width: 95%">Natureza</th>
+                <th style="width: 5%; text-align: center">Registros</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let comp of composicaoEstoque">
                 <td>{{ comp.natureza }}</td>
-                <td style="text-align: center;">{{ comp.incidencias }}</td>
+                <td style="text-align: center">{{ comp.incidencias }}</td>
               </tr>
             </tbody>
           </table>
-      </div>
+        </div>
+      </article>
+    </div>
+    <div class="column">
+      <article class="panel">
+        <p class="panel-heading">Itens mais solicitados</p>
+        <div class="panel-block">
+          <table id="tb-itens-mais-solicitados">
+            <thead>
+              <tr>
+                <th style="width: 95%">Item</th>
+                <th style="width: 5%; text-align: center">Pedidos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of itensMaisSolicitados">
+                <td>{{ item.descricao_item }}</td>
+                <td style="text-align: center">{{ item.qtd }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </div>
+    <div class="column">
+      <article class="panel">
+        <p class="panel-heading">Solicitantes mais ativos</p>
+        <div class="panel-block">
+          <table id="tb-solicitantes-mais-ativos">
+            <thead>
+              <tr>
+                <th style="width: 95%">Solicitante</th>
+                <th style="width: 5%; text-align: center">Pedidos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let solicitante of solicitantesMaisAtivos">
+                <td>{{ solicitante.nome }}</td>
+                <td style="text-align: center">{{ solicitante.pedidos }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
     </div>
   </div>
-  </div>
-  <app-notification [class]="notification.msgClass" [message]="notification.message"></app-notification>
+  <app-notification
+    [class]="notification.msgClass"
+    [message]="notification.message"
+  ></app-notification>
 </app-frame>

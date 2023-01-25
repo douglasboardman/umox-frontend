@@ -15,9 +15,8 @@ Chart.register(...registerables);
 export class DashboardComponent implements OnInit, OnDestroy {
   constructor(private messenger: MessengerService, private auth: AuthService){}
   @ViewChild('pedidosUlt12Meses', {static: true}) graficoPedidosUlt12Meses!: ElementRef
-  @ViewChild('incidNaturezasPedidos', {static: true}) graficoIncidNaturezasPedidos!: ElementRef
+  @ViewChild('composicaoPedidos', {static: true}) graficoComposicaoPedidos!: ElementRef
   
-
   notification: TopMessage = new TopMessage('','','');
   $subs!: Subscription;
   metricasStatusPedidos!: any;
@@ -27,14 +26,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
   pedidosAguardandoAtendimento!: number;
   totalPedidos!: number;
   composicaoEstoque: Array<any> = [];
+  labelsComposPedidos: Array<any> = [];
+  itensMaisSolicitados: Array<any> = [];
+  solicitantesMaisAtivos: Array<any> = [];
 
 
   ngOnInit(){
     this.auth.carregaDadosDashboard().subscribe((dados: any) => {
       this.carregaMetricasPedidos(dados.metricasStatusPedidos);
       this.carregaGraficoPedidosUlt12Meses(dados.pedidosUlt12Meses);
-      this.carregaGraficoIncidNaturezasPedidos(dados.incidNaturezasPedidos);
-      this.composicaoEstoque = dados.composicaoEstoque;
+      this.carregaGraficoComposicaoPedidos(dados.composicaoPedidos);
+      this.carregaDadosComposicaoEstoque(dados.composicaoEstoque);
+      this.itensMaisSolicitados = dados.itensMaisSolicitados;
+      this.solicitantesMaisAtivos = dados.solicitantesMaisAtivos;
     });
     
     this.$subs = this.messenger.receiveMessage().subscribe((msg) => {
@@ -42,6 +46,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.notification = msg;
       }
     })
+  }
+
+  carregaDadosComposicaoEstoque(dados: Array<any>) {
+    let i = 0;
+    while(i < 9 && i < dados.length) {
+      this.composicaoEstoque[i] = {natureza: dados[i].natureza, incidencias: parseInt(dados[i].incidencias)};
+      i++;
+    }
+
+    if(dados.length > 10) {
+      let sum = 0;
+      while(i < dados.length) {
+        sum += parseInt(dados[i].incidencias);
+        i++;
+      }
+      this.composicaoEstoque.push({natureza: 'OUTROS', incidencias: sum});
+    }
   }
 
   carregaMetricasPedidos(dados: any) {
@@ -87,7 +108,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     });
   }
 
-  carregaGraficoIncidNaturezasPedidos(dados: any) {
+  carregaGraficoComposicaoPedidos(dados: any) {
     console.log(dados[0].incidencia);
     let registros = dados.length;
 
@@ -100,27 +121,42 @@ export class DashboardComponent implements OnInit, OnDestroy {
         if (i <= 4) {
           vals.push(parseInt(dados[i].incidencia));
           labels.push(dados[i].natureza_item);
+          this.labelsComposPedidos.push({id: `cor-label${i + 1}`, label: dados[i].natureza_item});
         } else {
           outros += parseInt(dados[i].incidencia); 
         }
+      }
+    } else {
+      for(let i = 0; i < registros; i++) {
+          vals.push(parseInt(dados[i].incidencia));
+          labels.push(dados[i].natureza_item);
       }
     }
 
     if(outros > 0) {
       vals.push(outros);
       labels.push('OUTROS');
+      this.labelsComposPedidos.push({id: 'cor-label6', label: 'OUTROS'});
     }
 
     const data = {
       labels: labels,
       datasets: [{
-        label: 'Naturezas de itens mais solicitados',
+        label: 'Itens solicitados',
         data: vals,
+        backgroundColor: [
+          'rgb(54, 162, 235)',
+          'rgb(255, 99, 132)',
+          'rgb(255, 205, 86)',
+          'rgb(125, 184, 48)',
+          'rgb(114, 194, 207)',
+          'rgb(151, 62, 214)'
+        ],
         hoverOffset: 4
       }]
     };
 
-    new Chart(this.graficoIncidNaturezasPedidos.nativeElement, {
+    new Chart(this.graficoComposicaoPedidos.nativeElement, {
        type: 'doughnut',
        data: data,
        options: {

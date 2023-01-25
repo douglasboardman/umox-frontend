@@ -1,18 +1,25 @@
 @import '../../../styles.scss';
 
-.top-dashboard-card-icon.is-primary {
+$corLabel1: rgb(54, 162, 235);
+$corLabel2: rgb(255, 99, 132);
+$corLabel3: rgb(255, 205, 86);
+$corLabel4: rgb(125, 184, 48);
+$corLabel5: rgb(114, 194, 207);
+$corLabel6: rgb(151, 62, 214);
+
+.top-dashboard-card .is-primary {
     background-color: $primary;
 }
 
-.top-dashboard-card-icon.is-success {
+.top-dashboard-card .is-success {
     background-color: $success;
 }
 
-.top-dashboard-card-icon.is-warning {
-    background-color: $warning;
+.top-dashboard-card .is-warning {
+    background-color: $orange;
 }
 
-.top-dashboard-card-icon.is-danger {
+.top-dashboard-card .is-danger {
     background-color: $danger;
 }
 
@@ -20,8 +27,13 @@
     padding: 0;
 }
 
+.card, .top-dashboard-card {
+    border-radius: 3px;
+}
+
 .card-content {
     height: 100%;
+    
 }
 
 .card-content > .columns {
@@ -32,6 +44,7 @@
 
 .top-dashboard-card {
     height: 100px;
+    color: $light;
 }
 
 .top-dashboard-card-icon {
@@ -39,8 +52,6 @@
     font-size: 50px;
     text-align: center;
     color: $light;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
 }
 
 .top-dashboard-card-icon i {
@@ -71,8 +82,10 @@
     font-weight: 600;
 }
 
-.card-content.grafico {
-    height: 400px;
+.panel-block {
+    height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .grafico {
@@ -81,23 +94,37 @@
 }
 
 canvas {
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
+    max-height: 350px;
+}
+
+article {
+    min-height: 316px;
+    background-color: $light;
 }
 
 table {
+    width: 100%;
     font-size: 11px;
     color: $text-color;
+    margin: 15px;
 }
 
 table tr {
     border-bottom: 1px dashed $dark-grey;
 }
 
+table td {
+    vertical-align: middle;
+}
+
 table tr:hover {
     background-color: $grey;
 }
+
+#tb-composicao-estoque tr:nth-child(even) {
+    background-color: $light-blue;
+}
+
 
 h2 {
     font-weight: 500;
@@ -105,3 +132,38 @@ h2 {
     margin-top: 0;
     margin-bottom: 10px;
 }
+
+.cor-label {
+    width: 50px;
+    height: 15px;
+}
+
+#column-labels-compos-pedidos {
+    display: flex;
+    justify-content: center;
+}
+
+#tb-labels-naturezas-mais-solicitadas {
+    font-size: 10px;
+    margin: auto;
+}
+
+#tb-labels-naturezas-mais-solicitadas tr {
+    height: 30px;
+}
+
+#tb-labels-naturezas-mais-solicitadas td {
+    padding-left: 10px;
+}
+
+#cor-label1 { background-color: $corLabel1 }
+
+#cor-label2 { background-color: $corLabel2 }
+
+#cor-label3 { background-color: $corLabel3 }
+
+#cor-label4 { background-color: $corLabel4 }
+
+#cor-label5 { background-color: $corLabel5 }
+
+#cor-label6 { background-color: $corLabel6 }
