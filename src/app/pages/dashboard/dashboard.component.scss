@@ -87,14 +87,11 @@ $corLabel6: rgb(151, 62, 214);
     padding: 24px;
     height: calc(100% - 55px);
     min-height: 261px;
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    gap: 10px;
+    
 }
 
 .panel-heading {
-    background-color: unset;
+    background-color: $light;
 }
 
 .grafico {
@@ -102,7 +99,13 @@ $corLabel6: rgb(151, 62, 214);
     justify-content: center;
 }
 
+#column-labels-compos-pedidos {
+    margin: 20px;
+}
 
+canvas {
+    padding: 15px;
+}
 
 .dashboard-middle-panels article {
     height: 400px;
@@ -197,6 +200,19 @@ h2 {
 
     article {
         height: unset;
+    }
+}
+
+@media (max-width: 1700px) {
+    .columns.dashboard-middle-panels,
+    .columns.dashboard-bottom-panels {
+        display: block;
+    }
+
+    .dashboard-bottom-panels article,
+    .dashboard-middle-panels article {
+        height: unset;
+        min-height: unset;
     }
 }
 

@@ -93,6 +93,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         ]
       },
       options: {
+        aspectRatio: 3,
         responsive: true,
         layout: {autoPadding: true},
         plugins: {
@@ -157,6 +158,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
        data: data,
        options: {
         layout: {autoPadding: true},
+        aspectRatio: 1,
         responsive: true,
         plugins: {
           legend: {
