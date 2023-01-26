@@ -11,8 +11,16 @@ export class AppFrameComponent {
 
   ngOnInit() {
     const width = window.innerWidth;
-    if(width <= 950) {
+    if(width > 1480) {
+      this.contentToggle = 'normal-view';
+      this.sidebarToggle = false;
+      localStorage.setItem('sidebar-toggle', 'false');
+    } else if(width <= 950) {
       this.contentToggle = 'responsive';
+    } else {
+      this.contentToggle = 'maximized';
+      this.sidebarToggle = true;
+      localStorage.setItem('sidebar-toggle', 'true');
     }
   }
 
@@ -43,10 +51,16 @@ export class AppFrameComponent {
 
   onResize(event: any) {
     const width = event.target.innerWidth;
-    if(width <= 950) {
+    if(width > 1480) {
+      this.contentToggle = 'normal-view';
+      this.sidebarToggle = false;
+      localStorage.setItem('sidebar-toggle', 'false');
+    } else if(width <= 950) {
       this.contentToggle = 'responsive';
     } else {
       this.contentToggle = 'maximized';
+      this.sidebarToggle = true;
+      localStorage.setItem('sidebar-toggle', 'true');
     }
   }
 }

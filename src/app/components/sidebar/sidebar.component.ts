@@ -53,7 +53,9 @@ export class SidebarComponent {
 
   onResize(event: any) {
     const width = event.target.innerWidth;
-    if(width <= 950) {
+    if(width > 1480) {
+      this.sidebarMode = '';
+    } else if(width <= 950) {
       this.sidebarMode = 'responsive';
     } else {
       this.sidebarMode = 'minimized';
