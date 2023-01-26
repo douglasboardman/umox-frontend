@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./topbar.component.scss']
 })
 export class TopbarComponent {
+  nomeUsuario: string = 'Usuario'
 
+  ngOnInit() {
+    this.nomeUsuario = String(localStorage.getItem('nome-usuario'));
+  }
 }

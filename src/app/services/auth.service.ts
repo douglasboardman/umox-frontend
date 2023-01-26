@@ -19,12 +19,16 @@ export class AuthService {
     return this.webRequestService.get('auth/dashboard');
   }
 
+  carregaInfoUsuario() {
+    return this.webRequestService.get('auth/dadosUsuario');
+  }
+
   login(email: string, senha: string) {
     return this.webRequestService.login(email, senha).pipe(
       shareReplay(),
       tap((res: HttpResponse<any>) => {
         let usuario = res.body;
-        this.setSession(usuario.id, String(res.headers.get('x-access-token')));
+        this.setSession(usuario.id, usuario.nome, String(res.headers.get('x-access-token')));
         this.auth = 'logged-in';
         this.router.navigateByUrl('/dashboard');
       })
@@ -63,13 +67,15 @@ export class AuthService {
     return localStorage.setItem('x-access-token', accessToken);
   }
 
-  private setSession(idUsuario: string, accessToken: string) {
+  private setSession(idUsuario: string, nomeUsuario: string, accessToken: string) {
     localStorage.setItem('id-usuario', idUsuario);
+    localStorage.setItem('nome-usuario', nomeUsuario);
     localStorage.setItem('x-access-token', accessToken);
   }
 
   private removeSession() {
     localStorage.removeItem('id-usuario');
+    localStorage.removeItem('nome-usuario');
     localStorage.removeItem('x-access-token');
   }
 }

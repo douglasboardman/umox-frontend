@@ -32,6 +32,7 @@ import { OperacoesPedidosMenuComponent } from './pages/operacoes-pedidos-menu/op
 import { AdminPedidosMenuComponent } from './pages/admin-pedidos-menu/admin-pedidos-menu.component';
 import { GerenciarUsuariosComponent } from './pages/gerenciar-usuarios/gerenciar-usuarios.component';
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
+import { MeuCadastroComponent } from './pages/meu-cadastro/meu-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.co
     OperacoesPedidosMenuComponent,
     AdminPedidosMenuComponent,
     GerenciarUsuariosComponent,
-    EditarUsuarioComponent
+    EditarUsuarioComponent,
+    MeuCadastroComponent
   ],
   imports: [
     BrowserModule,

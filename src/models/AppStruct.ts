@@ -36,6 +36,14 @@ const appStruct = new AppStruct(
     'Dasboard',
     [
         new AppStructMember(
+            'meuCadastro',
+            '/meuCadastro',
+            'Meu cadastro',
+            'dashboard',
+            []
+        ),
+
+        new AppStructMember(
             'operações',
             '/operacoes',
             'operações',

@@ -109,7 +109,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   carregaGraficoComposicaoPedidos(dados: any) {
-    console.log(dados[0].incidencia);
     let registros = dados.length;
 
     let vals: Array<number> = [];
