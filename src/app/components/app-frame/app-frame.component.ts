@@ -11,13 +11,13 @@ export class AppFrameComponent {
 
   ngOnInit() {
     const width = window.innerWidth;
-    if(width <= 750) {
+    if(width <= 950) {
       this.contentToggle = 'responsive';
     }
   }
 
   onSidebarToggle() {
-    if(window.innerWidth > 750) {
+    if(window.innerWidth > 950) {
       if(this.contentToggle != 'maximized') {
         this.contentToggle = 'maximized';
         this.sidebarToggle = true;
@@ -43,7 +43,7 @@ export class AppFrameComponent {
 
   onResize(event: any) {
     const width = event.target.innerWidth;
-    if(width <= 750) {
+    if(width <= 950) {
       this.contentToggle = 'responsive';
     } else {
       this.contentToggle = 'maximized';

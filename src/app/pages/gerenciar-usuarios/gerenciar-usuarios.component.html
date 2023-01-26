@@ -1,31 +1,43 @@
 <app-frame>
-    <app-page-header tituloPagina="Gerenciar usuários"></app-page-header>
+  <app-page-header tituloPagina="Gerenciar usuários"></app-page-header>
+  <div class="table-container">
     <table class="generic rounded blue">
-        <thead>
-            <tr>
-                <th width="28%" style="text-align: left;">NOME</th>
-                <th width="30%" style="text-align: left;">EMAIL</th>
-                <th width="18%" style="text-align: left;">PERFIL</th>
-                <th width="14%" style="text-align: left;">ACESSO</th>
-                <th width="10%" style="text-align: center;">AÇÕES</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let usuario of usuarios" class="tr-cabecalho">
-                <td>{{usuario.nome_usuario.toUpperCase()}}</td>
-                <td>{{usuario.email_usuario.toUpperCase()}}</td>
-                <td>{{usuario.perfil_usuario.toUpperCase()}}</td>
-                <td>{{usuario.acesso_permitido ? 'PERMITIDO' : 'NÃO PERMITIDO'}}</td>
-                <td style="text-align: center;">
-                    <a id="btn-editar-usuario" [routerLink]="'editarUsuario/' + usuario.id_usuario" class="button is-small is-info" title="Editar usuário">
-                        <span class="icon is-small">
-                            <i class='bx bx-edit icon'></i>
-                        </span>
-                        <span>Editar</span>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th width="28%" style="text-align: left">NOME</th>
+          <th width="30%" style="text-align: left">EMAIL</th>
+          <th width="18%" style="text-align: left">PERFIL</th>
+          <th width="14%" style="text-align: left">ACESSO</th>
+          <th width="10%" style="text-align: center">AÇÕES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios" class="tr-cabecalho">
+          <td>{{ usuario.nome_usuario.toUpperCase() }}</td>
+          <td>{{ usuario.email_usuario.toUpperCase() }}</td>
+          <td>{{ usuario.perfil_usuario.toUpperCase() }}</td>
+          <td>
+            {{ usuario.acesso_permitido ? "PERMITIDO" : "NÃO PERMITIDO" }}
+          </td>
+          <td style="text-align: center">
+            <a
+              id="btn-editar-usuario"
+              [routerLink]="'editarUsuario/' + usuario.id_usuario"
+              class="button is-small is-info"
+              title="Editar usuário"
+            >
+              <span class="icon is-small">
+                <i class="bx bx-edit icon"></i>
+              </span>
+              <span>Editar</span>
+            </a>
+          </td>
+        </tr>
+      </tbody>
     </table>
-    <app-notification [class]="notification.msgClass" [message]="notification.message"></app-notification>
+  </div>
+  <app-notification
+    [class]="notification.msgClass"
+    [message]="notification.message"
+  ></app-notification>
 </app-frame>

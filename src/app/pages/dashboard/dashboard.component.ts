@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   labelsComposPedidos: Array<any> = [];
   itensMaisSolicitados: Array<any> = [];
   solicitantesMaisAtivos: Array<any> = [];
+  arGrafico: number = 3;
 
 
   ngOnInit(){
@@ -79,7 +80,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   carregaGraficoPedidosUlt12Meses(dados: any) {
-    
+    if(window.innerWidth <= 640) {
+      this.arGrafico = 2;
+    }
    new Chart(this.graficoPedidosUlt12Meses.nativeElement, {
       type: 'line',
       data: {
@@ -93,7 +96,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         ]
       },
       options: {
-        aspectRatio: 3,
+        aspectRatio: this.arGrafico,
         responsive: true,
         layout: {autoPadding: true},
         plugins: {

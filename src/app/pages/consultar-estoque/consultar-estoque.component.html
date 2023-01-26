@@ -1,42 +1,50 @@
 <app-frame>
-    <app-page-header tituloPagina="Consultar estoque"></app-page-header>
-    <div class="columns">
-        <div class="column">
-            <article class="panel is-primary">
-                <p class="panel-heading">
-                  Consultar estoque
-                </p>
-                <div class="panel-block">
-                  <p class="control has-icons-left">
-                    <input [(ngModel)]="searchText" (keyup)="onKeyUpTxtConsulta()" class="input uppercase-field is-primary" type="text" placeholder="Buscar no estoque">
-                    <span class="icon is-left">
-                        <i class='bx bx-search' aria-hidden="true"></i>
-                    </span>
-                  </p>
-                </div>
-              </article>
-            <table class="generic rounded blue">
-                <thead>
-                    <tr>
-                        <th style="width: 5%; text-align: center;">ID</th>
-                        <th style="width: 40%;">DESCRIÇÃO</th>
-                        <th style="width: 25%;">NATUREZA</th>
-                        <th style="width: 15%;">MARCA</th>
-                        <th style="width: 10%;">UN. MEDIDA</th>
-                        <th style="width: 5%; text-align: center;">ESTOQUE</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of dadosItens">
-                        <td style="width: 5%; text-align: center;">{{item.id_item}}</td>
-                        <td>{{item.descricao_item}}</td>
-                        <td>{{item.natureza_item}}</td>
-                        <td>{{item.marca_item}}</td>
-                        <td>{{item.un_medida_item}}</td>
-                        <td style="width: 5%; text-align: center;">{{item.estoque_item}}</td>
-                    </tr>
-                </tbody>
-            </table>
+  <app-page-header tituloPagina="Consultar estoque"></app-page-header>
+  <div class="columns">
+    <div class="column">
+      <article class="panel is-primary">
+        <p class="panel-heading">Consultar estoque</p>
+        <div class="panel-block">
+          <p class="control has-icons-left">
+            <input
+              [(ngModel)]="searchText"
+              (keyup)="onKeyUpTxtConsulta()"
+              class="input uppercase-field is-primary"
+              type="text"
+              placeholder="Buscar no estoque"
+            />
+            <span class="icon is-left">
+              <i class="bx bx-search" aria-hidden="true"></i>
+            </span>
+          </p>
         </div>
+      </article>
+      <div class="table-container">
+        <table class="generic rounded blue">
+          <thead>
+            <tr>
+              <th style="width: 5%; text-align: center">ID</th>
+              <th style="width: 40%">DESCRIÇÃO</th>
+              <th style="width: 25%">NATUREZA</th>
+              <th style="width: 15%">MARCA</th>
+              <th style="width: 10%">UN. MEDIDA</th>
+              <th style="width: 5%; text-align: center">ESTOQUE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of dadosItens">
+              <td style="width: 5%; text-align: center">{{ item.id_item }}</td>
+              <td>{{ item.descricao_item }}</td>
+              <td>{{ item.natureza_item }}</td>
+              <td>{{ item.marca_item }}</td>
+              <td>{{ item.un_medida_item }}</td>
+              <td style="width: 5%; text-align: center">
+                {{ item.estoque_item }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </app-frame>

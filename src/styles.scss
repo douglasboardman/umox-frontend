@@ -69,9 +69,9 @@ button:active, button:focus {
 }
 
 body {
-    height: 100vh;
     background-color: whitesmoke;
     color: $text-color;
+    height: fit-content;
 }
 
 article {

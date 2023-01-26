@@ -20,7 +20,7 @@ export class SidebarComponent {
       this.permissoes = perm as Permissoes;
     })
     let toggle = localStorage.getItem('sidebar-toggle') == 'true' ? true : false;
-    if(width <= 750) {
+    if(width <= 950) {
       this.sidebarMode = 'responsive';
     } else if(toggle){
       this.onToggleSidebarClicked()
@@ -28,7 +28,7 @@ export class SidebarComponent {
   }
 
   onToggleSidebarClicked(){
-    if(window.innerWidth <= 750) {
+    if(window.innerWidth <= 950) {
       if(this.sidebarMode == 'responsive'){
         this.sidebarMode = 'minimized'
         this.toggle.emit();
@@ -53,7 +53,7 @@ export class SidebarComponent {
 
   onResize(event: any) {
     const width = event.target.innerWidth;
-    if(width <= 750) {
+    if(width <= 950) {
       this.sidebarMode = 'responsive';
     } else {
       this.sidebarMode = 'minimized';

@@ -2,12 +2,16 @@
   <app-page-header tituloPagina="Cadastrar pedido"></app-page-header>
   <div class="columns">
     <div class="column">
-        <article class="panel is-info">
-            <form (ngSubmit)="submit" [formGroup]="formNovoPedido" #formDir="ngForm">
+      <article class="panel is-info">
+        <form
+          (ngSubmit)="(submit)"
+          [formGroup]="formNovoPedido"
+          #formDir="ngForm"
+        >
           <p class="panel-heading">Novo Pedido</p>
           <div class="panel-block">
             <div class="columns">
-              <div class="column label-column" style="max-width: 200px;">
+              <div class="column label-column" style="max-width: 200px">
                 <label class="label">Finalidade do Pedido:</label>
               </div>
               <div class="column">
@@ -15,36 +19,52 @@
                   formControlName="finalidade"
                   class="input uppercase-field"
                   title="Descreva a finalidade do seu pedido com no mínimo 30 caracteres."
-                  style="font-size: 12px;"
+                  style="font-size: 12px"
                   placeholder="A finalidade do pedido é..."
                   [class.is-danger]="finalidade.invalid && formDir.submitted"
                   (keyup)="onKeyUpTxtFinalidade()"
                 />
               </div>
-              <div *ngIf="finalidade.invalid && formDir.submitted" class="panel-block">
-                <p *ngIf="finalidade.errors?.['required']" style="margin-left: 10px;" class="help is-danger">É preciso informar a finalidade do pedido</p>
-                <p *ngIf="finalidade.errors?.['minlength']" style="margin-left: 10px;" class="help is-danger">O campo finalidade deve ter, no mínimo, 30 (trinta) caracteres</p>
-              </div>
+              <div
+                *ngIf="finalidade.invalid && formDir.submitted"
+                class="panel-block"
+              >
+                <p
+                  *ngIf="finalidade.errors?.['required']"
+                  style="margin-left: 10px"
+                  class="help is-danger"
+                >
+                  É preciso informar a finalidade do pedido
+                </p>
+                <p
+                  *ngIf="finalidade.errors?.['minlength']"
+                  style="margin-left: 10px"
+                  class="help is-danger"
+                >
+                  O campo finalidade deve ter, no mínimo, 30 (trinta) caracteres
+                </p>
               </div>
             </div>
+          </div>
           <div class="panel-block">
-            <table
-              style="box-shadow: none"
-              id="itens-pedido"
-              class="generic rounded green"
-            >
-              <thead>
-                <tr>
-                  <th width="8%" style="text-align: center">ID</th>
-                  <th width="32%" style="text-align: left">DESCRIÇÃO</th>
-                  <th width="25%" style="text-align: left">MARCA</th>
-                  <th width="16%" style="text-align: left">UNIDADE</th>
-                  <th width="7%" style="text-align: center">ESTOQUE</th>
-                  <th width="7%" style="text-align: center">QTD.</th>
-                  <th width="5%" style="text-align: center">AÇÕES</th>
-                </tr>
-              </thead>
-              <tbody>
+            <div class="table-container">
+              <table
+                style="box-shadow: none"
+                id="itens-pedido"
+                class="generic rounded green"
+              >
+                <thead>
+                  <tr>
+                    <th width="8%" style="text-align: center">ID</th>
+                    <th width="32%" style="text-align: left">DESCRIÇÃO</th>
+                    <th width="25%" style="text-align: left">MARCA</th>
+                    <th width="16%" style="text-align: left">UNIDADE</th>
+                    <th width="7%" style="text-align: center">ESTOQUE</th>
+                    <th width="7%" style="text-align: center">QTD.</th>
+                    <th width="5%" style="text-align: center">AÇÕES</th>
+                  </tr>
+                </thead>
+                <tbody>
                   <tr *ngFor="let itemPedido of itensPedido">
                     <td>{{ itemPedido.id_item }}</td>
                     <td>{{ itemPedido.descricao_item }}</td>
@@ -57,22 +77,38 @@
                       {{ itemPedido.qtd_pedido }}
                     </td>
                     <td>
-                      <button (click)="onRemItemButtonClicked(itemPedido.id_item)" title="Remover do pedido" class="btn sm-btn-red">
+                      <button
+                        (click)="onRemItemButtonClicked(itemPedido.id_item)"
+                        title="Remover do pedido"
+                        class="btn sm-btn-red"
+                      >
                         -
                       </button>
                     </td>
                   </tr>
-              </tbody>
-            </table>
-        </div>
-        <div *ngIf="this.itensPedido.length == 0 && formDir.submitted" class="panel-block">
-            <p style="margin-left: 10px;" class="help is-danger">O pedido deve ter pelo menos 1 (um) item.</p>
-        </div>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div
+            *ngIf="this.itensPedido.length == 0 && formDir.submitted"
+            class="panel-block"
+          >
+            <p style="margin-left: 10px" class="help is-danger">
+              O pedido deve ter pelo menos 1 (um) item.
+            </p>
+          </div>
           <div class="panel-block">
-            <button (click)="submit()" style="width: 100%" class="button is-success is-outlined is-right">Encaminhar pedido</button>
+            <button
+              (click)="submit()"
+              style="width: 100%"
+              class="button is-success is-outlined is-right"
+            >
+              Encaminhar pedido
+            </button>
           </div>
         </form>
-        </article>
+      </article>
       <article class="panel is-primary">
         <p class="panel-heading">Consultar estoque</p>
         <div class="panel-block">
@@ -90,57 +126,60 @@
           </p>
         </div>
       </article>
-      <table class="generic rounded blue">
-        <thead>
-          <tr>
-            <th style="width: 5%; text-align: center">ID</th>
-            <th style="width: 40%">DESCRIÇÃO</th>
-            <th style="width: 25%">NATUREZA</th>
-            <th style="width: 10%">MARCA</th>
-            <th style="width: 8%">UN. MEDIDA</th>
-            <th style="width: 5%; text-align: center">ESTOQUE</th>
-            <th style="width: 7%; text-align: center">ADICIONAR</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of dadosItens">
-            <td style="width: 5%; text-align: center">{{ item.id_item }}</td>
-            <td>{{ item.descricao_item }}</td>
-            <td>{{ item.natureza_item }}</td>
-            <td>{{ item.marca_item }}</td>
-            <td>{{ item.un_medida_item }}</td>
-            <td style="width: 5%; text-align: center">
-              {{ item.estoque_item }}
-            </td>
-            <td>
-              <div class="flex-div">
-                <input
-                  [id]="'qtd_' + item.id_item"
-                  class="input-qtd-item"
-                  (keyup)="onKeyUpInputQtd(item.id_item)"
-                  min="0"
-                  max="{{ item.estoque_item }}"
-                  type="number"
-                /><button
-                  [id]="'btnAdd_' + item.id_item"
-                  (click)="onAddItemButtonClicked(item.id_item)"
-                  title="Adicionar ao Pedido"
-                  class="btn sm-btn-green"
-                >
-                  +
-                </button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-container">
+        <table class="generic rounded blue">
+          <thead>
+            <tr>
+              <th style="width: 5%; text-align: center">ID</th>
+              <th style="width: 40%">DESCRIÇÃO</th>
+              <th style="width: 25%">NATUREZA</th>
+              <th style="width: 10%">MARCA</th>
+              <th style="width: 8%">UN. MEDIDA</th>
+              <th style="width: 5%; text-align: center">ESTOQUE</th>
+              <th style="width: 7%; text-align: center">ADICIONAR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of dadosItens">
+              <td style="width: 5%; text-align: center">{{ item.id_item }}</td>
+              <td>{{ item.descricao_item }}</td>
+              <td>{{ item.natureza_item }}</td>
+              <td>{{ item.marca_item }}</td>
+              <td>{{ item.un_medida_item }}</td>
+              <td style="width: 5%; text-align: center">
+                {{ item.estoque_item }}
+              </td>
+              <td>
+                <div class="flex-div">
+                  <input
+                    [id]="'qtd_' + item.id_item"
+                    class="input-qtd-item"
+                    (keyup)="onKeyUpInputQtd(item.id_item)"
+                    min="0"
+                    max="{{ item.estoque_item }}"
+                    type="number"
+                  /><button
+                    [id]="'btnAdd_' + item.id_item"
+                    (click)="onAddItemButtonClicked(item.id_item)"
+                    title="Adicionar ao Pedido"
+                    class="btn sm-btn-green"
+                  >
+                    +
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-  <app-modal-generator 
-    [tituloModal]="tituloModal" 
-    [msgModal]="msgModal" 
-    [mostrarModal]="mostrarModal" 
-    (CancelButtonClicked)="cancelarEnvioPedido()" 
-    (ConfirmButtonClicked)="enviarPedido()">
+  <app-modal-generator
+    [tituloModal]="tituloModal"
+    [msgModal]="msgModal"
+    [mostrarModal]="mostrarModal"
+    (CancelButtonClicked)="cancelarEnvioPedido()"
+    (ConfirmButtonClicked)="enviarPedido()"
+  >
   </app-modal-generator>
 </app-frame>
