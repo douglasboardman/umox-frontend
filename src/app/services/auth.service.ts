@@ -23,6 +23,22 @@ export class AuthService {
     return this.webRequestService.get('auth/dadosUsuario');
   }
 
+  alteraDadosUsuario(payload: any) {
+    const nome_usuario = payload.nome_usuario;
+    return this.webRequestService.post('auth/alteraDadosUsuario', payload).subscribe((res: any) => {
+      if(!res.error) {
+        let msg = new TopMessage(
+          'Cadastro atualizado com sucesso!',
+          'is-success',
+          'dashboard'
+        )
+        this.messenger.sendMessage(msg);
+        this.router.navigate(['/dashboard']);
+        localStorage.setItem('nome-usuario', nome_usuario);
+      }
+    });
+  }
+
   login(email: string, senha: string) {
     return this.webRequestService.login(email, senha).pipe(
       shareReplay(),

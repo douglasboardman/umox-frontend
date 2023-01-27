@@ -69,6 +69,6 @@ export class MeuCadastroComponent {
   }
 
   submit() {
-    //this.admin.concluirEdicaoUsuario(this.payload);
+    this.auth.alteraDadosUsuario(this.payload);
   }
 }
