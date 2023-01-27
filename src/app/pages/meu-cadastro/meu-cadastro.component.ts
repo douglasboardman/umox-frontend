@@ -12,7 +12,6 @@ export class MeuCadastroComponent {
   constructor(private auth: AuthService, private route: ActivatedRoute){}
   editarUsuarioForm!: FormGroup;
   dadosAlterados: boolean = false;
-  listaPerfis!: any;
   idUsuario!: string;
   dadosUsuario!: any;
   payload!: any;

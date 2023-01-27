@@ -1,0 +1,71 @@
+<div class="header-div">
+    <div class="container">
+        <img id="logo" src="../../../assets/umox-logo.png" alt="logo" />
+        <div class="app-name">
+            <h2>Umox</h2>
+            <h3>Gestão de almoxarifado</h3>
+        </div>
+    </div>
+</div>
+<app-content>
+    <div class="container">
+        <form (ngSubmit)="submit()" [formGroup]="alterarSenhaForm" #formDir="ngForm">
+        <h1 class="page-title">Alterar Senha</h1>
+        <article class="panel is-primary">
+            <p class="panel-heading">Insira sua nova senha</p>
+            <div class="panel-block">
+                <div class="columns">
+                    <div class="column label-column" style="max-width: 180px;">
+                        <label>Nova senha:</label>
+                    </div>
+                    <div class="column">
+                        <input class="input" type="password" formControlName="senha_usuario" [class.is-danger]="senha_usuario.invalid && dadosFormAlterados">
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="senha_usuario.invalid && dadosFormAlterados" class="panel-block">
+                <div class="columns">
+                    <div class="column label-column" style="max-width: 180px;"></div>
+                    <div class="column">
+                        <p *ngIf="senha_usuario.errors?.['required']" class="help is-danger">Senha não informada</p>
+                        <p *ngIf="senha_usuario.errors?.['matchValidator']" class="help is-danger">Senhas não coincidem</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-block">
+                <div class="columns">
+                    <div class="column label-column" style="max-width: 180px;">
+                        <label>Confirmar senha:</label>
+                    </div>
+                    <div class="column">
+                        <input class="input" type="password" formControlName="confirmar_senha" [class.is-danger]="confirmar_senha.invalid && dadosFormAlterados">
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="confirmar_senha.invalid && dadosFormAlterados" class="panel-block">
+                <div class="columns">
+                    <div class="column label-column" style="max-width: 180px;"></div>
+                    <div class="column">
+                        <p *ngIf="confirmar_senha.errors?.['required']" class="help is-danger">Senha não informada</p>
+                        <p *ngIf="confirmar_senha.hasError('matching')" class="help is-danger">Senhas não coincidem</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-block">
+                <div class="columns">
+                    <div class="column flex-div-align-right">
+                        <div class="field is-grouped">
+                            <p class="control">
+                                <a routerLink="/admin/usuarios" class="button is-danger is-outlined" style="width: 100%;">Cancelar</a>
+                            </p>
+                            <p class="control">
+                                <input type="submit" class="button is-outlined is-success" [disabled]="!btnSalvarEnabled" style="width: 100%;" value="Salvar Alterações">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </form>
+    </div>
+</app-content>

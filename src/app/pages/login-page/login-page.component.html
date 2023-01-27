@@ -1,46 +1,68 @@
 <div class="columns">
-    <div class="app-name">
-        <h2>Umox</h2>
-        <h3>Gestão de almoxarifado</h3>
+  <div class="app-name">
+    <h2>Umox</h2>
+    <h3>Gestão de almoxarifado</h3>
+  </div>
+  <form (ngSubmit)="submit()" [formGroup]="loginForm" #formDir="ngForm">
+    <h1>Login</h1>
+    <div class="field">
+      <p class="control has-icons-left">
+        <input
+          class="input"
+          formControlName="email"
+          [class.is-danger]="email.invalid && formDir.submitted"
+          type="email"
+          placeholder="Email"
+        />
+        <span class="icon is-small is-left">
+          <i class="bx bx-envelope"></i>
+        </span>
+      </p>
+      <div *ngIf="email.invalid && formDir.submitted">
+        <p *ngIf="email.errors?.['required']" class="help is-danger">
+          Email não informado
+        </p>
+        <p *ngIf="email.errors?.['email']" class="help is-danger">
+          Email inválido
+        </p>
+      </div>
     </div>
-    <form (ngSubmit)="submit()" [formGroup]="loginForm" #formDir="ngForm">
-        <h1>Login</h1>
-        <div class="field">
-            <p class="control has-icons-left">
-              <input class="input" formControlName="email" [class.is-danger]="email.invalid && formDir.submitted" type="email" placeholder="Email">
-              <span class="icon is-small is-left">
-                <i class="bx bx-envelope"></i>
-              </span>
-            </p>
-            <div *ngIf="email.invalid && formDir.submitted">
-              <p *ngIf="email.errors?.['required']" class="help is-danger">Email não informado</p>
-              <p *ngIf="email.errors?.['email']" class="help is-danger">Email inválido</p>
-            </div>
-          </div>
-          <div class="field">
-            <p class="control has-icons-left">
-              <input class="input" formControlName="senha" [class.is-danger]="senha.invalid && formDir.submitted" type="password" placeholder="Password">
-              <span class="icon is-small is-left">
-                <i class="bx bx-lock"></i>
-              </span>
-            </p>
-            <div *ngIf="senha.invalid && formDir.submitted">
-              <p *ngIf="senha.errors?.['required']" class="help is-danger">Senha não informada</p>
-            </div>
-          </div>
-          <div class="field">
-            <p class="control">
-              <input type="submit" value="Login" class="button is-primary">
-            </p>
-          </div>
-          <p id="not-registered-msg">Não possui cadastro? <a routerLink="/register">Clique aqui</a> para solicitar.</p>
-    </form>
-    <div class="column img-div-column">
-        <!-- <img id="background-image" class="background" src="../../../assets/umox_app_login_page_img"/> -->
-        <img id="logo" src="../../../assets/umox-logo.png" alt="logo"/>
-        <app-notification [class]="notification.msgClass" [message]="notification.message"></app-notification>
+    <div class="field">
+      <p class="control has-icons-left">
+        <input
+          class="input"
+          formControlName="senha"
+          [class.is-danger]="senha.invalid && formDir.submitted"
+          type="password"
+          placeholder="Password"
+        />
+        <span class="icon is-small is-left">
+          <i class="bx bx-lock"></i>
+        </span>
+      </p>
+      <div *ngIf="senha.invalid && formDir.submitted">
+        <p *ngIf="senha.errors?.['required']" class="help is-danger">
+          Senha não informada
+        </p>
+      </div>
     </div>
-    <div class="column login-column">
+    <div class="field">
+      <p class="control">
+        <input type="submit" value="Login" class="button is-primary" />
+      </p>
     </div>
-    
+    <p id="not-registered-msg">
+      Não possui cadastro? <a routerLink="/register">Clique aqui</a> para
+      solicitar.
+    </p>
+  </form>
+  <div class="column img-div-column">
+    <!-- <img id="background-image" class="background" src="../../../assets/umox_app_login_page_img"/> -->
+    <img id="logo" src="../../../assets/umox-logo.png" alt="logo" />
+  </div>
+  <div class="column login-column"></div>
+  <app-notification
+    [class]="notification.msgClass"
+    [message]="notification.message"
+  ></app-notification>
 </div>

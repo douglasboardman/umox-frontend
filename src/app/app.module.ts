@@ -33,6 +33,7 @@ import { AdminPedidosMenuComponent } from './pages/admin-pedidos-menu/admin-pedi
 import { GerenciarUsuariosComponent } from './pages/gerenciar-usuarios/gerenciar-usuarios.component';
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 import { MeuCadastroComponent } from './pages/meu-cadastro/meu-cadastro.component';
+import { AlterarSenhaComponent } from './pages/alterar-senha/alterar-senha.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { MeuCadastroComponent } from './pages/meu-cadastro/meu-cadastro.componen
     AdminPedidosMenuComponent,
     GerenciarUsuariosComponent,
     EditarUsuarioComponent,
-    MeuCadastroComponent
+    MeuCadastroComponent,
+    AlterarSenhaComponent
   ],
   imports: [
     BrowserModule,

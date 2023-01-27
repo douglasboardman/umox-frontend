@@ -19,6 +19,7 @@ import { OperacoesPedidosMenuComponent } from './pages/operacoes-pedidos-menu/op
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { GerenciarUsuariosComponent } from './pages/gerenciar-usuarios/gerenciar-usuarios.component';
 import { MeuCadastroComponent } from './pages/meu-cadastro/meu-cadastro.component';
+import { AlterarSenhaComponent } from './pages/alterar-senha/alterar-senha.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -42,7 +43,8 @@ const routes: Routes = [
   { path: 'admin/pedidos', component: AdminPedidosMenuComponent},
   { path: 'admin/usuarios', component: GerenciarUsuariosComponent},
   { path: 'admin/usuarios/editarUsuario/:uid', component: EditarUsuarioComponent},
-  { path: 'meuCadastro', component: MeuCadastroComponent}
+  { path: 'meuCadastro', component: MeuCadastroComponent},
+  { path: 'alterarSenha', component: AlterarSenhaComponent}
 ];
 
 @NgModule({
