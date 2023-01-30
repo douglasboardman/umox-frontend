@@ -83,6 +83,10 @@ export class AuthService {
     return localStorage.setItem('x-access-token', accessToken);
   }
 
+  confereSessao() {
+    return this.webRequestService.get('auth/confereSessao');
+  }
+
   private setSession(idUsuario: string, nomeUsuario: string, accessToken: string) {
     localStorage.setItem('id-usuario', idUsuario);
     localStorage.setItem('nome-usuario', nomeUsuario);

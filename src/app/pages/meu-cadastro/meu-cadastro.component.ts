@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./meu-cadastro.component.scss']
 })
 export class MeuCadastroComponent {
-  constructor(private auth: AuthService, private route: ActivatedRoute){}
+  constructor(private auth: AuthService){}
   editarUsuarioForm!: FormGroup;
   dadosAlterados: boolean = false;
   idUsuario!: string;

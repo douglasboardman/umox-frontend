@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { matchValidator } from 'src/app/utils/comon';
 
@@ -10,7 +10,7 @@ import { matchValidator } from 'src/app/utils/comon';
   styleUrls: ['./alterar-senha.component.scss']
 })
 export class AlterarSenhaComponent {
-  constructor(private auth: AuthService, private route: ActivatedRoute){}
+  constructor(private auth: AuthService, private router: Router){}
   alterarSenhaForm!: FormGroup;
   idUsuario!: string;
   dadosUsuario!: any;
@@ -25,27 +25,22 @@ export class AlterarSenhaComponent {
       confirmar_senha: new FormControl('', Validators.compose([Validators.required, matchValidator('senha_usuario')]))
     });
         
-    // this.auth.carregaInfoUsuario().subscribe((response: any) => {
-    //   this.dadosUsuario = response;
-    //   console.log(response);
-    //   this.idUsuario = response.id;
-    //   this.alterarSenhaForm.get('nome_usuario')?.setValue(this.dadosUsuario.nome);
-    //   this.alterarSenhaForm.get('email_usuario')?.setValue(this.dadosUsuario.email);
-    // });
     this.dadosIniciais = {
       senha_usuario: this.alterarSenhaForm.get('senha_usuario'),
       confirmar_senha: this.alterarSenhaForm.get('confirmar_senha')
     }
     this.alterarSenhaForm.valueChanges.subscribe(objDados => {
       if(
-          this.dadosIniciais.senha_usuario != this.alterarSenhaForm.get('senha_usuario') ||
-          this.dadosIniciais.confirmar_senha != this.alterarSenhaForm.get('confirmar_senha')
+          this.alterarSenhaForm.get('senha_usuario')?.value.length > 0 &&
+          this.alterarSenhaForm.get('confirmar_senha')?.value.length > 0
       ) {
-        this.dadosFormAlterados = true;
+        this.payload = objDados;
+        this.payload.id_usuario = this.idUsuario;
+        this.payload.senha_usuario = this.alterarSenhaForm.get('senha_usuario')?.value;
+        this.toggleBtnSalvar();
+      } else {
+        this.toggleBtnSalvar();
       }
-      this.payload = objDados;
-      this.payload.id_usuario = this.idUsuario;
-      this.payload.senha_usuario = this.alterarSenhaForm.get('senha_usuario')?.value;
     });
 
   }
@@ -58,12 +53,26 @@ export class AlterarSenhaComponent {
     return this.alterarSenhaForm.get('confirmar_senha')!;
   }
 
+  onFocusOut() {
+    this.dadosFormAlterados = true;
+  }
+
   toggleBtnSalvar() {
     if(!this.alterarSenhaForm.invalid) {
       this.btnSalvarEnabled = true;
     } else {
       this.btnSalvarEnabled = false;
     }
+  }
+
+  onButtonCancelarClick() {
+    this.auth.confereSessao().subscribe((res: any) => {
+      if(res.sessaoAtiva) {
+        this.router.navigateByUrl('/dashboard');
+      } else {
+        this.router.navigateByUrl('/login');
+      }
+    });
   }
 
   submit() {

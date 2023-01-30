@@ -80,9 +80,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   carregaGraficoPedidosUlt12Meses(dados: any) {
-    if(window.innerWidth <= 640) {
-      this.arGrafico = 2;
-    }
+   
    new Chart(this.graficoPedidosUlt12Meses.nativeElement, {
       type: 'line',
       data: {
@@ -96,8 +94,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
         ]
       },
       options: {
-        aspectRatio: this.arGrafico,
+        aspectRatio: 2.6,
         responsive: true,
+        maintainAspectRatio: false,
         layout: {autoPadding: true},
         plugins: {
           legend: {

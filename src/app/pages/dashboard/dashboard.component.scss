@@ -104,12 +104,14 @@ $corLabel6: rgb(151, 62, 214);
 }
 
 canvas {
+    height: 100%;
+    width: 100%;
     padding: 15px;
 }
 
 .dashboard-middle-panels article {
     height: 400px;
-    min-width: 380px;
+    min-width: 320px;
     background-color: $light;
 }
 
