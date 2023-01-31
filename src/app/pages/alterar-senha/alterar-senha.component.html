@@ -1,17 +1,17 @@
-<div class="header-div">
-    <div class="container">
-        <img id="logo" src="../../../assets/umox-logo.png" alt="logo" />
-        <div class="app-name">
-            <h2>Umox</h2>
-            <h3>Gestão de almoxarifado</h3>
+<app-content>
+    <div class="header-div">
+        <div class="container">
+            <img id="logo" src="../../../assets/umox-logo (white).png" alt="logo" />
+            <div class="app-name">
+                <h2>Umox</h2>
+                <h3>Gestão de almoxarifado</h3>
+            </div>
         </div>
     </div>
-</div>
-<app-content>
-    <div class="container">
+    <div class="container page-body">
         <form (ngSubmit)="submit()" [formGroup]="alterarSenhaForm" #formDir="ngForm">
         <h1 class="page-title">Alterar Senha</h1>
-        <article class="panel is-primary">
+        <article class="panel is-info">
             <p class="panel-heading">Insira sua nova senha</p>
             <div class="panel-block">
                 <div class="columns">
@@ -67,3 +67,4 @@
     </form>
     </div>
 </app-content>
+<app-page-footer></app-page-footer>

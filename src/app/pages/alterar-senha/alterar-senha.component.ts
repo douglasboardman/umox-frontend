@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { matchValidator } from 'src/app/utils/comon';
 
@@ -10,7 +11,7 @@ import { matchValidator } from 'src/app/utils/comon';
   styleUrls: ['./alterar-senha.component.scss']
 })
 export class AlterarSenhaComponent {
-  constructor(private auth: AuthService, private router: Router){}
+  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute){}
   alterarSenhaForm!: FormGroup;
   idUsuario!: string;
   dadosUsuario!: any;
@@ -18,17 +19,28 @@ export class AlterarSenhaComponent {
   btnSalvarEnabled: boolean = false;
   dadosFormAlterados: boolean = false;
   dadosIniciais!: any;
+  token: string = '';
 
   ngOnInit() {
-    this.alterarSenhaForm = new FormGroup({
-      senha_usuario: new FormControl('', Validators.compose([Validators.required, matchValidator('confirmar_senha', true)])),
-      confirmar_senha: new FormControl('', Validators.compose([Validators.required, matchValidator('senha_usuario')]))
-    });
-        
-    this.dadosIniciais = {
-      senha_usuario: this.alterarSenhaForm.get('senha_usuario'),
-      confirmar_senha: this.alterarSenhaForm.get('confirmar_senha')
-    }
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.token = params['token'];
+        this.auth.confereTokenAltSenha(this.token).subscribe((res: any) => {
+          if(!res._error) {
+          }
+        });
+      });
+      
+      this.alterarSenhaForm = new FormGroup({
+        senha_usuario: new FormControl('', Validators.compose([Validators.required, matchValidator('confirmar_senha', true)])),
+        confirmar_senha: new FormControl('', Validators.compose([Validators.required, matchValidator('senha_usuario')]))
+      });
+          
+      this.dadosIniciais = {
+        senha_usuario: this.alterarSenhaForm.get('senha_usuario'),
+        confirmar_senha: this.alterarSenhaForm.get('confirmar_senha')
+      }
+
     this.alterarSenhaForm.valueChanges.subscribe(objDados => {
       if(
           this.alterarSenhaForm.get('senha_usuario')?.value.length > 0 &&
@@ -42,7 +54,7 @@ export class AlterarSenhaComponent {
         this.toggleBtnSalvar();
       }
     });
-
+    
   }
 
   get senha_usuario() {

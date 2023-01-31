@@ -20,18 +20,20 @@ export class WebReqInterceptorService implements HttpInterceptor {
 
     // call next() and handle the response
     return next.handle(request).pipe(
-      catchError((error: HttpErrorResponse) => {
-        console.log(error);
+      catchError((errorObj: HttpErrorResponse) => {
+        //console.log(error.error.message);
         let errorMsg = '';
 
-        if(typeof error.error.message != 'undefined') {
-          if(error.error.message.search('jwt') > -1) {
+        if(typeof errorObj.error.message != 'undefined') {
+          if(errorObj.error.message.search('jwt') > -1) {
             errorMsg = 'Sua sessão expirou';
+          } else if(errorObj.error.message.search('invalid signature') > -1 || errorObj.error.message.search('Unexpected token') > -1 ) {
+            errorMsg = 'Token de autenticação inválido ou expirado.'
           }
-        } else if(typeof error.error._message != 'undefined') {
-          errorMsg = error.error._message;
+        } else if(typeof errorObj.error._message != 'undefined') {
+          errorMsg = errorObj.error._message;
         } else {
-          errorMsg = error.error;
+          errorMsg = errorObj.error;
         }
         let msg = 'Não foi possível concluir a operação. \n' +
                   'Mensagem de erro: ' + errorMsg;

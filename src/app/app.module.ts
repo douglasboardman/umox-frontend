@@ -34,6 +34,8 @@ import { GerenciarUsuariosComponent } from './pages/gerenciar-usuarios/gerenciar
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 import { MeuCadastroComponent } from './pages/meu-cadastro/meu-cadastro.component';
 import { AlterarSenhaComponent } from './pages/alterar-senha/alterar-senha.component';
+import { RecuperarSenhaComponent } from './pages/recuperar-senha/recuperar-senha.component';
+import { PageFooterComponent } from './components/page-footer/page-footer.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { AlterarSenhaComponent } from './pages/alterar-senha/alterar-senha.compo
     GerenciarUsuariosComponent,
     EditarUsuarioComponent,
     MeuCadastroComponent,
-    AlterarSenhaComponent
+    AlterarSenhaComponent,
+    RecuperarSenhaComponent,
+    PageFooterComponent
   ],
   imports: [
     BrowserModule,

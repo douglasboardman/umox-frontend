@@ -44,7 +44,7 @@ const routes: Routes = [
   { path: 'admin/usuarios', component: GerenciarUsuariosComponent},
   { path: 'admin/usuarios/editarUsuario/:uid', component: EditarUsuarioComponent},
   { path: 'meuCadastro', component: MeuCadastroComponent},
-  { path: 'alterarSenha', component: AlterarSenhaComponent}
+  { path: 'alterarSenha/:token', component: AlterarSenhaComponent}
 ];
 
 @NgModule({

@@ -23,6 +23,14 @@ export class AuthService {
     return this.webRequestService.get('auth/dadosUsuario');
   }
 
+  gerarTokenAltSenha(email: string) {
+    return this.webRequestService.get(`auth/gerarTokenAltSenha/${email}`);
+  }
+
+  confereTokenAltSenha(token: string) {
+    return this.webRequestService.get(`auth/alterarSenha/${token}`);
+  }
+
   alteraDadosUsuario(payload: any) {
     const nome_usuario = payload.nome_usuario;
     return this.webRequestService.post('auth/alteraDadosUsuario', payload).subscribe((res: any) => {
