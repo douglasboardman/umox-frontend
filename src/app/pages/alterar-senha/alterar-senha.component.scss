@@ -1,56 +1,24 @@
 @import '../../../styles.scss';
 
-.header-div {
+
+.container {
+    width: 70%;
+}
+
+.page-header {
+    height: 100px;
     position: absolute;
     top: 0;
     left: 0;
-    height: 100px;
-    width: 100%;
+    width: 100vw;
     background-color: $primary;
 }
 
-.footer-div {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: fit-content;
-    width: 100%;
-    background-color: $sidebar-color;
-}
-
-.footer-div p {
-    font-size: 9px;
-}
-
-.footer-div .flex-div {
-    width: fit-content;
-}
-
-.footer-div h1 {
-    font-size: 26px;
-    font-weight: 700;
-}
-
-.footer-div .container {
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-#logo-footer {
-    width: 20px;
-    object-fit: contain;
-}
-
-.container {
-    width: 50%;
-}
 
 .container.page-body {
-    margin-top: 80px;
-}
-
-.content-div{
-    padding: 0;
+    margin: 80px auto;
+    width: 50%;
+    height: 350px;
 }
 
 .app-name {
@@ -81,21 +49,31 @@ article {
 }
 
 
+@media (max-width: 770px) {
+
+    h1.page-title {
+        font-size: 35px;
+    }
+}
+
 
 @media (max-width: 1000px) {
-    .container {
+    .container,
+    .container.page-body {
         width: 70%;
     }
 }
 
 @media (max-width: 580px) {
-    .container {
+    .container,
+    .container.page-body {
         width: 80%;
     }
 }
 
 @media (max-width: 400px) {
-    .container {
-        width: 90%;
+    .container,
+    .container.page-body {
+        width: 100%;
     }
 }

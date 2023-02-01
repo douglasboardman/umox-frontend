@@ -10,14 +10,14 @@ a:hover {
 }
 
 .footer-div {
-    overflow-y: hidden;
     position: absolute;
     bottom: 0;
-    left: 0;
     height: fit-content;
     width: 100%;
     background-color: $sidebar-color;
     color: whitesmoke;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .footer-div p {
@@ -41,20 +41,21 @@ a:hover {
     margin: 15px 0 10px 0;
 }
 
-.footer-div .container {
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
+// .footer-div .container {
+//     margin-top: 30px;
+//     margin-bottom: 30px;
+// }
 
 .contato {
     background-color: $sidebar-hover-color;
-    //text-align: right;
-    padding: 15px;
-    margin: -15px;
+    text-align: right;
     border-radius: 3px;
+    padding: 2px 15px 15px 20px;
 }
 
 #logo-footer {
+    margin-top: 12px;
+    margin-bottom: 10px;
     height: 35px;
     object-fit: contain;
 }
@@ -67,6 +68,14 @@ a:hover {
     margin: 0;
 }
 
-.column {
-    padding-top: 60px;
+
+@media (max-width: 770px) {
+    .footer-div {
+        position: absolute;
+        top: calc(100vh - 150px);
+    }
+
+    .container {
+        width: 90%;
+    }
 }

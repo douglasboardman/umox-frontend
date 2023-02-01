@@ -47,6 +47,29 @@ export class AuthService {
     });
   }
 
+  alteraSenhaUsuario(payload: any) {
+    return this.webRequestService.patch('auth/alteraSenhaUsuario', payload).subscribe((res: any) => {
+      if(!res.error) {
+        let destino = 'login';
+        this.confereSessao().subscribe((res: any) => {
+          if(res.sessaoAtiva) {
+            destino = 'dashboard';
+          } else {
+            destino = 'login';
+          }
+        });
+
+        let msg = new TopMessage(
+          'Senha do Usuário atualizada com sucesso!',
+          'is-success',
+          destino
+        )
+        this.messenger.sendMessage(msg);
+        this.router.navigate([`/${destino}`]);
+      }
+    });
+  }
+
   login(email: string, senha: string) {
     return this.webRequestService.login(email, senha).pipe(
       shareReplay(),

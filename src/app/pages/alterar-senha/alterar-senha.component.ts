@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { matchValidator } from 'src/app/utils/comon';
 
@@ -20,17 +19,29 @@ export class AlterarSenhaComponent {
   dadosFormAlterados: boolean = false;
   dadosIniciais!: any;
   token: string = '';
+  destino: string = '/login';
 
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
         this.token = params['token'];
         this.auth.confereTokenAltSenha(this.token).subscribe((res: any) => {
-          if(!res._error) {
+          if(res._error) {
+            this.router.navigateByUrl('/login');
+          } else {
+            this.idUsuario = res._userInfo.id;
           }
         });
       });
-      
+
+      this.auth.confereSessao().subscribe((res: any) => {
+        if(res.sessaoAtiva) {
+          this.destino = '/dashboard';
+        } else {
+          this.destino = '/login';
+        }
+      });
+
       this.alterarSenhaForm = new FormGroup({
         senha_usuario: new FormControl('', Validators.compose([Validators.required, matchValidator('confirmar_senha', true)])),
         confirmar_senha: new FormControl('', Validators.compose([Validators.required, matchValidator('senha_usuario')]))
@@ -49,6 +60,7 @@ export class AlterarSenhaComponent {
         this.payload = objDados;
         this.payload.id_usuario = this.idUsuario;
         this.payload.senha_usuario = this.alterarSenhaForm.get('senha_usuario')?.value;
+        this.payload.token = this.token;
         this.toggleBtnSalvar();
       } else {
         this.toggleBtnSalvar();
@@ -77,17 +89,7 @@ export class AlterarSenhaComponent {
     }
   }
 
-  onButtonCancelarClick() {
-    this.auth.confereSessao().subscribe((res: any) => {
-      if(res.sessaoAtiva) {
-        this.router.navigateByUrl('/dashboard');
-      } else {
-        this.router.navigateByUrl('/login');
-      }
-    });
-  }
-
   submit() {
-    this.auth.alteraDadosUsuario(this.payload);
+    this.auth.alteraSenhaUsuario(this.payload);
   }
 }
