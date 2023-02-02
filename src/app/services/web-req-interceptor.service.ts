@@ -21,7 +21,7 @@ export class WebReqInterceptorService implements HttpInterceptor {
     // call next() and handle the response
     return next.handle(request).pipe(
       catchError((errorObj: HttpErrorResponse) => {
-        //console.log(error.error.message);
+        console.log(errorObj.error.message);
         let errorMsg = '';
 
         if(typeof errorObj.error.message != 'undefined') {
@@ -29,6 +29,8 @@ export class WebReqInterceptorService implements HttpInterceptor {
             errorMsg = 'Sua sessão expirou';
           } else if(errorObj.error.message.search('invalid signature') > -1 || errorObj.error.message.search('Unexpected token') > -1 ) {
             errorMsg = 'Token de autenticação inválido ou expirado.'
+          } else {
+            errorMsg = errorObj.error.message;
           }
         } else if(typeof errorObj.error._message != 'undefined') {
           errorMsg = errorObj.error._message;

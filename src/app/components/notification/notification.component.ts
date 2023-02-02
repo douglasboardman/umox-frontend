@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-notification',
@@ -8,8 +8,11 @@ import { Component, Input } from '@angular/core';
 export class NotificationComponent {
   @Input() message!: string;
   @Input() class!: string;
+  @Input() toggleNotification!: string;
+  @Output() hide: EventEmitter<any> = new EventEmitter();
 
-  classes!: Array<string>;
+  visibility: string = 'hide';
+  //classes!: Array<string>;
 
   ngOnInit() {
     if(this.message != ''){
@@ -17,9 +20,16 @@ export class NotificationComponent {
     }
   }
 
+  ngOnChanges() {
+    if(this.toggleNotification == 'show'){
+      this.showMessage();
+    }
+  }
+
   showMessage() {
-    this.classes = ['visible', this.class];
+    this.visibility = 'visible';
     setTimeout(() => { this.closeMessage(); }, 10000);
+    this.toggleNotification = '';
   }
 
   onDeleteButtonClicked() {
@@ -27,6 +37,7 @@ export class NotificationComponent {
   }
 
   closeMessage() {
-    this.classes = ['hide', this.class];
+    this.visibility = 'hide';
+    this.hide.emit();
   }
 }

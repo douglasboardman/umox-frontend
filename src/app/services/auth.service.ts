@@ -107,7 +107,7 @@ export class AuthService {
   }
 
   getAccessToken() {
-    return localStorage.getItem('x-access-token')
+    return localStorage.getItem('x-access-token');
   }
 
   setAccessToken(accessToken: string) {

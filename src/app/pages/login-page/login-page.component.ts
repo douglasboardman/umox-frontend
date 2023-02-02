@@ -1,6 +1,8 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { resolve } from 'chart.js/dist/helpers/helpers.options';
+import { subscribeOn, Subscription, tap } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { TopMessage } from 'src/models/TopMessage';
@@ -15,6 +17,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService, private messenger: MessengerService) {}
   
   loginForm!: FormGroup;
+  visMsg!: string;
   msgClass!: string;
   message!: string;
   $subs!: Subscription;
@@ -25,6 +28,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     this.$subs = this.messenger.receiveMessage().subscribe((msg) => {
       if(msg.target == 'login') {
         this.notification = msg;
+        this.visMsg = 'show';
       }
     });
 
@@ -47,13 +51,17 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     return this.loginForm.get('senha')!;
   }
 
+  onHideNotification() {
+    this.visMsg = 'hide';
+  }
+
   submit() {
     let email: string = this.email.value;
     let senha: string = this.senha.value;
 
     if(!this.loginForm.invalid) {
-      this.authService.login(email, senha).subscribe((response: any) => {
-      })
+      this.authService.login(email, senha).subscribe();
+      this.messenger.cleanMessage();      
     }
   }
 

@@ -64,8 +64,9 @@
     <img id="logo" src="../../../assets/umox-logo.png" alt="logo" />
   </div>
   <div class="column login-column"></div>
-  <app-notification
+  <app-notification [toggleNotification]="visMsg"
     [class]="notification.msgClass"
     [message]="notification.message"
+    (hide)="onHideNotification()"
   ></app-notification>
 </div>
