@@ -27,6 +27,12 @@ export class AuthService {
     return this.webRequestService.get(`auth/gerarTokenAltSenha/${email}`);
   }
 
+  recuperarSenha(email: string) {
+    return this.webRequestService.get(`auth/recuperarSenha/${email}`).subscribe((res: any) => {
+      console.log(res);
+    });
+  }
+
   confereTokenAltSenha(token: string) {
     return this.webRequestService.get(`auth/alterarSenha/${token}`);
   }

@@ -1,132 +1,95 @@
 <style>
-    @import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700&display=swap');
+  @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700&display=swap");
 
-    * {
-        font-family: Poppins;
-    }
+  * {
+    font-family: Poppins;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    h2 {
-        margin-bottom: 10px;
-        margin-top: 20px;
-    }
+  h2 {
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
 
-    #div-corpo-email {
-        color:#707070;
-    }
+  a.button {
+    background-color: #1e65ae;
+    color: #fff;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 3px;
+  }
 
-    #tr-label-detalhe-pedido {
-        font-size: 10px;
-        font-weight: bold;
-    }
+  #body {
+    background-color: whitesmoke;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
-    #tr-info-detalhe-pedido {
-        font-size: 12px;
-        height: 50px;
-        vertical-align: top;
-    }
+  #div-corpo-email {
+    color: #707070;
+  }
 
-    #email-container {
-        width: 80%;
-        margin: 10px auto;
-    }
+  #tr-label-detalhe-pedido {
+    font-size: 10px;
+    font-weight: bold;
+  }
 
-    #tabela-detalhes-pedido {
-        width: 100%;
-    }
+  #tr-info-detalhe-pedido {
+    font-size: 12px;
+    height: 50px;
+    vertical-align: top;
+  }
 
-    #tabela-detalhes-pedido td {
-        width: 25%;
-    }
+  #email-container {
+    width: 70%;
+    margin: 10px auto;
+    background-color: #fff;
+  }
 
-    #tabela-itens-pedido {
-        width: 100%;
-        font-size: 10px;
-    }
+  #tabela-detalhes-pedido {
+    width: 100%;
+  }
 
-    #tabela-itens-pedido td {
-        background-color: #f1f0f6;
-    }
+  #tabela-detalhes-pedido td {
+    width: 25%;
+  }
 
-    #tabela-itens-pedido thead tr {
-        background-color:#80a4dc;
-        color:white;
-    }
+  #tabela-itens-pedido {
+    width: 100%;
+    font-size: 10px;
+  }
 
-    #tabela-itens-pedido thead {
-        width:100%;
-    }
+  #tabela-itens-pedido td {
+    background-color: #f1f0f6;
+  }
 
+  #tabela-itens-pedido thead tr {
+    background-color: #80a4dc;
+    color: white;
+  }
+
+  #tabela-itens-pedido thead {
+    width: 100%;
+  }
 </style>
-<div id="email-container">
-<h1 style="color:#1e65ae">UMOX - Gestão de Almoxarifado</h1>
-<div id="div-corpo-email">
-<p>Prezado(a) servidor(a)</p>
-<p>Seu pedido de material nº 2023030 foi finalizado pelo atendente com o status: <b>ATENDIDO</b></p>
-<h2>Detalhes do pedido</h2>
-<table id="tabela-detalhes-pedido">
-    <tbody>
-        <tr id="tr-label-detalhe-pedido">
-            <td>Nº Pedido:</td>
-            <td>Data do pedido:</td>
-            <td>Data do atendimento:</td>
-            <td>Status do atendimento:</td>
-        </tr>
-        <tr id="tr-info-detalhe-pedido">
-            <td>2023030</td>
-            <td>19/01/2023</td>
-            <td>19/01/2023</td>
-            <td>ATENDIDO</td>
-        </tr>
-        <tr id="tr-label-detalhe-pedido">
-            <td colspan="4">Despacho do atendimento:</td>
-        </tr>
-        <tr id="tr-info-detalhe-pedido">
-            <td colspan="4">ATENDIMENTO PARA TESTAR A FORMATAÇÃO DO EMAIL</td>
-        </tr>
-    </tbody>
-</table>
-<h2>Itens do pedido:</h2>
-<table id="tabela-itens-pedido">
-    <thead>
-        <tr>
-            <th style="text-align:left;width:10%">ID ITEM</th>
-            <th style="text-align:left;width:50%">DESCRIÇÃO</th>
-            <th style="text-align:left;width:20%">MARCA</th>
-            <th style="text-align:left;width:10%">QTD. SOLIC.</th>
-            <th style="text-align:left;width:10%">QTD. ATEND.</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>302400001</td>
-            <td>ABRAÇADEIRA DE AÇO 127X146MM</td>
-            <td>INCA</td>
-            <td>1.00</td>
-            <td>1.00</td>
-        </tr>
-        <tr>
-            <td>302400002</td>
-            <td>ABRAÇADEIRA DE AÇO 19X25MM</td>
-            <td>INCA</td>
-            <td>1.00</td>
-            <td>1.00</td>
-        </tr>
-        <tr>
-            <td>302400003</td>
-            <td>ABRAÇADEIRA DE AÇO 76X89MM</td>
-            <td>PROGERAL</td>
-            <td>1.00</td>
-            <td>1.00</td>
-        </tr>
-        <tr>
-            <td>302400004</td>
-            <td>ABRAÇADEIRA DE AÇO 8X13MM</td>
-            <td>INCA</td>
-            <td>1.00</td>
-            <td>1.00</td>
-        </tr>
-        
-    </tbody>
-</table>
-</div>
+<div id="body">
+    <div id="email-container">
+        <h1>UMOX - Gestão de Almoxarifado</h1>
+        <div id="div-corpo-email">
+            <p>Olá <b>Douglas</b>,</p>
+            <p>
+                <b>Esqueceu sua senha?</b> Sem problemas! Para criar uma nova senha,
+                acesse o link clicando no botão abaixo:
+            </p>
+            <a class="button" href="#" target="_blank">Criar nova senha</a>
+            <p id="disclaimer">
+                Caso não tenha solicitado a alteração da senha, por favor, desconsidere
+                esta mensagem e sua senha atual será mantida.
+            </p>
+        </div>
+    </div>
 </div>

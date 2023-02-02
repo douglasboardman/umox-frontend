@@ -1,1 +1,59 @@
-<p>recuperar-senha works!</p>
+<app-content>
+    <div class="page-header">
+        <div class="container">
+            <img id="logo" src="../../../assets/umox-logo (white).png" alt="logo" />
+            <div class="app-name">
+                <h2>Umox</h2>
+                <h3>Gestão de almoxarifado</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container page-body">
+        <form (ngSubmit)="submit()" [formGroup]="recuperarSenhaForm" #formDir="ngForm">
+        <h1 class="page-title">Recuperar Senha</h1>
+        <article class="panel is-info">
+            <p class="panel-heading">Informe seu email</p>
+            <div class="panel-block">
+                <p id="instrucoes">Informe abaixo o email com o qual você realizou o seu cadastro no sistema e clique em 'Recuperar Senha'. Enviaremos uma mensagem para esse endereço com as instruções para a redefinição de sua senha.</p>
+            </div>
+            <div class="panel-block">
+                <div class="columns">
+                    <div class="column label-column" style="max-width: 180px;">
+                        <label>Email de cadastro:</label>
+                    </div>
+                    <div class="column">
+                        <input (blur)="onFocusOut()" class="input" type="email" formControlName="email_usuario" [class.is-danger]="email_usuario.invalid && dadosFormAlterados">
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="email_usuario.invalid && dadosFormAlterados" class="panel-block">
+                <div class="columns">
+                    <div class="column label-column" style="max-width: 180px;"></div>
+                    <div class="column">
+                        <p *ngIf="email_usuario.errors?.['required']" class="help is-danger">Email não informado</p>
+                        <p *ngIf="email_usuario.errors?.['email']" class="help is-danger">Email inválido</p>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-block">
+                <div class="columns">
+                    <div class="column flex-div-align-right">
+                        <div class="field is-grouped">
+                            <p class="control">
+                                <a routerLink="/login" class="button is-danger is-outlined" style="width: 100%;">Cancelar</a>
+                            </p>
+                            <p class="control">
+                                <input type="submit" class="button is-outlined is-success" [disabled]="!btnRecuperarSenha" style="width: 100%;" value="Recuperar Senha">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </form>
+</div>
+</app-content>
+<div class="page-footer">
+    <app-page-footer></app-page-footer>
+</div>
+

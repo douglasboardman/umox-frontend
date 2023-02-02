@@ -21,7 +21,7 @@ export class WebReqInterceptorService implements HttpInterceptor {
     // call next() and handle the response
     return next.handle(request).pipe(
       catchError((errorObj: HttpErrorResponse) => {
-        console.log(errorObj.error.message);
+        
         let errorMsg = '';
 
         if(typeof errorObj.error.message != 'undefined') {
