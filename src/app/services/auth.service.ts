@@ -29,7 +29,15 @@ export class AuthService {
 
   recuperarSenha(email: string) {
     return this.webRequestService.get(`auth/recuperarSenha/${email}`).subscribe((res: any) => {
-      console.log(res);
+      if(!res.error) {
+        let msg = new TopMessage(
+          'E-mail de recuperação de senha enviado com sucesso!',
+          'is-success',
+          'login'
+        )
+        this.messenger.sendMessage(msg);
+        this.router.navigate([`/login`]);
+      }
     });
   }
 
