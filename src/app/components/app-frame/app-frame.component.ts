@@ -6,62 +6,60 @@ import { Component } from '@angular/core';
   styleUrls: ['./app-frame.component.scss']
 })
 export class AppFrameComponent {
-  sidebarToggle: boolean = false;
-  contentToggle: string = 'normal-view';
+  viewMode!: string;
 
   ngOnInit() {
     const width = window.innerWidth;
+    this.sizeAjust(width);
+    this.viewMode = String(localStorage.getItem('view-mode'));
+  }
+
+  sizeAjust(width: number) {
     if(width > 1480) {
-      this.contentToggle = 'normal-view';
-      this.sidebarToggle = false;
-      localStorage.setItem('sidebar-toggle', 'false');
+      this.viewMode = 'normal-view';
     } else if(width <= 950) {
-      this.contentToggle = 'responsive';
+      this.viewMode = 'responsive';
     } else {
-      this.contentToggle = 'maximized';
-      this.sidebarToggle = true;
-      localStorage.setItem('sidebar-toggle', 'true');
+      this.viewMode = 'minimalist';
     }
+
+    localStorage.setItem('view-mode', this.viewMode);
   }
 
   onSidebarToggle() {
-    if(window.innerWidth > 950) {
-      if(this.contentToggle != 'maximized') {
-        this.contentToggle = 'maximized';
-        this.sidebarToggle = true;
-        localStorage.setItem('sidebar-toggle', 'true');
+    let width = window.innerWidth;
+    let viewMode = localStorage.getItem('view-mode');
+    if(width <= 950) {
+      if(viewMode == 'responsive') {
+        this.viewMode = 'minimalist';
+        localStorage.setItem('view-mode', 'minimalist');
       } else {
-        this.contentToggle = 'normal-view';
-        this.sidebarToggle = false;
-        localStorage.setItem('sidebar-toggle', 'false');
+        this.viewMode = 'responsive';
+        localStorage.setItem('view-mode', 'responsive');
       }
     } else {
-      if(this.contentToggle == 'responsive') {
-        this.contentToggle = 'maximized';
-        this.sidebarToggle = true;
-        localStorage.setItem('sidebar-toggle', 'true');
+      if(viewMode == 'normal-view') {
+        this.viewMode = 'minimalist';
+        localStorage.setItem('view-mode', 'minimalist');
       } else {
-        this.contentToggle = 'responsive';
-        this.sidebarToggle = false;
-        localStorage.setItem('sidebar-toggle', 'false');
+        this.viewMode = 'normal-view';
+        localStorage.setItem('view-mode', 'normal-view');
       }
     }
-
   }
 
   onResize(event: any) {
     const width = event.target.innerWidth;
+    let mode: string;
     if(width > 1480) {
-      this.contentToggle = 'normal-view';
-      this.sidebarToggle = false;
-      localStorage.setItem('sidebar-toggle', 'false');
+      mode = 'normal-view';
     } else if(width <= 950) {
-      this.contentToggle = 'responsive';
+      mode = 'responsive';
     } else {
-      this.contentToggle = 'maximized';
-      this.sidebarToggle = true;
-      localStorage.setItem('sidebar-toggle', 'true');
+      mode = 'minimalist';
     }
+    this.viewMode = mode;
+    localStorage.setItem('view-mode', mode);
   }
 }
 

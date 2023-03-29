@@ -11,7 +11,7 @@ export class SidebarComponent {
   constructor(private authService: AuthService) {}
   
   permissoes: Permissoes = new Permissoes(false,false,false,false,false,false,false);
-  sidebarMode: string = '';
+  sidebarMode!: string;
   @Output() toggle: EventEmitter<any> = new EventEmitter()
 
   ngOnInit() {
@@ -19,29 +19,28 @@ export class SidebarComponent {
     this.authService.listarPermissoesUsuario().subscribe((perm) => {
       this.permissoes = perm as Permissoes;
     })
-    let toggle = localStorage.getItem('sidebar-toggle') == 'true' ? true : false;
     if(width <= 950) {
       this.sidebarMode = 'responsive';
-    } else if(toggle){
-      this.onToggleSidebarClicked()
+    } else{
+      this.sidebarMode = String(localStorage.getItem('view-mode'));
     }
   }
 
   onToggleSidebarClicked(){
     if(window.innerWidth <= 950) {
       if(this.sidebarMode == 'responsive'){
-        this.sidebarMode = 'minimized'
+        this.sidebarMode = 'minimalist'
         this.toggle.emit();
       } else {
         this.sidebarMode = 'responsive';
         this.toggle.emit();
       }
     } else {
-      if(this.sidebarMode == '') {
-        this.sidebarMode = 'minimized'
+      if(this.sidebarMode == 'normal-view') {
+        this.sidebarMode = 'minimalist'
         this.toggle.emit();
       } else {
-        this.sidebarMode = ''
+        this.sidebarMode = 'normal-view'
         this.toggle.emit();
       }
     }
@@ -58,7 +57,7 @@ export class SidebarComponent {
     } else if(width <= 950) {
       this.sidebarMode = 'responsive';
     } else {
-      this.sidebarMode = 'minimized';
+      this.sidebarMode = 'minimalist';
     }
   }
   

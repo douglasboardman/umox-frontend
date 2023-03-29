@@ -261,14 +261,14 @@ li.mode {
 
 // SIDEBAR //
 
-// SIDEBAR MINIMIZED //
+// SIDEBAR MINIMALIST //
 
-.sidebar.minimized header span.app-name,
-.sidebar.minimized header span.app-description {
+.sidebar.minimalist header span.app-name,
+.sidebar.minimalist header span.app-description {
     display: none;
 }
 
-.sidebar.minimized {
+.sidebar.minimalist {
     position: fixed;
     top: 0;
     left: 0;
@@ -279,11 +279,11 @@ li.mode {
     z-index: 100;
 }
 
-.sidebar.minimized span.nav-text {
+.sidebar.minimalist span.nav-text {
     display: none;
 }
 
-.sidebar.minimized li .icon {
+.sidebar.minimalist li .icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -292,43 +292,43 @@ li.mode {
     margin: auto;
 }
 
-.sidebar.minimized .toggled-text {
+.sidebar.minimalist .toggled-text {
     display: unset;
 }
 
-.sidebar.minimized .divider-title {
+.sidebar.minimalist .divider-title {
     display: none;
 }
 
-.sidebar.minimized .image-text img {
+.sidebar.minimalist .image-text img {
     margin: auto;
 }
 
-.sidebar.minimized .divider {
+.sidebar.minimalist .divider {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
 }
 
-.sidebar.minimized .divider span {
+.sidebar.minimalist .divider span {
     text-align: center;
 }
 
-.sidebar.minimized header .toggle {
+.sidebar.minimalist header .toggle {
     right: -60px;
 }
 
-.sidebar.minimized span.mode-text {
+.sidebar.minimalist span.mode-text {
     display: none;
 }
 
-.sidebar.minimized i.icon.light-mode-icon,
-.sidebar.minimized i.icon.dark-mode-icon {
+.sidebar.minimalist i.icon.light-mode-icon,
+.sidebar.minimalist i.icon.dark-mode-icon {
     display: none;
 }
 
-.sidebar.minimized span.switch {
+.sidebar.minimalist span.switch {
     left: 18px;
 }
 

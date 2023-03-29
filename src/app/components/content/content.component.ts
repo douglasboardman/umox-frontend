@@ -8,6 +8,11 @@ import { Component, Input } from '@angular/core';
 export class ContentComponent {
   @Input() sidebarToggle!: boolean;
 
-  toggleContent: string = this.sidebarToggle ? 'maximized' : '';
+  
+  contentMode: string = '';
+
+  ngOnInit() {
+    this.contentMode = String(localStorage.getItem('view-mode'));
+  }
 
 }
