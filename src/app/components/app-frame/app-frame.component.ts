@@ -10,8 +10,12 @@ export class AppFrameComponent {
 
   ngOnInit() {
     const width = window.innerWidth;
-    this.sizeAjust(width);
-    this.viewMode = String(localStorage.getItem('view-mode'));
+    if(width <= 950) {
+      this.viewMode = 'responsive';
+      localStorage.setItem('view-mode', 'responsive');
+    } else {
+      this.viewMode = String(localStorage.getItem('view-mode'));
+    }
   }
 
   sizeAjust(width: number) {

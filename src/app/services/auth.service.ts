@@ -91,6 +91,7 @@ export class AuthService {
         let usuario = res.body;
         this.setSession(usuario.id, usuario.nome, String(res.headers.get('x-access-token')));
         this.auth = 'logged-in';
+        //localStorage.setItem('view-mode', 'normal-view');
         this.router.navigateByUrl('/dashboard');
       })
     )
