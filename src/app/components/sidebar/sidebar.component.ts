@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Permissoes } from 'src/models/Permissoes';
 
@@ -11,7 +11,7 @@ export class SidebarComponent {
   constructor(private authService: AuthService) {}
   
   permissoes: Permissoes = new Permissoes(false,false,false,false,false,false,false);
-  sidebarMode!: string;
+  @Input() sidebarMode!: string;
   @Output() toggle: EventEmitter<any> = new EventEmitter()
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-<app-sidebar (toggle)="onSidebarToggle()"></app-sidebar>
+<app-sidebar (toggle)="onSidebarToggle()" [sidebarMode]="viewMode"></app-sidebar>
 <app-topbar></app-topbar>
 <app-content (window:resize)="onResize($event)" [ngClass]="viewMode">
     <ng-content></ng-content>

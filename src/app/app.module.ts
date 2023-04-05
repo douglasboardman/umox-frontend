@@ -36,6 +36,7 @@ import { MeuCadastroComponent } from './pages/meu-cadastro/meu-cadastro.componen
 import { AlterarSenhaComponent } from './pages/alterar-senha/alterar-senha.component';
 import { RecuperarSenhaComponent } from './pages/recuperar-senha/recuperar-senha.component';
 import { PageFooterComponent } from './components/page-footer/page-footer.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { PageFooterComponent } from './components/page-footer/page-footer.compon
     HttpClientModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: WebReqInterceptorService, multi: true },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
