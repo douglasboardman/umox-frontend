@@ -1,6 +1,7 @@
 <app-frame>
   <app-page-header tituloPagina="Consultar pedidos"></app-page-header>
-  <div class="columns">
+  <p *ngIf="dadosPedidos.length <= 0">Não há pedidos de material para serem exibidos.</p>
+  <div class="columns" *ngIf="dadosPedidos.length > 0">
     <div class="column">
       <article class="panel is-primary">
         <p class="panel-heading">Consultas</p>
@@ -49,7 +50,7 @@
       </article>
     </div>
   </div>
-  <div class="columns">
+  <div class="columns" *ngIf="dadosPedidos.length > 0">
     <div class="column">
       <div class="table-container">
       <table class="generic rounded blue">

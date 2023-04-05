@@ -2,7 +2,8 @@
   <div class="columns">
     <div class="column">
       <app-page-header tituloPagina="Meus pedidos"></app-page-header>
-      <div class="table-container">
+      <p *ngIf="dadosPedidos.length <= 0">Você ainda não realizou nenhum pedido de material.</p>
+      <div *ngIf="dadosPedidos.length > 0" class="table-container">
         <table class="generic rounded blue">
           <thead>
             <tr>
