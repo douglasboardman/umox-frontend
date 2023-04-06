@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { screenSizeAjust } from '../../utils/comon';
 
 @Component({
   selector: 'app-frame',
@@ -16,18 +17,6 @@ export class AppFrameComponent {
     } else {
       this.viewMode = String(localStorage.getItem('view-mode'));
     }
-  }
-
-  sizeAjust(width: number) {
-    if(width > 1480) {
-      this.viewMode = 'normal-view';
-    } else if(width <= 950) {
-      this.viewMode = 'responsive';
-    } else {
-      this.viewMode = 'minimalist';
-    }
-
-    localStorage.setItem('view-mode', this.viewMode);
   }
 
   onSidebarToggle() {

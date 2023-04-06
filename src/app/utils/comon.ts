@@ -104,3 +104,16 @@ export function formatIdPedido(id: string) {
   let formattedId = s.repeat(4 - l) + id;
   return formattedId;
 }
+
+export function screenSizeAjust(width: number) {
+  let viewMode!: string;
+  if(width > 1480) {
+    viewMode = 'normal-view';
+  } else if(width <= 950) {
+    viewMode = 'responsive';
+  } else {
+    viewMode = 'minimalist';
+  }
+
+  localStorage.setItem('view-mode', viewMode);
+}

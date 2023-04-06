@@ -6,6 +6,7 @@ import { TopMessage } from 'src/models/TopMessage';
 import { __param } from 'tslib';
 import { MessengerService } from './messenger.service';
 import { WebRequestService } from './web-request.service';
+import { screenSizeAjust } from '../utils/comon';
 
 @Injectable({
   providedIn: 'root'
@@ -91,7 +92,8 @@ export class AuthService {
         let usuario = res.body;
         this.setSession(usuario.id, usuario.nome, String(res.headers.get('x-access-token')));
         this.auth = 'logged-in';
-        //localStorage.setItem('view-mode', 'normal-view');
+        let width = window.innerWidth;
+        screenSizeAjust(width);
         this.router.navigateByUrl('/dashboard');
       })
     )

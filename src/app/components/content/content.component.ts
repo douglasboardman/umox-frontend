@@ -6,10 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./content.component.scss']
 })
 export class ContentComponent {
-  @Input() sidebarToggle!: boolean;
-
-  
-  contentMode: string = '';
+  @Input() contentMode!: string;
 
   ngOnInit() {
     this.contentMode = String(localStorage.getItem('view-mode'));
