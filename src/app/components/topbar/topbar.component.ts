@@ -15,7 +15,6 @@ export class TopbarComponent {
   ngOnInit() {
     this.nomeUsuario = String(localStorage.getItem('nome-usuario'));
     this.idUsuario = String(localStorage.getItem('id-usuario'));
-    console.log(this.nomeUsuario, this.idUsuario);
   }
 
   onAlterarSenhaButtonClicked() {

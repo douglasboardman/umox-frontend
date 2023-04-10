@@ -1,7 +1,7 @@
 <app-frame>
     <app-page-header tituloPagina="Atendimento"></app-page-header>
-    <p *ngIf="dadosPedidos <= 0">Não há pedidos aguardando atendimento.</p>
-    <div class="columns" *ngIf="dadosPedidos > 0">
+    <p *ngIf="dadosPedidos.length <= 0">Não há pedidos aguardando atendimento.</p>
+    <div class="columns" *ngIf="dadosPedidos.length > 0">
       <div class="column">
         <div class="table-container">
         <table class="generic rounded blue">
