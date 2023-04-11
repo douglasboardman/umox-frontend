@@ -69,13 +69,37 @@ export class DashboardComponent implements OnInit, OnDestroy {
   carregaMetricasPedidos(dados: any) {
       this.metricasStatusPedidos = dados;
       let f = this.metricasStatusPedidos.filter((reg: any) => {return reg.status_pedido == 'ATENDIDO'});
-      this.pedidosAtendidos = parseInt(f[0].qtd);
+      
+      if(typeof f[0] != 'undefined') {
+        this.pedidosAtendidos = parseInt(f[0].qtd);
+      } else {
+        this.pedidosAtendidos = 0;
+      }
+
       f = this.metricasStatusPedidos.filter((reg: any) => {return reg.status_pedido == 'ATENDIDO PARCIALMENTE'});
-      this.pedidosAtendidosParcialmente = parseInt(f[0].qtd);
+      
+      if(typeof f[0] != 'undefined') {
+        this.pedidosAtendidosParcialmente = parseInt(f[0].qtd);
+      } else {
+        this.pedidosAtendidosParcialmente = 0;
+      }
+
       f = this.metricasStatusPedidos.filter((reg: any) => {return reg.status_pedido == 'NÃO ATENDIDO'});
-      this.pedidosNaoAtendidos = parseInt(f[0].qtd);
+
+      if(typeof f[0] != 'undefined') {
+        this.pedidosNaoAtendidos = parseInt(f[0].qtd);
+      } else {
+        this.pedidosNaoAtendidos = 0;
+      }
+
       f = this.metricasStatusPedidos.filter((reg: any) => {return reg.status_pedido == 'AGUARDANDO ATENDIMENTO'});
-      this.pedidosAguardandoAtendimento = parseInt(f[0].qtd);
+
+      if(typeof f[0] != 'undefined') {
+        this.pedidosAguardandoAtendimento = parseInt(f[0].qtd);
+      } else {
+        this.pedidosAguardandoAtendimento = 0;
+      }
+      
       this.totalPedidos = this.pedidosAtendidos + this.pedidosAguardandoAtendimento + this.pedidosAtendidosParcialmente + this.pedidosNaoAtendidos;
   }
 

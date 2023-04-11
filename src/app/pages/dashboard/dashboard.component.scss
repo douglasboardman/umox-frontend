@@ -137,6 +137,10 @@ table tr:hover {
     background-color: $grey;
 }
 
+.table-content {
+    display:block;
+}
+
 #tb-composicao-estoque tr:nth-child(even) {
     background-color: $light-blue;
 }
