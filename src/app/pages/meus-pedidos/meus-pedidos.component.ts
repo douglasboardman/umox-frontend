@@ -10,14 +10,18 @@ export class MeusPedidosComponent {
   constructor(private operacoes: OperacoesService){ }
 
   dados!: any;
-  dadosPedidos!: any;
+  dadosPedidos: any = [];
   detalharPedido!: number;
 
 
   ngOnInit(){
-    this.operacoes.consultarMeusPedidos().subscribe((response: any) => {
-      this.dadosPedidos = response._data;
-    })
+    try {
+      this.operacoes.consultarMeusPedidos().subscribe((response: any) => {
+        this.dadosPedidos = response._data;
+      })
+    } catch (error) {
+      this.dadosPedidos = [];
+    }
   }
 
   mostrarDetalhesPedido(id: number){

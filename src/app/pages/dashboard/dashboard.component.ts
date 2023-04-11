@@ -67,39 +67,49 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   carregaMetricasPedidos(dados: any) {
-      this.metricasStatusPedidos = dados;
-      let f = this.metricasStatusPedidos.filter((reg: any) => {return reg.status_pedido == 'ATENDIDO'});
-      
-      if(typeof f[0] != 'undefined') {
-        this.pedidosAtendidos = parseInt(f[0].qtd);
+    console.log(dados);
+    if(typeof dados != 'undefined') {
+        this.metricasStatusPedidos = dados;
+        let f = this.metricasStatusPedidos.filter((reg: any) => {return reg.status_pedido == 'ATENDIDO'});
+        
+        if(typeof f[0] != 'undefined') {
+          this.pedidosAtendidos = parseInt(f[0].qtd);
+        } else {
+          this.pedidosAtendidos = 0;
+        }
+  
+        f = this.metricasStatusPedidos.filter((reg: any) => {return reg.status_pedido == 'ATENDIDO PARCIALMENTE'});
+        
+        if(typeof f[0] != 'undefined') {
+          this.pedidosAtendidosParcialmente = parseInt(f[0].qtd);
+        } else {
+          this.pedidosAtendidosParcialmente = 0;
+        }
+  
+        f = this.metricasStatusPedidos.filter((reg: any) => {return reg.status_pedido == 'NÃO ATENDIDO'});
+  
+        if(typeof f[0] != 'undefined') {
+          this.pedidosNaoAtendidos = parseInt(f[0].qtd);
+        } else {
+          this.pedidosNaoAtendidos = 0;
+        }
+  
+        f = this.metricasStatusPedidos.filter((reg: any) => {return reg.status_pedido == 'AGUARDANDO ATENDIMENTO'});
+  
+        if(typeof f[0] != 'undefined') {
+          this.pedidosAguardandoAtendimento = parseInt(f[0].qtd);
+        } else {
+          this.pedidosAguardandoAtendimento = 0;
+        }  
+        
       } else {
+        this.metricasStatusPedidos = [];
         this.pedidosAtendidos = 0;
-      }
-
-      f = this.metricasStatusPedidos.filter((reg: any) => {return reg.status_pedido == 'ATENDIDO PARCIALMENTE'});
-      
-      if(typeof f[0] != 'undefined') {
-        this.pedidosAtendidosParcialmente = parseInt(f[0].qtd);
-      } else {
         this.pedidosAtendidosParcialmente = 0;
-      }
-
-      f = this.metricasStatusPedidos.filter((reg: any) => {return reg.status_pedido == 'NÃO ATENDIDO'});
-
-      if(typeof f[0] != 'undefined') {
-        this.pedidosNaoAtendidos = parseInt(f[0].qtd);
-      } else {
         this.pedidosNaoAtendidos = 0;
-      }
-
-      f = this.metricasStatusPedidos.filter((reg: any) => {return reg.status_pedido == 'AGUARDANDO ATENDIMENTO'});
-
-      if(typeof f[0] != 'undefined') {
-        this.pedidosAguardandoAtendimento = parseInt(f[0].qtd);
-      } else {
         this.pedidosAguardandoAtendimento = 0;
       }
-      
+
       this.totalPedidos = this.pedidosAtendidos + this.pedidosAguardandoAtendimento + this.pedidosAtendidosParcialmente + this.pedidosNaoAtendidos;
   }
 
