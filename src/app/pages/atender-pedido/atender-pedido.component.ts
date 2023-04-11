@@ -112,8 +112,6 @@ export class AtenderPedidoComponent {
       objItens: objItens
     }
 
-    console.log(payload);
-
     // Finaliza pedido
     return this.admin.finalizarPedido(payload);
   }

@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   carregaMetricasPedidos(dados: any) {
-    console.log(dados);
+    
     if(typeof dados != 'undefined') {
         this.metricasStatusPedidos = dados;
         let f = this.metricasStatusPedidos.filter((reg: any) => {return reg.status_pedido == 'ATENDIDO'});

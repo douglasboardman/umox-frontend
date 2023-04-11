@@ -24,7 +24,6 @@ export class ConsultarPedidosComponent {
   ngOnInit(){
     this.operacoes.consultarPedidos().subscribe((response: any) => {
       this.source = response._data.data;
-      console.log(this.source);
       this.dadosPedidos = response._data.reduced_data;
       this.dadosIniciais = response._data.reduced_data;
     })

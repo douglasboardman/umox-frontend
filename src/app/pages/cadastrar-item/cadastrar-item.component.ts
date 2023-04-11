@@ -35,7 +35,6 @@ export class CadastrarItemComponent {
     let payload = this.novoItemForm.getRawValue();
     payload.descricao_item = payload.descricao_item.toUpperCase();
     payload.marca_item = payload.marca_item.toUpperCase();
-    console.log(payload);
     this.admin.cadastrarItem(payload);
   }
 }

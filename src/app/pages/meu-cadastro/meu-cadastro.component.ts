@@ -24,7 +24,6 @@ export class MeuCadastroComponent {
         
     this.auth.carregaInfoUsuario().subscribe((response: any) => {
       this.dadosUsuario = response;
-      console.log(response);
       this.idUsuario = response.id;
       this.editarUsuarioForm.get('nome_usuario')?.setValue(this.dadosUsuario.nome);
       this.editarUsuarioForm.get('email_usuario')?.setValue(this.dadosUsuario.email);

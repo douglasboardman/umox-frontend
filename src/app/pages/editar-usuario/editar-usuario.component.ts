@@ -53,7 +53,6 @@ export class EditarUsuarioComponent {
 
   onClickInputAcessoPermitido() {
     this.acesso_permitido = !this.acesso_permitido;
-    console.log(this.acesso_permitido);
   }
 
   get acesso_permitido () {
