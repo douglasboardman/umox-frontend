@@ -66,6 +66,8 @@ export class MeuCadastroComponent {
   }
 
   submit() {
+    this.payload.nome_usuario = String(this.payload.nome_usuario).toUpperCase();
+    this.payload.email_usuario = String(this.payload.email_usuario).toLowerCase();
     this.auth.alteraDadosUsuario(this.payload);
   }
 }
