@@ -46,13 +46,12 @@ export class RegisterPageComponent {
   }
 
   submit() {
-    let nome: string = this.nome.value;
+    let nome: string = String(this.nome.value).toUpperCase();
     let email: string =  this.email.value;
     let senha: string = this.senha.value;
     
     if(!this.registerForm.invalid) {
       this.authService.register(nome, email, senha).subscribe((response: any) => {
-        
       });
     }
   }
