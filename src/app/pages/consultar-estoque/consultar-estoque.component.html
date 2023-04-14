@@ -18,6 +18,17 @@
             </span>
           </p>
         </div>
+        <div class="panel-block">
+          <div class="column">
+            <div class="select">
+              <select id="selNaturezas" class="input uppercase-field is-primary" [(ngModel)]="natureza" (change)="onSelNaturezasChanged()">
+                <option value="0" selected hidden>-- FILTRAR POR NATUREZA --</option>
+                <option value="0">TODAS</option>
+                <option *ngFor="let natureza of listaNaturezas" [value]="natureza.id_natureza">{{ natureza.natureza }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </article>
       <div class="table-container">
         <table class="generic rounded blue">

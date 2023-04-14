@@ -17,6 +17,10 @@ export class OperacoesService {
     return this.webRequestService.get('operacoes/itens/consultarEstoque');
   }
 
+  listarNaturezas() {
+    return this.webRequestService.get('operacoes/itens/listarNaturezas');
+  }
+
   consultarMeusPedidos(){
     return this.webRequestService.get('operacoes/pedidos/meusPedidos');
   }
