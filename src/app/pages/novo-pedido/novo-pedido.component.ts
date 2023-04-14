@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { OperacoesService } from 'src/app/services/operacoes.service';
-import { checaInputQtd } from 'src/app/utils/comon';
+import { checaInputQtd, replaceSpecialChars } from 'src/app/utils/comon';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PedidoPL } from 'src/models/Pedido';
 
@@ -38,9 +38,9 @@ export class NovoPedidoComponent {
   }
 
   onKeyUpTxtConsulta() {
-    let searchFor = this.searchText.toUpperCase();
+    let searchFor = replaceSpecialChars(this.searchText.toUpperCase());
     this.dadosItens = this.dadosOriginais.filter((item) => {
-      return item.descricao_item.search(searchFor) > -1;
+      return replaceSpecialChars(String(item.descricao_item).concat(' ' + item.marca_item)).search(searchFor) > -1;
     });
   }
 

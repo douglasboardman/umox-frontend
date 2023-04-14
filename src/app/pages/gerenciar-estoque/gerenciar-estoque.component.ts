@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { AdminService } from 'src/app/services/admin.service';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { TopMessage } from 'src/models/TopMessage';
+import { replaceSpecialChars } from '../../utils/comon';
 
 @Component({
   selector: 'app-gerenciar-estoque',
@@ -36,9 +37,10 @@ export class GerenciarEstoqueComponent {
   }
 
   onKeyUpTxtConsulta() {
-    let searchFor = this.searchText.toUpperCase();
+    let searchFor = replaceSpecialChars(this.searchText.toUpperCase());
     this.dadosItens = this.dadosOriginais.filter((item) => {
-      return item.descricao_item.search(searchFor) > -1;
+      return replaceSpecialChars(String(item.descricao_item).concat(' ' + item.marca_item)).search(searchFor) > -1;
     });
   }
+  
 }

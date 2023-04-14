@@ -117,3 +117,15 @@ export function screenSizeAjust(width: number) {
 
   localStorage.setItem('view-mode', viewMode);
 }
+
+export function replaceSpecialChars(str: string)
+{
+    str = str.replace(/[ÀÁÂÃÄÅ]/,"A");
+    str = str.replace(/[ÈÉÊË]/,"E");
+    str = str.replace(/[IÍÌÏÎ]/,"I");
+    str = str.replace(/[OÓÒÕÖÔ]/,"O");
+    str = str.replace(/[UÚÙÜÛ]/,"U");
+    str = str.replace(/[Ç]/,"C");
+
+    return str.replace(/[^a-z0-9]/gi,''); 
+}
