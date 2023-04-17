@@ -24,7 +24,6 @@ export class GerenciarEstoqueComponent {
   ngOnInit(){
     this.admin.listarNaturezas().subscribe((response: any)=> {
       this.listaNaturezas = response._data;
-      console.log(this.listaNaturezas);
     });
 
     this.admin.gerenciarEstoque().subscribe((response: any) => {

@@ -18,7 +18,6 @@ export class ConsultarEstoqueComponent {
   ngOnInit(){
     this.operacoes.listarNaturezas().subscribe((response: any)=> {
       this.listaNaturezas = response._data;
-      console.log(this.listaNaturezas);
     });
 
     this.operacoes.consultarEstoque().subscribe((response: any) => {
